@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A Web Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="banner">
+        <h1>Dinner planner</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="coll-md-4">My Dinner: $x people</div>
+            <div class="coll-md-6">
+                <button type="button">Go back and edit dinner</button>
+            </div>
+        </div>
+        <div class="container" id="dinnerList">
+            <div class="row" id="dinnerItem">
+                <div class="coll-md-2" id="imageContainer">
+                    <image>$Path to image</image>
+                </div>
+                <div class="coll-md-4" id="descriprtion">
+                    <h2>DISH NAME</h2>
+                    <p>Descriptionnnnn</p>
+                </div>
+                <div class="col-md-6" id="preparation">
+                    <h3>PREPARATION</h3>
+                    <p>Premaratiooooooooooooon</p>
+                </div>
 
+            </div>
+        </div>
+    </div>
 </body>
 </html>
