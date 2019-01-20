@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select dish</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Dinner planner</h1>
+    </div>
+    <div class="row">
+        <!--TODO: The side menu can be extended and collapes on small screens-->
+        <div class="col-md-4" id="sidemenu">
+            <h2>My Dinner</h2>
+            <div>
+                People <span id="numberOfPeople"></span>
+            </div>
+            <div id="dishList">
+                <div class="row" id="listHeader">
+                    <div class="col-md-2">
+                        Dish name
+                    </div>
+                    <div class="col-md-2">
+                        Cost
+                    </div>
+                </div>
+                <!--TODO: List of dishes and their cost-->
+            </div>
+            <button>
+                Confirm Dinner
+            </button>
+        </div>
+        <div class="col-md-8" id="main">
+            <h2>Find a dish</h2>
+            <form>
+                <input type="search" id="keyWords" value="Enter key words">
+                <select id="dishSelect">
+                    <option value=""> All </option>
+                    <!--TODO: render options-->
+                </select>
+                <button type="submit">search</button>
+            </form>
+            <div class="container" id="dishList">
+                <!--TODO: render the list and put intems in list,
+                 5 per page, witht the image followd by the text-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
