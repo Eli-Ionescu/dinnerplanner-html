@@ -3,8 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="../mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
+</head>
+
+<body>
+    <div id="banner">
+        <h1>Dinner planner</h1>
+    </div>
+
+    <div class="row" style="margin:30px 30px 0 30px">
+        <div class="col-md-3">
+            <h2>My dinner: ... people</h2>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <button class="button" style="float:right">Go back and edit dinner</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" style="margin:40px 40px 0 400px" align="center">
+        <div class="column">
+            <img src="../images/meatballs.jpg" alt="Meatballs" style="width:100%">
+            <br>
+            <p>Here is the price</p>
+        </div>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        <div class="column">
+            <img src="../images/icecream.jpg" alt="Ice cream" style="width:100%">
+            <br>
+            <p>Here is the price</p>
+            <p></p>
+        </div>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        <div class="column">
+            <img src="../images/toast.jpg" alt="Toast" style="width:100%">
+            <br>
+            <p>Here is the price</p>
+        </div>
+        &nbsp &nbsp &nbsp &nbsp
+        <div class="vertical_line"></div>
+        <p id="total_overview"> Total: <br> ... SEK</p>
+    </div>
+    <hr>
+    <div class="text-center">
+        <button class="button"> Print full recipe </button>
+    </div>
 </body>
 </html>
