@@ -45,28 +45,29 @@
                 <button class="button">Confirm dinner</button>
             </div>
         </div>
-        <div class="main">
-            Main menu
+
+        <div class="col-md-8" id="main">
+            <h2>Find a dish</h2>
+            <form>
+                <input type="search" id="keyWords" value="Enter key words">
+                &nbsp
+                &nbsp
+                &nbsp
+                <select class="dishSelect">
+                    <option value=""> All </option>
+                </select>
+                &nbsp
+                &nbsp
+                &nbsp
+                <button class="button-search" type="submit">search</button>
+            </form>
+            <div class="container" id="dishList">
+                <!--TODO: render the list and put intems in list,
+                 5 per page, witht the image followd by the text-->
+            </div>
         </div>
-        <button id="confirmDinner">
-            Confirm Dinner
-        </button>
     </div>
-    <div class="col-md-8" id="main">
-        <h2>Find a dish</h2>
-        <form>
-            <input type="search" id="keyWords" value="Enter key words">
-            <select id="dishSelect">
-                <option value=""> All </option>
-                <!--TODO: render options-->
-            </select>
-            <button type="submit">search</button>
-        </form>
-        <div class="container" id="dishList">
-            <!--TODO: render the list and put intems in list,
-             5 per page, witht the image followd by the text-->
-        </div>
-    </div>
+
 </div>
 </body>
 </html>
