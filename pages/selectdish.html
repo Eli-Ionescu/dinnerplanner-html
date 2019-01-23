@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:allign="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
     <title>A Web Page</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
@@ -16,58 +16,47 @@
     <div id="banner">
         <h1>Dinner planner</h1>
     </div>
-    <br>
-    <br>
-    <div class="container-fluid">
-        <!--TODO: The side menu can be extended and collapes on small screens-->
-        <div class="row">
-            <div class="col-md-3">
-                <div>
-                    <h3>My Dinner</h3>
-                    People: <input type="number" id="myNumber">
-                    <br>
-                    <br>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Dish Name</th>
-                            <th scope="col">Cost</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--Here, add dishes to the table-->
-                        <tr>
-                        </tr>
-                        <tr>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p align="right"> Total:</p>
-                    <button class="button">Confirm dinner</button>
+    <div class="container">
+        <div class="col-md-4 sideMenu">
+            <h2>My Dinner</h2>
+            <div>
+                <label for="numberPeople" class="text-left">People</label>
+                <select class="form-control text-right" id="numberPeople">
+                </select>
+            </div>
+            <div class="selectedDishList">
+                <div class="row" id="listHeader">
+                    <div class="col-md-6 text-left">
+                        Dish name
+                    </div>
+                    <div class="col-md-6 text-right">
+                        Cost
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="total">SEK $TOTAL</div>
                 </div>
             </div>
+            <button id="confirmDinner">
+                Confirm Dinner
+            </button>
+        </div>
         <div class="col-md-8" id="main">
             <h2>Find a dish</h2>
             <form>
                 <input type="search" id="keyWords" value="Enter key words">
-                &nbsp
-                &nbsp
-                &nbsp
-                <select id="dishSelect">
+                <select class="dishSelect">
                     <option value=""> All </option>
-                    <!--TODO: render options-->
                 </select>
-                &nbsp
-                &nbsp
-                &nbsp
-                <button class="button-search" type="submit">search</button>
+                <button type="submit">search</button>
             </form>
-            <div class="container" id="dishList">
-                <!--TODO: render the list and put intems in list,
-                 5 per page, witht the image followd by the text-->
+            <div class="dishList">
             </div>
         </div>
     </div>
-    </div>
+    <!-- The application JavaScript code -->
+    <script src="../js/app.js"></script>
+    <script src="../js/model/dinnerModel.js"></script>
+    <script src="../js/view/selectDishView.js"></script>
 </body>
 </html>

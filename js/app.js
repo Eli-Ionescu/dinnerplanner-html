@@ -1,9 +1,14 @@
 $(function() {
 	//We instantiate our model
-	var model = new DinnerModel();
+    var model = new DinnerModel();
+    model.setNumberOfGuests(3);
+    model.addDishToMenu(1);
+    model.addDishToMenu(102);
+    model.addDishToMenu(202);
 	
 	// And create the instance of ExampleView
 	var exampleView = new ExampleView($("#exampleView"));
+    var selectDishView = new SelectDishView($("#selectDishView"), model);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
