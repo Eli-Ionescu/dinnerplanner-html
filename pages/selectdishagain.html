@@ -7,21 +7,66 @@
     <title>A Web Page</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
 </head>
 <body>
-    <div id="banner">
-        <h1>Dinner planner</h1>
-    </div>
-    <div class="container">
-        <div class="sidemenu">
-            Side menu
+<div id="banner">
+    <h1>Dinner planner</h1>
+</div>
+<br>
+<br>
+<div class="container-fluid">
+    <!--TODO: The side menu can be extended and collapes on small screens-->
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <h3>My Dinner</h3>
+                People: <input type="number" id="myNumber">
+                <br>
+                <br>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Dish Name</th>
+                        <th scope="col">Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">Lasagne</td>
+                        <td>77.22 </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p align="right"> Total: 77.22 SEK</p>
+                <button class="button">Confirm dinner</button>
+            </div>
         </div>
-        <div class="main">
-            Main menu
+        <div class="col-md-8" id="main">
+            <h2>Find a dish</h2>
+            <form>
+                <input type="search" id="keyWords" value="Enter key words">
+                &nbsp
+                &nbsp
+                &nbsp
+                <select id="dishSelect">
+                    <option value=""> All </option>
+                    <!--TODO: render options-->
+                </select>
+                &nbsp
+                &nbsp
+                &nbsp
+                <button class="button-search" type="submit">search</button>
+            </form>
+            <div class="container" id="dishList">
+                <!--TODO: render the list and put intems in list,
+                 5 per page, witht the image followd by the text-->
+            </div>
         </div>
     </div>
+</div>
 </body>
 </html>
