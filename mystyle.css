@@ -1,4 +1,4 @@
-.button {
+.text-center .button {
     background-color: coral;
     border: none;
     color: white;
@@ -10,4 +10,37 @@
     margin: 4px 2px;
     cursor: pointer;
     float:left;
+}
+
+#banner {
+    background-color: #c5c3be;
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align:  right;
+}
+
+.sideMenu {
+    padding: 10px;
+}
+
+#listHeader {
+    background-color: #c5c3be;
+}
+
+#total {
+    color: darkred;
+    text-align: right;
+}
+
+#confirmDinner {
+    /*Change this*/
+    align-self: center;
 }

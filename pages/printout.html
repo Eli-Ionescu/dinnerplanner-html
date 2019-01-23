@@ -8,24 +8,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <!--My CSS-->
+    <link rel="stylesheet" type="text/css" href="../mystyle.css">
 </head>
 <body>
-    <div class="banner">
+    <div id="banner">
         <h1>Dinner planner</h1>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="coll-md-4">My Dinner: $x people</div>
-            <div class="coll-md-6">
-                <button type="button">Go back and edit dinner</button>
+    <div>
+        <div class="container">
+            <h3 class="text-left col-md-6">My Dinner: $x people</h3>
+            <div class="text-right col-md-6">
+                <button  class="button" type="button">Go back and edit dinner</button>
             </div>
         </div>
         <div class="container" id="dinnerList">
-            <div class="row" id="dinnerItem">
-                <div class="coll-md-2" id="imageContainer">
-                    <image>$Path to image</image>
+            <div id="dinnerItem">
+                <div class="col-md-2" id="imageContainer">
+                    <img src="..\images\meatballs.jpg">
                 </div>
-                <div class="coll-md-4" id="descriprtion">
+                <div class="col-md-4" id="descriprtion">
                     <h2>DISH NAME</h2>
                     <p>Descriptionnnnn</p>
                 </div>

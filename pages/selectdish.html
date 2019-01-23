@@ -8,30 +8,36 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <!--My CSS-->
+    <link rel="stylesheet" type="text/css" href="../mystyle.css">
 </head>
 <body>
-    <div class="banner">
+    <div id="banner">
         <h1>Dinner planner</h1>
     </div>
-    <div class="row">
+    <div class="container">
         <!--TODO: The side menu can be extended and collapes on small screens-->
-        <div class="col-md-4" id="sidemenu">
+        <div class="col-md-4 sideMenu">
             <h2>My Dinner</h2>
             <div>
                 People <span id="numberOfPeople"></span>
             </div>
             <div id="dishList">
                 <div class="row" id="listHeader">
-                    <div class="col-md-2">
+                    <div class="col-md-6 text-left">
                         Dish name
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-6 text-right">
                         Cost
                     </div>
                 </div>
+                <div class="row">
+                    <div id="total">SEK $TOTAL</div>
+                </div>
                 <!--TODO: List of dishes and their cost-->
             </div>
-            <button>
+            <button id="confirmDinner">
                 Confirm Dinner
             </button>
         </div>
