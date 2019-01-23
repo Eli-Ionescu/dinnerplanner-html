@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:Total="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Dish Details</title>
+    <link rel="stylesheet" type="text/css" href="../mystyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 
@@ -14,6 +15,80 @@
         </div>
     </header>
 
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div id="leftView">
+                    <h3>My Dinner</h3>
+                    People: <input type="number" id="myNumber">
+                    <br>
+                    <br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Dish Name</th>
+                                <th scope="col">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">First dish</td>
+                                <td>20.00 SEK</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Second dish</td>
+                                <td>30.00 SEK</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="button">Confirm dinner</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div id="dishDescription" class="col-md-6">
+                        <h3>Lasagne</h3>
+                        <div class="row">
+                            <img src="../images/lasagne.jpg" alt="Lasagne" width="420" height="188">
+                            <!--<p>bla bla</p>-->
+                        </div>
+                        <div class="row">
+                            <p>Lasagne is a type of wide, flat pasta, possibly one of the oldest types of pasta.
+                                Lasagne, or the singular lasagna, commonly refers to a culinary dish made with
+                                stacked layers of pasta alternated with sauces and ingredients such as meats,
+                                vegetables and cheese, and sometimes topped with melted grated cheese.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <button class="button">Back to search</button>
+                        </div>
+                    </div>
+                    <!--Third column with the ingredients-->
+                    <div class="col-md-6">
+                            <h3>Ingredients for ... people</h3>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td scope="row">2 tbsp</td>
+                                    <td> Olive oil</td>
+                                    <td> SEK </td>
+                                    <td> 0.20 </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">750 g</td>
+                                    <td>Lean beef mince</td>
+                                    <td>SEK</td>
+                                    <td>10.00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <button class="button">Add to menu</button>
+                            <p align="right"> Total:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

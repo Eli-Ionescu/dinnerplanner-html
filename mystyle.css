@@ -1,4 +1,4 @@
-.text-center .button {
+.button {
     background-color: coral;
     border: none;
     color: white;
@@ -9,4 +9,5 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    float:left;
 }
