@@ -15,20 +15,26 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu for the selected type
 	this.getSelectedDish = function(type) {
-
+	    var selectedDishes = [];
 		for(let i in fullMenu) {
 			if(fullMenu[i].type == type) {
-				return fullMenu[i].ingredients
+			    selectedDishes.push(fullMenu[i]);
 			}
 		}
+		return selectedDishes;
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		return fullMenu;
+		return dishes;
 	}
+
+	// Returns the selected dishes
+    this.getAllSelectedDishes = function () {
+        return fullMenu;
+    }
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
@@ -48,9 +54,7 @@ var DinnerModel = function() {
 		var total = 0;
 
 		for (let dish in fullMenu) {
-			for(let ingredient in fullMenu[dish]) {
-				total += fullMenu[dish].ingredients[ingredient].price;
-			}
+		    total += this.getDishPrice(fullMenu[dish].id);
 		}
 		return total * numberOfGuests;
 	}
@@ -117,6 +121,15 @@ var DinnerModel = function() {
 		}
 		return allDishTypes;
 	}
+
+	this.getDishPrice = function (id) {
+	    var dish = this.getDish(id);
+	    var price = 0;
+	    for(let key in dish.ingredients) {
+            price += dish.ingredients[key].price;
+        }
+        return price;
+    }
 
 
 	// the dishes variable contains an array of all the 
