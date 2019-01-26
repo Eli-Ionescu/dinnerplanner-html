@@ -5,6 +5,9 @@
     <title>Dish Details</title>
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -15,9 +18,12 @@
     <br>
     <div class="container-fluid">
         <div class="row">
+            <div id="button_collapse" class="hidden-sm-up">
+                <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
+            </div>
             <div class="col-md-3">
-                <div>
-                    <h3>My Dinner</h3>
+                <h3>My Dinner</h3>
+                <div class="hidden-xs sidebar" id="sidebar">
                     People: <input type="number" id="myNumber">
                     <br>
                     <br>
@@ -88,5 +94,9 @@
             </div>
         </div>
     </div>
+
+<!--The scripts for this page-->
+    <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 </body>
 </html>

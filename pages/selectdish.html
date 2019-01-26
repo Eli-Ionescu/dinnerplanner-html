@@ -9,8 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
 <div id="banner">
@@ -18,49 +21,107 @@
 </div>
 <br>
 <br>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div id="button_collapse" class="hidden-sm-up">
+            <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
+        </div>
+
+        <div class="col-sm-4">
             <div>
                 <h3>My Dinner</h3>
-                People: <input type="number" id="myNumber">
-                <br>
-                <br>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Dish Name</th>
-                        <th scope="col">Cost</th>
-                    </tr>
-                    </thead>
-                </table>
+                <div class="hidden-xs sidebar" id="sidebar">
+                    People: <input type="number" id="myNumber">
+                    <br>
+                    <br>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Dish Name</th>
+                            <th scope="col">Cost</th>
+                        </tr>
+                        </thead>
+                    </table>
 
-                <p align="right" id="total">SEK $TOTAL</p>
-                <button align="middle" class="button" id="confirmDinner">
-                    Confirm Dinner
-                </button>
+                    <p align="right" id="total">SEK $TOTAL</p>
+                    <button align="middle" class="button" id="confirmDinner">
+                        Confirm Dinner
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="col-md-8" id="main">
             <h2>Find a dish</h2>
             <form>
-                <input type="search" id="keyWords" value="Enter key words">
-                &nbsp
-                &nbsp
-                &nbsp
+                <input type="search" id="keyWords" placeholder="Enter key words">
+                &nbsp &nbsp &nbsp
                 <select class="dishSelect">
                     <option value=""> All </option>
                 </select>
-                &nbsp
-                &nbsp
-                &nbsp
+                &nbsp &nbsp &nbsp
                 <button class="button-search" type="submit">search</button>
             </form>
-            <div class="container" id="dishList">
-                <!--TODO: render the list and put intems in list,
-                 5 per page, witht the image followd by the text-->
+            <hr>
+            <div class="container">
+                <!--TODO: add the images in the dishSearchView.js-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-2">-->
+                        <!--<div class="thumbnail">-->
+                            <!--<a>-->
+                                <!--<img src="../images/toast.jpg" alt="Toast">-->
+                                <!--<div class="caption">-->
+                                    <!--<p>Toast</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2">-->
+                        <!--<div class="thumbnail">-->
+                            <!--<a>-->
+                                <!--<img src="../images/meatballs.jpg" alt="Meatballs">-->
+                                <!--<div class="caption">-->
+                                    <!--<p>Meatballs</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2">-->
+                        <!--<div class="thumbnail">-->
+                            <!--<a>-->
+                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
+                                <!--<div class="caption">-->
+                                    <!--<p>Ice cream</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2">-->
+                        <!--<div class="thumbnail">-->
+                            <!--<a>-->
+                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
+                                <!--<div class="caption">-->
+                                    <!--<p>Ice cream</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2">-->
+                        <!--<div class="thumbnail">-->
+                            <!--<a>-->
+                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
+                                <!--<div class="caption">-->
+                                    <!--<p>Ice cream</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
             </div>
+
+
+
         </div>
     </div>
 
@@ -68,6 +129,8 @@
 <!-- The application JavaScript code -->
 <script src="../js/app.js"></script>
 <script src="../js/model/dinnerModel.js"></script>
-<script src="../js/view/selectDishView.js"></script>
+<script src="../js/viewnumberPeople/selectDishView.js"></script>
+<script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -78,3 +78,11 @@
 #total_overview {
     margin: 200px 0 0 20px;
 }
+
+.container .thumbnail {
+    margin-right: 20px;
+}
+
+#button_collapse {
+    padding-left: 350px;
+}
