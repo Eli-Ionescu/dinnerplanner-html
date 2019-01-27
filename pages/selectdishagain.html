@@ -11,8 +11,6 @@
 
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="banner">
@@ -21,13 +19,11 @@
 <br>
 <br>
 <div class="container-fluid">
+    <!--TODO: The side menu can be extended and collapes on small screens-->
     <div class="row">
-        <div id="button_collapse" class="hidden-sm-up">
-            <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
-        </div>
         <div class="col-md-3">
-            <h3>My Dinner</h3>
-            <div class="hidden-xs sidebar" id="sidebar">
+            <div>
+                <h3>My Dinner</h3>
                 People: <input type="number" id="myNumber">
                 <br>
                 <br>
@@ -40,41 +36,39 @@
                     </thead>
                     <tbody id="selectedDishTableBody">
                     <tr>
-                        <td scope="row">Lasagne</td>
-                        <td>77.22 </td>
+                        <!--<td scope="row">Lasagne</td>-->
+                        <!--<td>77.22 </td>-->
                     </tr>
                     </tbody>
                 </table>
                 <p align="right" id="totalPrice">
-                    Total: 77.22 SEK
+                    <!--Total: 77.22 SEK-->
                 </p>
                 <button class="button">Confirm dinner</button>
             </div>
         </div>
-
-        <div class="col-md-8" id="main">
-            <h2>Find a dish</h2>
-            <form>
-                <input type="search" id="keyWords" placeholder="Enter key words">
-                &nbsp &nbsp &nbsp
-                <select class="dishSelect">
-                    <option value=""> All </option>
-                </select>
-                &nbsp &nbsp &nbsp
-                <button class="button-search" type="submit">search</button>
-            </form>
-            <hr>
-            <div class="container">
-                <!--TODO: render the list and put items in list,
-                 5 per page, with the image followed by the text-->
-            </div>
+        <div class="main">
+            Main menu
+        </div>
+        <button id="confirmDinner">
+            Confirm Dinner
+        </button>
+    </div>
+    <div class="col-md-8" id="main">
+        <h2>Find a dish</h2>
+        <form>
+            <input type="search" id="keyWords" value="Enter key words">
+            <select id="dishSelect">
+                <option value=""> All </option>
+                <!--TODO: render options-->
+            </select>
+            <button type="submit">search</button>
+        </form>
+        <div class="container" id="selectedDish">
+            <!--TODO: render the list and put intems in list,
+             5 per page, witht the image followd by the text-->
         </div>
     </div>
 </div>
-
-<!--The scripts used for this page-->
-<script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-
 </body>
 </html>
