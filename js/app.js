@@ -7,8 +7,9 @@ $(function() {
     model.addDishToMenu(202);
 	
 	// And create the instance of ExampleView
-	var exampleView = new ExampleView($("#exampleView"));
-    var selectDishView = new SelectDishView($("#selectDishView"), model);
+	// var exampleView = new ExampleView($("#exampleView"));
+    var sidebarView = new SidebarView($("#sidebar"), model);
+    var dishSearchView = new DishSearchView($("#main"), model);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

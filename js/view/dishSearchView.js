@@ -7,25 +7,31 @@
 var DishSearchView = function (container, model) {
 
     // Drop-down list for dish types
-    var dishSelect = container.find("#dishSelect");
-    var allDishTypes = model.getAllDishTypes();
+    let dishSelect = container.find("#dishType");
+    let allDishTypes = model.getAllDishTypes();
     let dropDownTypeList = "<option value=\"\"> All </option>\n";
 
-    for(let dishType in allDishTypes){
-        dropDownTypeList += "<option value=\"\"> ";
+    allDishTypes.forEach((dishType => {
+        dropDownTypeList += "<option value=\"\">";
         dropDownTypeList += dishType;
         dropDownTypeList += "</option>\n";
-    }
+    }));
     dishSelect.html(dropDownTypeList);
 
     // List with all the dishes
-    var dishList = container.find("#dishList");
-    var allDishes = model.getFullMenu();
-    var dishListHTML = "";
+    let dishList = container.find("#dishList");
+    let allDishes = model.getFullMenu();
+    let HTMLString = "";
 
-    //TODO: check this code how the new dish item view gets created
     allDishes.forEach(dish => {
-        var dishItemView = new DishItemView(container, model, dish.id);
+        console.log(dish);
+        HTMLString += "<div class=\"col-md-2\">";
+        HTMLString += "<div class=\"thumbnail\">";
+        HTMLString += "<a>";
+        HTMLString += "<img src=\"../images/"+ dish.image +"\" alt=\""+ dish.name +"\">";
+        HTMLString += "<div class=\"caption\">\n";
+        HTMLString += "<p>" + dish.name +"<\p>";
+        HTMLString += "</div></a></div></div>\n";
     });
-    dishList.html(dishListHTML);
+    dishList.html(HTMLString);
 };

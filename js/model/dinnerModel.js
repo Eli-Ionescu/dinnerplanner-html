@@ -112,19 +112,21 @@ var DinnerModel = function() {
 		}
 	}
 
+	// Return a list with all the dish types
 	this.getAllDishTypes = function() {
 		let allDishTypes = [];
-		for(let key in dishes) {
-			if(!allDishTypes.includes(dishes[key].type)){
-				allDishTypes.push(dishes[key].type)
+		for(let i in dishes) {
+			if (!allDishTypes.includes(dishes[i].type)) {
+				allDishTypes.push(dishes[i].type);
 			}
 		}
 		return allDishTypes;
 	}
 
+	// Returns the price of a dish
 	this.getDishPrice = function (id) {
-	    var dish = this.getDish(id);
-	    var price = 0;
+	    let dish = this.getDish(id);
+	    let price = 0;
 	    for(let key in dish.ingredients) {
             price += dish.ingredients[key].price;
         }

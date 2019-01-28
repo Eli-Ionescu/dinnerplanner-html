@@ -32,8 +32,9 @@
             <div>
                 <h3>My Dinner</h3>
                 <div class="hidden-xs sidebar" id="sidebar">
-                    <div id="numberPeople">
-                    </div>
+                    <label for="numberPeople">People:</label>
+                    <select id="numberPeople">
+                    </select>
                     <table class="table">
                         <thead>
                         <tr>
@@ -56,63 +57,19 @@
             <h2>Find a dish</h2>
             <form>
                 <input type="search" id="keyWords" placeholder="Enter key words">
-                &nbsp &nbsp &nbsp
-                <select class="dishSelect">
-                    <option value=""> All </option>
-                </select>
-                &nbsp &nbsp &nbsp
+                <label for="dishType">Type</label>
+                <select id="dishType"></select>
                 <button class="button-search" type="submit">search</button>
             </form>
             <hr>
             <div class="container">
-                <!--TODO: add the images in the dishSearchView.js-->
-                <!--<div class="row">-->
+                <div class="row" id="dishList">
                     <!--<div class="col-md-2">-->
                         <!--<div class="thumbnail">-->
                             <!--<a>-->
                                 <!--<img src="../images/toast.jpg" alt="Toast">-->
                                 <!--<div class="caption">-->
                                     <!--<p>Toast</p>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<div class="thumbnail">-->
-                            <!--<a>-->
-                                <!--<img src="../images/meatballs.jpg" alt="Meatballs">-->
-                                <!--<div class="caption">-->
-                                    <!--<p>Meatballs</p>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<div class="thumbnail">-->
-                            <!--<a>-->
-                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
-                                <!--<div class="caption">-->
-                                    <!--<p>Ice cream</p>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<div class="thumbnail">-->
-                            <!--<a>-->
-                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
-                                <!--<div class="caption">-->
-                                    <!--<p>Ice cream</p>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<div class="thumbnail">-->
-                            <!--<a>-->
-                                <!--<img src="../images/icecream.jpg" alt="Ice cream">-->
-                                <!--<div class="caption">-->
-                                    <!--<p>Ice cream</p>-->
                                 <!--</div>-->
                             <!--</a>-->
                         <!--</div>-->
@@ -127,5 +84,7 @@
 <script src="../js/app.js"></script>
 <script src="../js/model/dinnerModel.js"></script>
 <script src="../js/view/sidebarView.js"></script>
+<script src="../js/view/dishSearchView.js"></script>
+<script src="../js/view/dishItemView.js"></script>
 </body>
 </html>

@@ -13,7 +13,8 @@
  * @param {Object} model - the reference to the Dinner Model
  */ 
 var ExampleView = function (container, model) {
-	
+
+	if (!container) { return;}
 	/**
 	 * We use the @method find() on @var {jQuery object} container to look for various elements 
 	 * inside the view in orther to use them later on. For instance:

@@ -5,6 +5,7 @@
  * @constructor
  */
 var SidebarView = function (container, model) {
+    if (!container) {return;}
 
     // Selection menu for number of people
     let numberPeopleSelect = container.find("#numberPeople");
