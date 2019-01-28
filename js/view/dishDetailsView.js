@@ -1,8 +1,10 @@
 var DishDetailsView = function (container, model, id) {
-    var dishDetailDescription = container.find("#dishDetailList");
-    var dish = model.getDish(id);
 
-    var dishDescription = "=<div id=\"dishDescription\" class=\"col-md-6\">\n";
+    // Create the 
+    let dishDetailDescription = container.find("#dishDetailList");
+    let dish = model.getDish(id);
+
+    let dishDescription = "<div id=\"dishDescription\" class=\"col-md-6\">\n";
     dishDescription += "<h3>"+ dish.name +"</h3>\n";
     dishDescription += "<div class=\"row\">\n";
     dishDescription += "<img src=\"../images/" + dish.image + "alt=\"" + dish.name + "\" width=\"420\" height=\"188\">\n";
@@ -19,22 +21,21 @@ var DishDetailsView = function (container, model, id) {
         "    </div>";
 
     // Ingredients list
-    var ingredients = dish.ingredients;
-    var nrPeople = model.getNumberOfGuests();
+    let ingredients = dish.ingredients;
+    let nrPeople = model.getNumberOfGuests();
 
     dishDescription += "<div class=\"col-md-6\">\n" +
         "        <h3>Ingredients for " + nrPeople + " people</h3>\n" +
         "    <table class=\"table\">" +
         "       <tbody>";
 
-    for (let i in ingredients) {
+    for (let ingredient in ingredients) {
         dishDescription += "<tr>\n";
-        dishDescription += "<td scope=\"row\">" + ingredients[i].quantity+ " " + ingredients[i].unit +"</td>";
-        dishDescription += "<td> " + ingredients[i].name + " </td>";
+        dishDescription += "<td scope=\"row\">" + ingredient.quantity+ " " + ingredient.unit +"</td>";
+        dishDescription += "<td> " + ingredient.name + " </td>";
         dishDescription += "<td> SEK </td>";
-        dishDescription += "<td> " + ingredients[i].price+ " </td>";
+        dishDescription += "<td> " + ingredient.price+ " </td>";
         dishDescription += " </tr>\n";
-
     }
     dishDescription += "</tbody>\n" +
         "    </table> " +

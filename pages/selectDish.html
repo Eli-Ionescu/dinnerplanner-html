@@ -32,9 +32,8 @@
             <div>
                 <h3>My Dinner</h3>
                 <div class="hidden-xs sidebar" id="sidebar">
-                    People: <input type="number" id="myNumber">
-                    <br>
-                    <br>
+                    <div id="numberPeople">
+                    </div>
                     <table class="table">
                         <thead>
                         <tr>
@@ -42,9 +41,10 @@
                             <th scope="col">Cost</th>
                         </tr>
                         </thead>
+                        <tbody id="selectedDishTableBody">
+                        </tbody>
                     </table>
-
-                    <p align="right" id="total">SEK $TOTAL</p>
+                    <p align="right" id="totalPrice"></p>
                     <button align="middle" class="button" id="confirmDinner">
                         Confirm Dinner
                     </button>
@@ -126,6 +126,6 @@
 <!-- The application JavaScript code -->
 <script src="../js/app.js"></script>
 <script src="../js/model/dinnerModel.js"></script>
-<script src="../js/view/selectDishView.js"></script>
+<script src="../js/view/sidebarView.js"></script>
 </body>
 </html>
