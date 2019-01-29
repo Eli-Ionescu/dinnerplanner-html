@@ -24,7 +24,6 @@ var DishSearchView = function (container, model) {
     let HTMLString = "";
 
     allDishes.forEach(dish => {
-        console.log(dish);
         HTMLString += "<div class=\"col-md-2\">";
         HTMLString += "<div class=\"thumbnail\">";
         HTMLString += "<a>";
