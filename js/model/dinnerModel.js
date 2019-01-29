@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dishes for the dinner menu
 
 	var numberOfGuests = 3;
-	var fullMenu = [];
+	var selectedDishes = [];
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -18,9 +18,9 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for the selected type
 	this.getSelectedDish = function(type) {
 	    var selectedDishes = [];
-		for(let i in fullMenu) {
-			if(fullMenu[i].type == type) {
-			    selectedDishes.push(fullMenu[i]);
+		for(let i in selectedDishes) {
+			if(selectedDishes[i].type == type) {
+			    selectedDishes.push(selectedDishes[i]);
 			}
 		}
 		return selectedDishes;
@@ -33,16 +33,15 @@ var DinnerModel = function() {
 
 	// Returns the selected dishes
     this.getAllSelectedDishes = function () {
-        return fullMenu;
+        return selectedDishes;
     }
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-
-		var allIngredients = [];
-		for(let dish in fullMenu) {
-			for(let ingredientIndex in fullMenu[dish].ingredients) {
-				allIngredients.push(fullMenu[dish].ingredients[ingredientIndex]);
+		let allIngredients = [];
+		for(let i in dishes) {
+			for(let ingredientIndex in dishes[i].ingredients) {
+				allIngredients.push(dishes[i].ingredients[ingredientIndex]);
 			}
 		}
 		return allIngredients;
@@ -50,11 +49,9 @@ var DinnerModel = function() {
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-
-		var total = 0;
-
-		for (let dish in fullMenu) {
-		    total += this.getDishPrice(fullMenu[dish].id);
+		let total = 0;
+		for (let dish in selectedDishes) {
+		    total += this.getDishPrice(selectedDishes[dish].id);
 		}
 		return total * numberOfGuests;
 	}
@@ -62,22 +59,21 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-
-		for(let i in fullMenu) {
-			if(fullMenu[i].id == id) {
-				this.removeDishFromMenu(fullMenu[i].id);
+		let newDish = this.getDish(id);
+		for(let i in selectedDishes) {
+			if(selectedDishes[i].type == newDish.type) {
+				this.removeDishFromMenu(selectedDishes[i].id);
 			}
 			// should here be an object Dish or something to which we pass the id???
-			fullMenu.push(id);
 		}
+        selectedDishes.push(newDish);
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-
-		var index = fullMenu.indexOf(this.getDish(id));
+		let index = selectedDishes.indexOf(this.getDish(id));
 		if (index > -1) {
-			fullMenu.splice(index, 1);
+			selectedDishes.splice(index, 1);
 		}
 	}
 
@@ -125,9 +121,12 @@ var DinnerModel = function() {
 
 	// Returns the price of a dish
 	this.getDishPrice = function (id) {
-	    let dish = this.getDish(id);
+
+        console.log(id);
+        let dish = this.getDish(id);
 	    let price = 0;
 	    for(let key in dish.ingredients) {
+	    	console.log(dish.ingredients);
             price += dish.ingredients[key].price;
         }
         return price;

@@ -23,10 +23,10 @@ var SidebarView = function (container, model) {
     let allSelectedDishes = model.getAllSelectedDishes();
     let selectedDishHTML = "";
 
-    for(let dish in allSelectedDishes){
+    for(let i in allSelectedDishes){
         selectedDishHTML += "<tr>\n";
-        selectedDishHTML += "<td scope=\"row\">" + dish.name + "</td>\n";
-        selectedDishHTML += "<td>"+ model.getDishPrice(dish.id) +"</td>\n";
+        selectedDishHTML += "<td scope=\"row\">" + allSelectedDishes[i].name + "</td>\n";
+        selectedDishHTML += "<td>"+ model.getDishPrice(allSelectedDishes[i].id) +"</td>\n";
         selectedDishHTML += "</tr>";
     }
     selectedDish.html(selectedDishHTML);
