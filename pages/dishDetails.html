@@ -16,79 +16,59 @@
     </div>
     <br>
     <br>
-    <div class="container-fluid">
+    <div class="container-fluid" id="dishDetails">
         <div class="row">
             <div id="button_collapse" class="hidden-sm-up">
-                <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
+                <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebarDishDetails"></i>
             </div>
             <div class="col-md-3">
                 <h3>My Dinner</h3>
-                <div class="hidden-xs sidebar" id="sidebar">
-                    People: <input type="number" id="myNumber">
-                    <br>
-                    <br>
+                <div class="hidden-xs sidebar" id="sidebarDishDetails">
+                    <label for="numberPeople">People:</label>
+                    <select id="numberPeople">
+                    </select>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">Dish Name</th>
-                                <th scope="col">Cost</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">Dish Name</th>
+                            <th scope="col">Cost</th>
+                        </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">First dish</td>
-                                <td>20.00 SEK</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Second dish</td>
-                                <td>30.00 SEK</td>
-                            </tr>
+                        <tbody id="selectedDishTableBody">
                         </tbody>
                     </table>
-                    <button class="button">Confirm dinner</button>
+                    <p align="right" id="totalPrice"></p>
+                    <button align="middle" class="button" id="confirmDinner">
+                        Confirm Dinner
+                    </button>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <div id="dishDescription" class="col-md-6">
-                        <h3>Lasagne</h3>
-                        <div class="row">
-                            <img src="../images/lasagne.jpg" alt="Lasagne" width="420" height="188">
-                            <!--<p>bla bla</p>-->
-                        </div>
-                        <div class="row">
-                            <p>Lasagne is a type of wide, flat pasta, possibly one of the oldest types of pasta.
-                                Lasagne, or the singular lasagna, commonly refers to a culinary dish made with
-                                stacked layers of pasta alternated with sauces and ingredients such as meats,
-                                vegetables and cheese, and sometimes topped with melted grated cheese.
-                            </p>
-                        </div>
-                        <div class="row">
-                            <button class="button">Back to search</button>
-                        </div>
+                    <div class="col-md-6" id="dishDescription">
                     </div>
                     <!--Third column with the ingredients-->
-                    <div class="col-md-6">
-                            <h3>Ingredients for ... people</h3>
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <td scope="row">2 tbsp</td>
-                                    <td> Olive oil</td>
-                                    <td> SEK </td>
-                                    <td> 0.20 </td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">750 g</td>
-                                    <td>Lean beef mince</td>
-                                    <td>SEK</td>
-                                    <td>10.00</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <hr>
-                            <button class="button-add-to-menu">Add to menu</button>
-                            <p align="right"> Total:</p>
+                    <div class="col-md-6" id="dishIngredients">
+                            <!--<h3>Ingredients for ... people</h3>-->
+                            <!--<table class="table">-->
+                                <!--<tbody>-->
+                                <!--<tr>-->
+                                    <!--<td scope="row">2 tbsp</td>-->
+                                    <!--<td> Olive oil</td>-->
+                                    <!--<td> SEK </td>-->
+                                    <!--<td> 0.20 </td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td scope="row">750 g</td>-->
+                                    <!--<td>Lean beef mince</td>-->
+                                    <!--<td>SEK</td>-->
+                                    <!--<td>10.00</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                            <!--<hr>-->
+                            <!--<button class="button-add-to-menu">Add to menu</button>-->
+                            <p align="right"></p>
                     </div>
                 </div>
             </div>
@@ -98,5 +78,11 @@
 <!--The scripts for this page-->
     <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/model/dinnerModel.js"></script>
+    <script src="../js/view/sidebarView.js"></script>
+    <script src="../js/view/dishSearchView.js"></script>
+    <script src="../js/view/dishItemView.js"></script>
+    <script src="../js/view/dishDetailsView.js"></script>
 </body>
 </html>

@@ -36,6 +36,6 @@ var SidebarView = function (container, model) {
     let totalPriceValue = model.getTotalMenuPrice();
     let totalPriceHTML = "Total: ";
     totalPriceHTML += totalPriceValue.toString();
-    totalPriceHTML += "SEK";
+    totalPriceHTML += " SEK";
     totalPrice.html(totalPriceHTML);
 };

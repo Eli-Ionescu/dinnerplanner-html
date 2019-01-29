@@ -9,28 +9,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
+    <!--Ajax scripy for side menu collapse-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-<div id="banner">
-    <h1>Dinner planner</h1>
-</div>
+    <div id="banner">
+        <h1>Dinner planner</h1>
+    </div>
 <br>
 <br>
 <div class="container-fluid">
+    <!--TODO:   The side menu can be extended and collapes on small screens   -->
     <div class="row">
         <div id="button_collapse" class="hidden-sm-up">
-            <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
+            <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebarAgain"></i>
         </div>
         <div class="col-md-3">
             <h3>My Dinner</h3>
-            <div class="hidden-xs sidebar" id="sidebar">
-                People: <input type="number" id="myNumber">
-                <br>
-                <br>
+            <div class="hidden-xs sidebar" id="sidebarAgain">
+                <label for="numberPeople">People:</label>
+                <select id="numberPeople">
+                </select>
                 <table class="table">
                     <thead>
                     <tr>
@@ -39,42 +44,35 @@
                     </tr>
                     </thead>
                     <tbody id="selectedDishTableBody">
-                    <tr>
-                        <td scope="row">Lasagne</td>
-                        <td>77.22 </td>
-                    </tr>
                     </tbody>
                 </table>
-                <p align="right" id="totalPrice">
-                    Total: 77.22 SEK
-                </p>
-                <button class="button">Confirm dinner</button>
+                <p align="right" id="totalPrice"></p>
+                <button align="middle" class="button" id="confirmDinner">
+                    Confirm Dinner
+                </button>
             </div>
         </div>
-
-        <div class="col-md-8" id="main">
+        <div class="col-md-8" id="mainAgain">
             <h2>Find a dish</h2>
             <form>
                 <input type="search" id="keyWords" placeholder="Enter key words">
-                &nbsp &nbsp &nbsp
-                <select class="dishSelect">
-                    <option value=""> All </option>
-                </select>
-                &nbsp &nbsp &nbsp
+                <label for="dishType">Type</label>
+                <select id="dishType"></select>
                 <button class="button-search" type="submit">search</button>
             </form>
             <hr>
             <div class="container">
-                <!--TODO: render the list and put items in list,
-                 5 per page, with the image followed by the text-->
+                <div class="row" id="dishList">
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--The scripts used for this page-->
-<script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-
+<!-- The application JavaScript code -->
+<script src="../js/app.js"></script>
+<script src="../js/model/dinnerModel.js"></script>
+<script src="../js/view/sidebarView.js"></script>
+<script src="../js/view/dishSearchView.js"></script>
+<script src="../js/view/dishItemView.js"></script>
 </body>
 </html>

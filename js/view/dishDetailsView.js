@@ -1,53 +1,53 @@
 var DishDetailsView = function (container, model, id) {
 
-    // Create the 
-    let dishDetailDescription = container.find("#dishDetailList");
+    let dishDetailDescription = container.find("#dishDescription");
     let dish = model.getDish(id);
 
-    let dishDescription = "<div id=\"dishDescription\" class=\"col-md-6\">\n";
-    dishDescription += "<h3>"+ dish.name +"</h3>\n";
+    console.log("NAME: " + dish.name + " " + dish.image);
+    // let dishDescription = "<div class=\"col-md-6\">";
+    let dishDescription = "<h3>"+ dish.name +"</h3>\n";
     dishDescription += "<div class=\"row\">\n";
-    dishDescription += "<img src=\"../images/" + dish.image + "alt=\"" + dish.name + "\" width=\"420\" height=\"188\">\n";
+    dishDescription += "<img src=\"../images/"+ dish.image +"\" alt=\""+ dish.name +"\">";
     dishDescription += "</div>";
+    dishDescription += "<p>" + dish.description + "</p>";
     dishDescription += "<div class=\"row\">";
-    dishDescription += "<p>Lasagne is a type of wide, flat pasta, possibly one of the oldest types of pasta.\n" +
-        "        Lasagne, or the singular lasagna, commonly refers to a culinary dish made with\n" +
-        "        stacked layers of pasta alternated with sauces and ingredients such as meats,\n" +
-        "        vegetables and cheese, and sometimes topped with melted grated cheese.\n" +
-        "    </p>";
     dishDescription += "</div>";
     dishDescription += " <div class=\"row\">\n" +
-        "        <button class=\"button\">Back to search</button>\n" +
-        "    </div>";
+        "        <button class=\"button\">Back to search</button>\n";
+
+    dishDetailDescription.html(dishDescription);
 
     // Ingredients list
+    let dishDetailIngredients = container.find("#dishIngredients");
     let ingredients = dish.ingredients;
     let nrPeople = model.getNumberOfGuests();
 
-    dishDescription += "<div class=\"col-md-6\">\n" +
-        "        <h3>Ingredients for " + nrPeople + " people</h3>\n" +
-        "    <table class=\"table\">" +
-        "       <tbody>";
+    let dishIngredients = "<h3>Ingredients for " + nrPeople + " people</h3>\n"
+    dishIngredients  += "<table class=\"table\">" +
+        "<tbody>";
 
-    for (let ingredient in ingredients) {
-        dishDescription += "<tr>\n";
-        dishDescription += "<td scope=\"row\">" + ingredient.quantity+ " " + ingredient.unit +"</td>";
-        dishDescription += "<td> " + ingredient.name + " </td>";
-        dishDescription += "<td> SEK </td>";
-        dishDescription += "<td> " + ingredient.price+ " </td>";
-        dishDescription += " </tr>\n";
+    for (let i in ingredients) {
+        let totalQuantity = ingredients[i].quantity * nrPeople;
+        let totalPrice = ingredients[i].price * nrPeople;
+        dishIngredients += "<tr>\n";
+        dishIngredients += "<td scope=\"row\">" + totalQuantity + " " + ingredients[i].unit +"</td>";
+        dishIngredients += "<td> " + ingredients[i].name + " </td>";
+        dishIngredients += "<td> SEK </td>";
+        dishIngredients += "<td> " +totalPrice + " </td>";
+        dishIngredients += " </tr>\n";
     }
-    dishDescription += "</tbody>\n" +
+    dishIngredients += "</tbody>\n" +
         "    </table> " +
         "    <hr>";
-
-    dishDescription += "<button class=\"button-add-to-menu\">Add to menu</button>\n";
+    dishIngredients += "<button class=\"button-add-to-menu\">Add to menu</button>\n";
 
     // Compute total
-    var total = container.find("#dishDetailTotal");
-    var totalPrice = model.getDishPrice(dish.id);
-    dishDescription += "<p align=\"right\"> Total: " + totalPrice+ "</p>";
-    dishDescription += "</div>";
+    var dishPrice = model.getDishPrice(dish.id);
+    // the total price depending on how many people are
+    var totalPrice = dishPrice * nrPeople;
+    console.log("PRICE: " + totalPrice);
+    dishIngredients += "<p align=\"right\"> Total: " + totalPrice + " SEK" + "</p>";
+    dishIngredients += "</div>";
 
-    dishDetailDescription.html(dishDescription)
+    dishDetailIngredients.html(dishIngredients);
 };
