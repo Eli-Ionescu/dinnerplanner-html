@@ -11,6 +11,12 @@ $(function() {
     var sidebarView = new SidebarView($("#sidebar"), model);
     var dishSearchView = new DishSearchView($("#main"), model);
 
+    // Select dish again view
+	model.addDishToMenu(1);
+	model.addDishToMenu(2);
+    var sidebarViewAgian = new SidebarView($("#sidebarAgain"), model);
+    var dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
