@@ -121,8 +121,7 @@ var DinnerModel = function() {
 
 	// Returns the price of a dish
 	this.getDishPrice = function (id) {
-
-        let dish = this.getDish(id);
+		let dish = this.getDish(id);
 	    let price = 0;
 	    for(let key in dish.ingredients) {
             price += dish.ingredients[key].price;

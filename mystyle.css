@@ -42,6 +42,13 @@
     cursor: pointer;
 }
 
+.button-back {
+    margin-top:15px;
+    alignment: right;
+}
+
+
+
 #banner {
     background-color: #c5c3be;
     color: black;

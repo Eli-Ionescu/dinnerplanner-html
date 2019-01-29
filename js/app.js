@@ -20,6 +20,12 @@ $(function() {
     // Dish detail view
     var dishDetailSideBar = new SidebarView($("#sidebarDishDetails"), model);
     var dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
+    // Printout view
+
+    var printoutView = new PrintoutView($("#printout"), model);
+    var printoutView = new DinnerOverviewView($("#overview"), model);
+
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
