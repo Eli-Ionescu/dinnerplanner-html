@@ -15,15 +15,18 @@ $(function() {
 	model.addDishToMenu(1);
 	model.addDishToMenu(2);
     var sidebarViewAgian = new SidebarView($("#sidebarAgain"), model);
-    var dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
+    let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
+    dishSearchView.init();
 
     // Dish detail view
     var dishDetailSideBar = new SidebarView($("#sidebarDishDetails"), model);
-    var dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
-    // Printout view
+    let dishDetailsView = new DishDetailsView($("#dishDetailsContainer"), model, 100);
+    dishDetailsView.init();
 
-    var printoutView = new PrintoutView($("#printout"), model);
-    var printoutView = new DinnerOverviewView($("#overview"), model);
+    // Printout view
+    let printoutView = new PrintoutView($("#printout"), model);
+    let overviewView = new DinnerOverviewView($("#overviewContainer"), model);
+    overviewView.init();
 
 
 	/**

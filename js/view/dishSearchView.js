@@ -4,33 +4,41 @@
  * @param model
  * @constructor
  */
-var DishSearchView = function (container, model) {
+class DishSearchView {
 
-    // Drop-down list for dish types
-    let dishSelect = container.find("#dishType");
-    let allDishTypes = model.getAllDishTypes();
-    let dropDownTypeList = "<option value=\"\"> All </option>\n";
+    constructor(container, model) {
+        this.container = container;
+        this.model = model;
+    }
 
-    allDishTypes.forEach((dishType => {
-        dropDownTypeList += "<option value=\"\">";
-        dropDownTypeList += dishType;
-        dropDownTypeList += "</option>\n";
-    }));
-    dishSelect.html(dropDownTypeList);
+    init() {
+        // Drop-down list for dish types
+        let dishSelect = this.container.find("#dishType");
+        let allDishTypes = this.model.getAllDishTypes();
+        let dropDownTypeList = `<option value=> All </option>`;
 
-    // List with all the dishes
-    let dishList = container.find("#dishList");
-    let allDishes = model.getFullMenu();
-    let HTMLString = "";
+        allDishTypes.forEach((dishType => {
+            dropDownTypeList += `<option value=> ${dishType}</option>`;
+        }));
+        dishSelect.html(dropDownTypeList);
 
-    allDishes.forEach(dish => {
-        HTMLString += "<div class=\"col-md-2\">";
-        HTMLString += "<div class=\"thumbnail\">";
-        HTMLString += "<a>";
-        HTMLString += "<img src=\"../images/"+ dish.image +"\" alt=\""+ dish.name +"\">";
-        HTMLString += "<div class=\"caption\">\n";
-        HTMLString += "<p>" + dish.name +"<\p>";
-        HTMLString += "</div></a></div></div>\n";
-    });
-    dishList.html(HTMLString);
-};
+        // List with all the dishes
+        let dishList = this.container.find("#dishList");
+        let allDishes = this.model.getFullMenu();
+        let HTMLString = "";
+
+        allDishes.forEach(dish => {
+            HTMLString += `<div class="col-md-2">
+                                <div class="thumbnail">
+                                    <a>
+                                        <img src=../images/${dish.image} alt=${dish.name}>
+                                        <div class="caption">
+                                            <p>${dish.name}<\p>
+                                        </div>
+                                    </a>
+                                </div>
+                           </div>`;
+        });
+        dishList.html(HTMLString);
+    }
+}
