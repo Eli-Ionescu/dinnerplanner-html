@@ -1,5 +1,6 @@
 class PrintoutView {
     constructor(container, model) {
+        model.addObserver(this);
         this.container = container;
         this.model = model;
     }
@@ -20,9 +21,7 @@ class PrintoutView {
         );
     }
 
-    init () {
-        this.addInitialElements();
-
+    addDynamicElements () {
         let nrPeople = this.container.find("#numberPeoplePrintout");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
@@ -48,6 +47,15 @@ class PrintoutView {
                          </div>`
         }
         printoutList.html(listHTML);
+    }
+
+    init () {
+        this.addInitialElements();
+        this.addDynamicElements();
+    }
+
+    update () {
+        this.addDynamicElements();
     }
 
 }

@@ -1,5 +1,6 @@
 class DinnerOverviewView {
     constructor(container, model) {
+        model.addObserver(this);
         this.container = container;
         this.model = model;
     }
@@ -20,9 +21,7 @@ class DinnerOverviewView {
         </div>`);
     }
 
-    init() {
-        this.addInitialElements();
-
+    addDynamicElements () {
         let nrPeople = this.container.find("#numberPeople");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
@@ -52,5 +51,14 @@ class DinnerOverviewView {
                                 <p id="total_overview"> Total: <br> ${this.model.getTotalMenuPrice()} SEK</p>
                            </div>`;
         dinnerList.html(dinnerListHTML);
+    }
+
+    init() {
+        this.addInitialElements();
+        this.addDynamicElements();
+    }
+
+    update(model, changeDetails) {
+        this.addDynamicElements();
     }
 }

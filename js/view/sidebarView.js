@@ -6,6 +6,7 @@
  */
 class SidebarView {
     constructor (container, model) {
+        model.addObserver(this);
         this.container = container;
         this.model = model;
     }
@@ -38,10 +39,7 @@ class SidebarView {
             </div>`);
     }
 
-    init() {
-        // Add the initial elements
-        this.addInitialElments();
-
+    addDynamicElements () {
         // Selection menu for number of people
         let numberPeopleSelect = this.container.find("#numberPeople");
         let numberPeople = this.model.getNumberOfGuests();
@@ -71,5 +69,11 @@ class SidebarView {
         totalPriceHTML += totalPriceValue.toString();
         totalPriceHTML += " SEK";
         totalPrice.html(totalPriceHTML);
+    }
+
+    init() {
+        // Add the initial elements
+        this.addInitialElments();
+        this.addDynamicElements();
     }
 }
