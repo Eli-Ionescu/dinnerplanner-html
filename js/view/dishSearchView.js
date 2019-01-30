@@ -11,7 +11,27 @@ class DishSearchView {
         this.model = model;
     }
 
+    addInitialElements () {
+        this.container.html(
+            `<h2>Find a dish</h2>
+                <form>
+                    <input type="search" id="keyWords" placeholder="Enter key words">
+                    <label for="dishType">Type</label>
+                    <select id="dishType"></select>
+                    <button class="button-search" type="submit">search</button>
+                </form>
+                <hr>
+                <div class="container">
+                    <div class="row" id="dishList">
+                    </div>
+                </div>
+            `
+        );
+    }
+
     init() {
+        this.addInitialElements();
+
         // Drop-down list for dish types
         let dishSelect = this.container.find("#dishType");
         let allDishTypes = this.model.getAllDishTypes();

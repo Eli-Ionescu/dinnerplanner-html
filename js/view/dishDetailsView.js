@@ -10,8 +10,6 @@ class DishDetailsView {
         let dishDetailDescription = this.container.find("#dishDescription");
 
         let dish = this.model.getDish(this.id);
-
-        console.log("NAME: " + dish.name + " " + dish.image);
         let dishDescription = `<h3>${dish.name}</h3>
                             <div class="row">
                                 <img src=../images/${dish.image} alt=${dish.name}>

@@ -4,7 +4,25 @@ class DinnerOverviewView {
         this.model = model;
     }
 
+    addInitialElements () {
+        this.container.html(`<div class="container">
+            <div class="row">
+                <h3 class="text-left col-md-6" id="numberPeople"></h3>
+                <div class="text-right col-md-6">
+                    <button class="button button-back" type="button">Go back and edit dinner</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row" id="dinnerList">
+            </div>
+        </div>`);
+    }
+
     init() {
+        this.addInitialElements();
+
         let nrPeople = this.container.find("#numberPeople");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;

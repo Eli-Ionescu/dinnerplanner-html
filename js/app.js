@@ -18,6 +18,9 @@ $(function() {
     let dishSearchView = new DishSearchView($("#mainSearch"), model);
     dishSearchView.init();
 
+    let indexDishSearchView = new DishSearchView($("#selectDish"), model);
+    indexDishSearchView.init();
+
     // Select dish again
     let sidebarViewAgian = new SidebarView($("#sidebarAgain"), model);
     sidebarViewAgian.init();
@@ -31,7 +34,7 @@ $(function() {
     dishDetailsView.init();
 
     // Overview view
-    let overviewView = new DinnerOverviewView($("#overviewContainer"), model);
+    let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
     overviewView.init();
 
     // Printout view
