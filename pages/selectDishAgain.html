@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
     <!--My CSS-->
     <link rel="stylesheet" type="text/css" href="../mystyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,36 +25,34 @@
 </div>
 <br>
 <br>
+
 <div class="container-fluid">
-    <!--TODO:   The side menu can be extended and collapes on small screens   -->
     <div class="row">
-        <div class="col-sm-4" id="mainSidebar">
-            <div id="sidebar">
-                <div id="row">
-                    <h3 class="col-xs-4">My Dinner</h3>
-                    <div id="button_collapse" class="hidden-sm-up col-xs-4">
-                        <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#innerSidebar"></i>
-                    </div>
+        <div class="col-sm-4" id="sidebarAgain">
+            <div id="row" id="sidebarHeader">
+                <h3 class="col-xs-4">My Dinner</h3>
+                <div id="button_collapse" class="hidden-sm-up col-xs-4">
+                    <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#innerSidebar"></i>
                 </div>
-                <div class="hidden-xs sidebar" id="innerSidebar">
-                    <label for="numberPeople">People:</label>
-                    <select id="numberPeople">
-                    </select>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Dish Name</th>
-                            <th scope="col">Cost</th>
-                        </tr>
-                        </thead>
-                        <tbody id="selectedDishTableBody">
-                        </tbody>
-                    </table>
-                    <p align="right" id="totalPrice"></p>
-                    <button align="middle" class="button" id="confirmDinner">
-                        Confirm Dinner
-                    </button>
-                </div>
+            </div>
+            <div class="hidden-xs sidebar" id="innerSidebar">
+                <label for="numberPeople">People:</label>
+                <select id="numberPeople">
+                </select>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Dish Name</th>
+                        <th scope="col">Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody id="selectedDishTableBody">
+                    </tbody>
+                </table>
+                <p align="right" id="totalPrice"></p>
+                <button align="middle" class="button" id="confirmDinner">
+                    Confirm Dinner
+                </button>
             </div>
         </div>
         <div class="col-md-8" id="mainAgain">
@@ -75,9 +74,12 @@
 <!-- The application JavaScript code -->
 <script src="../js/app.js"></script>
 <script src="../js/model/dinnerModel.js"></script>
+<script src="../js/view/homeView.js"></script>
 <script src="../js/view/sidebarView.js"></script>
 <script src="../js/view/dishSearchView.js"></script>
-<script src="../js/view/dishItemView.js"></script>
+<script src="../js/view/dishDetailsView.js"></script>
+<script src="../js/view/dinnerOverviewView.js"></script>
 <script src="../js/view/printoutView.js"></script>
+
 </body>
 </html>

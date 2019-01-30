@@ -15,7 +15,7 @@ $(function() {
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
     sidebarView.init();
-    let dishSearchView = new DishSearchView($("#selectDish"), model);
+    let dishSearchView = new DishSearchView($("#mainSearch"), model);
     dishSearchView.init();
 
     // Select dish again
