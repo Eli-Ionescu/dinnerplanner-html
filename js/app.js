@@ -2,7 +2,7 @@ window.onload = function() {
 
     //We instantiate our model
     let model = new DinnerModel();
-    model.setNumberOfGuests(3);
+    model.setNumberOfGuests(5);
     model.addDishToMenu(1);
     model.addDishToMenu(102);
     model.addDishToMenu(202);
@@ -15,10 +15,13 @@ window.onload = function() {
 
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
-    // let sidebarController = new DishSidebarController(sidebarView, model);
+    let sidebarController = new DishSidebarController(sidebarView, model, this);
+
     let dishSearchView = new DishSearchView($("#mainSearch"), model);
 
     let indexDishSearchView = new DishSearchView($("#selectDish"), model);
+    let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
+
 
     // Select dish again
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
