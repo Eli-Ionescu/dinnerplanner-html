@@ -1,5 +1,4 @@
 class DinnerOverviewView {
-
     constructor(container, model) {
         this.container = container;
         this.model = model;
@@ -14,6 +13,8 @@ class DinnerOverviewView {
         let dinnerList = this.container.find("#dinnerList");
         let selectedDishes = this.model.getAllSelectedDishes();
         let dinnerListHTML = "";
+
+        dinnerList.html(dinnerListHTML);
 
         for (let i in selectedDishes) {
             dinnerListHTML += `<div class="col-md-3">

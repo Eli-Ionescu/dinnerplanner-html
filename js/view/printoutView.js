@@ -1,31 +1,53 @@
-var PrintoutView = function (container, model) {
-    if (!container) {return;}
-
-    let nrPeople = container.find("#numberPeoplePrintout");
-    let nrPeopleValue = model.getNumberOfGuests();
-    let nrPeopleString = "My Dinner: " + nrPeopleValue + " people";
-    nrPeople.html(nrPeopleString);
-
-    // The printout of the selected dishes
-    let printoutList = container.find("#printoutList");
-    let selectedDishes = model.getAllSelectedDishes();
-    let listHTML = "";
-    for (let i in selectedDishes) {
-        listHTML += "            <div id=\"dinnerItem\" class=\"row\">\n";
-        listHTML += "                <div class=\"col-md-2\" id=\"imageContainer\">\n";
-        listHTML += "                    <img src=\"..\\images\\" + selectedDishes[i].image + "\">\n";
-        listHTML += "                </div>\n";
-        listHTML += "                <div class=\"col-md-4\" id=\"descriprtion\">\n";
-        listHTML += "                    <h2>" + selectedDishes[i].name + "</h2>\n";
-        listHTML += "                    <p>" + selectedDishes[i].description + "</p>\n";
-        listHTML += "                </div>\n";
-        listHTML += "                <div class=\"col-md-6\" id=\"preparation\">\n";
-        listHTML += "                    <h3>PREPARATION</h3>\n";
-        listHTML += "                    <p>" + selectedDishes[i].description + "</p>\n";
-        listHTML += "                </div>\n";
-        listHTML += "            </div>";
+class PrintoutView {
+    constructor(container, model) {
+        this.container = container;
+        this.model = model;
     }
 
-    printoutList.html(listHTML);
+    addInitialElements () {
+        this.container.html(
+            `<div class="container">
+                <div class="row">
+                    <h3 class="text-left col-md-6" id="numberPeoplePrintout"></h3>
+                    <div class="text-right col-md-6">
+                        <button class="button button-back" type="button">Go back and edit dinner</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container" id="printoutList">
+            </div>`
+        );
+    }
+
+    init () {
+        this.addInitialElements();
+
+        let nrPeople = this.container.find("#numberPeoplePrintout");
+        let nrPeopleValue = this.model.getNumberOfGuests();
+        let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
+        nrPeople.html(nrPeopleString);
+
+        // The printout of the selected dishes
+        let printoutList = this.container.find("#printoutList");
+        let selectedDishes = this.model.getAllSelectedDishes();
+        let listHTML = "";
+        for (let i in selectedDishes) {
+            listHTML += `<div id="dinnerItem" class="row">
+                             <div class="col-md-2" id="imageContainer">
+                               <img src="../images/${selectedDishes[i].image}">
+                             </div>
+                             <div class="col-md-4" id="descriprtion">
+                                <h2>${selectedDishes[i].name}</h2>
+                                <p>${selectedDishes[i].description}</p>
+                             </div>
+                             <div class="col-md-6" id="preparation">
+                                <h3>PREPARATION</h3>
+                                <p>${selectedDishes[i].description}</p>
+                             </div>
+                         </div>`
+        }
+        printoutList.html(listHTML);
+    }
 
 }
