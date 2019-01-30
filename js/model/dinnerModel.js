@@ -2,11 +2,12 @@
 //DinnerModel Object constructor
 class DinnerModel extends Observable{
 
+
     constructor () {
 		super();
 		this.numberOfGuests = 3;
         this.selectedDishes = [];
-
+        this.clickedDish = 1;
         // the dishes variable contains an array of all the
         // dishes in the database. each dish has id, name, type,
         // image (name of the image file), description and
@@ -259,6 +260,16 @@ class DinnerModel extends Observable{
         ];
 
     }
+
+    setClickedDish(id) {
+        this.clickedDish= id;
+        this.notifyObservers("clickedDish");
+    };
+
+    getClickedDish() {
+        console.log("clickedDish");
+        return this.getDish(this.clickedDish);
+    };
 
 	setNumberOfGuests (num) {
 		this.numberOfGuests = num;

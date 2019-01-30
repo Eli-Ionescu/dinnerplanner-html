@@ -25,6 +25,7 @@ window.onload = function() {
 
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
+    let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 
     // Overview view
     let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
@@ -65,7 +66,7 @@ window.onload = function() {
         $("#selectDish").hide();
     };
 
-    let showDishDetails = function () {
+    this.showDishDetails = function () {
         $("#dishDetails").show();
     };
 
@@ -121,13 +122,13 @@ window.onload = function() {
     };
 
     this.showPrintoutPage = function () {
-        console.log("alll");
         hideAll();
         showPrintout();
     }
 
     // Start the app with home
-    this.showHome();
+    hideAll();
+    // this.showHome();
 
     let showFirstPage = this.showSelectDishPage;
 
@@ -135,6 +136,9 @@ window.onload = function() {
         showFirstPage();
     });
 
-    hideAll();
-    this.showDinnerOverviewPage();
+    $("#buttonBackToSearch").click(function () {
+       showSelectDishPage();
+    });
+    // hideAll();
+    this.showDishDetailsPage();
 };

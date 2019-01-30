@@ -21,7 +21,7 @@ class DishSearchView {
                     <input type="search" id="keyWords" placeholder="Enter key words">
                     <label for="dishType">Type</label>
                     <select id="dishType"></select>
-                    <button class="button-search" type="submit">search</button>
+                    <button class="button-search" id="buttonSearch" >search</button>
                 </form>
                 <hr>
                 <div class="container">

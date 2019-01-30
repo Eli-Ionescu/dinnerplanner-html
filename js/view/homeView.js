@@ -1,7 +1,6 @@
 class HomeView {
     constructor(container) {
         this.container = container;
-
         this.init();
     }
 

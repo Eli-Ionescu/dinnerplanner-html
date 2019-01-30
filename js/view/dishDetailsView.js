@@ -1,11 +1,13 @@
 class DishDetailsView {
 
     constructor(container, model, id) {
+        model.addObserver(this);
         this.container = container;
         this.model = model;
         this.id = id;
 
         this.init();
+        this.button = document.getElementById("buttonAddToMenu");
     }
 
     addInitialElements() {
@@ -33,7 +35,7 @@ class DishDetailsView {
                             <div class="row">
                             </div>
                             <div class="row">
-                            <button class="button">Back to search</button>`;
+                            <button class="button" id="buttonBackToSearch">Back to search</button>`;
 
         dishDetailDescription.html(dishDescription);
 
@@ -60,7 +62,7 @@ class DishDetailsView {
         dishIngredients += `</tbody>
                     </table>
                     <hr>
-                    <button class="button-add-to-menu">Add to menu</button>`;
+                    <button class="button-add-to-menu" id="buttonAddToMenu">Add to menu</button>`;
 
         // Compute total
         let dishPrice = this.model.getDishPrice(dish.id);
@@ -74,6 +76,10 @@ class DishDetailsView {
 
     init() {
         this.addInitialElements();
+        this.addDynamicElements();
+    }
+
+    update(model, changeDetails) {
         this.addDynamicElements();
     }
 }
