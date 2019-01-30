@@ -4,6 +4,8 @@ class DishDetailsView {
         this.container = container;
         this.model = model;
         this.id = id;
+
+        this.init();
     }
 
     addInitialElements() {

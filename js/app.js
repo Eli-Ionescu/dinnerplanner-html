@@ -15,30 +15,23 @@ window.onload = function() {
 
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
-    sidebarView.init();
     // let sidebarController = new DishSidebarController(sidebarView, model);
     let dishSearchView = new DishSearchView($("#mainSearch"), model);
-    dishSearchView.init();
 
     let indexDishSearchView = new DishSearchView($("#selectDish"), model);
-    indexDishSearchView.init();
 
     // Select dish again
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
-    dishSearchViewAgain.init();
 
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
-    dishDetailsView.init();
 
     // Overview view
     let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
-    overviewView.init();
-    // let overviewController = new DinnerOverviewController(overviewView, model, this);
+    let overviewController = new DinnerOverviewController(overviewView, model, this);
 
     // Printout view
     let printoutView = new PrintoutView($("#printout"), model);
-    printoutView.init();
 
 
 	/**
@@ -80,7 +73,7 @@ window.onload = function() {
         $("#dishDetails").hide();
     };
 
-    this.showDinnerOveviw = function () {
+    this.showDinnerOverview = function () {
         $("#dinnerOverview").show();
     };
 
@@ -124,7 +117,7 @@ window.onload = function() {
 
     this.showDinnerOverviewPage = function () {
         hideAll();
-        showDinnerOveviw();
+        showDinnerOverview();
     };
 
     this.showPrintoutPage = function () {
@@ -141,4 +134,7 @@ window.onload = function() {
     $("#newDinnerButton").click(function () {
         showFirstPage();
     });
+
+    hideAll();
+    this.showDinnerOverviewPage();
 };

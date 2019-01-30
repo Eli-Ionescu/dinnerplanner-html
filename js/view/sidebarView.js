@@ -9,6 +9,8 @@ class SidebarView {
         model.addObserver(this);
         this.container = container;
         this.model = model;
+
+        this.init();
         this.people = this.container.find("#numberPeople");
     }
 

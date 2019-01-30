@@ -10,6 +10,8 @@ class DishSearchView {
         model.addObserver(this);
         this.container = container;
         this.model = model;
+
+        this.init();
     }
 
     addInitialElements () {

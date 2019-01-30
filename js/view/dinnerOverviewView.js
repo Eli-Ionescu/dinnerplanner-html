@@ -5,12 +5,11 @@ class DinnerOverviewView {
         this.container = container;
         this.model = model;
 
-        this.addInitialElements();
+        this.init();
+
+        // find the button id that will trigger the click event
         this.button = document.getElementById("buttonFullRecipe");
     }
-
-    // find the button id that will trigger the click event
-
 
     addInitialElements () {
         this.container.html(`<div class="container">
