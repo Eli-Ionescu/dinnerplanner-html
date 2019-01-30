@@ -7,6 +7,7 @@
 class DishSearchView {
 
     constructor(container, model) {
+        model.addObserver(this);
         this.container = container;
         this.model = model;
     }
@@ -29,9 +30,7 @@ class DishSearchView {
         );
     }
 
-    init() {
-        this.addInitialElements();
-
+    addDynamicElements () {
         // Drop-down list for dish types
         let dishSelect = this.container.find("#dishType");
         let allDishTypes = this.model.getAllDishTypes();
@@ -60,5 +59,14 @@ class DishSearchView {
                            </div>`;
         });
         dishList.html(HTMLString);
+    }
+
+    init() {
+        this.addInitialElements();
+        this.addDynamicElements();
+    }
+
+    update () {
+        this.addDynamicElements();
     }
 }

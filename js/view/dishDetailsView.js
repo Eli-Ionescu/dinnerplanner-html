@@ -19,10 +19,7 @@ class DishDetailsView {
         </div>`);
     }
 
-    init() {
-
-        this.addInitialElements();
-
+    addDynamicElements () {
         let dishDetailDescription = this.container.find("#dishDescription");
 
         let dish = this.model.getDish(this.id);
@@ -71,5 +68,10 @@ class DishDetailsView {
                     </div>`;
 
         dishDetailIngredients.html(dishIngredients);
+    }
+
+    init() {
+        this.addInitialElements();
+        this.addDynamicElements();
     }
 }
