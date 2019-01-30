@@ -1,14 +1,15 @@
 class DishSidebarController {
 
     constructor(view, model, controller) {
+        this.controller = controller;
+        this.model = model;
 
-        // view.buttonFullRecipe.addEventListener("click",
-        //     () => this.controller)
+        // Update number of people
+        view.people.addEventListener("click",
+            () => this.model.setNumberOfGuests(view.people.selectedIndex + 1)); // selectedIndex is lower with 1 than guest nr
 
-        // view.people.addEventListener("click",
-        //     () => model.setNumberOfGuests(model.getNumberOfGuests() + 1));
-
-        // view.minusButton.addEventListener("click",
-        //     () => model.setNumberOfGuests(model.getNumberOfGuests() - 1) );
+        // Confirm dinner button -> overview
+        view.confirmButton.addEventListener("click",
+            () => this.controller.showDinnerOverviewPage());
     }
 }

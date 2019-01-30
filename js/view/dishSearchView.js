@@ -12,6 +12,8 @@ class DishSearchView {
         this.model = model;
 
         this.init();
+        this.searchButton = document.getElementById("dishSearchButton");
+        console.log(this.searchButton);
     }
 
     addInitialElements () {
@@ -21,7 +23,7 @@ class DishSearchView {
                     <input type="search" id="keyWords" placeholder="Enter key words">
                     <label for="dishType">Type</label>
                     <select id="dishType"></select>
-                    <button class="button-search" type="submit">search</button>
+                    <button id="dishSearchButton" class="button-search" type="submit">search</button>
                 </form>
                 <hr>
                 <div class="container">
@@ -43,9 +45,30 @@ class DishSearchView {
         }));
         dishSelect.html(dropDownTypeList);
 
+        this.renderDishList();
+    }
+
+    init() {
+        this.addInitialElements();
+        this.addDynamicElements();
+    }
+
+    update (model, changeDetails) {
+        // get the keywords and the filter
+        let filter = document.getElementById("keyWords").value;
+        console.log(filter);
+
+        let type = document.getElementById("dishType").value;
+        console.log(type);
+
+        this.renderDishList(type, filter);
+    }
+
+    renderDishList (type = null, filter = null) {
         // List with all the dishes
         let dishList = this.container.find("#dishList");
-        let allDishes = this.model.getFullMenu();
+        let allDishes = this.model.getAllDishes(type, filter);
+        console.log(allDishes);
         let HTMLString = "";
 
         allDishes.forEach(dish => {
@@ -61,14 +84,5 @@ class DishSearchView {
                            </div>`;
         });
         dishList.html(HTMLString);
-    }
-
-    init() {
-        this.addInitialElements();
-        this.addDynamicElements();
-    }
-
-    update () {
-        this.addDynamicElements();
     }
 }

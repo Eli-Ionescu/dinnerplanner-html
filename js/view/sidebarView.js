@@ -11,7 +11,8 @@ class SidebarView {
         this.model = model;
 
         this.init();
-        this.people = this.container.find("#numberPeople");
+        this.people = document.getElementById("numberPeople");
+        this.confirmButton = document.getElementById("confirmDinner");
     }
 
     addInitialElments () {
@@ -45,7 +46,7 @@ class SidebarView {
     addDynamicElements () {
         // Selection menu for number of people
         let numberPeopleSelect = this.container.find("#numberPeople");
-        let numberPeople = this.model.getNumberOfGuests();
+        let numberPeople = this.model.getMaxNrGuests();
         let selectPeople = "";
         for (let i=1; i <= numberPeople; i++){
             selectPeople += `<option>${i}</option>`;
@@ -77,6 +78,10 @@ class SidebarView {
     init() {
         // Add the initial elements
         this.addInitialElments();
+        this.addDynamicElements();
+    }
+
+    update () {
         this.addDynamicElements();
     }
 }
