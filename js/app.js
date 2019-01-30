@@ -1,11 +1,12 @@
-$(function() {
-	//We instantiate our model
+window.onload = function() {
+
+    //We instantiate our model
     let model = new DinnerModel();
     model.setNumberOfGuests(3);
     model.addDishToMenu(1);
     model.addDishToMenu(102);
     model.addDishToMenu(202);
-	
+
 	// And create the instance of ExampleView
 	// var exampleView = new ExampleView($("#exampleView"));
 
@@ -23,21 +24,17 @@ $(function() {
     indexDishSearchView.init();
 
     // Select dish again
-    let sidebarViewAgain = new SidebarView($("#sidebarAgain"), model);
-    sidebarViewAgain.init();
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
     dishSearchViewAgain.init();
 
     // Dish detail view
-    let dishDetailSideBar = new SidebarView($("#sidebarDishDetails"), model);
-    dishDetailSideBar.init();
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
     dishDetailsView.init();
 
     // Overview view
     let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
     overviewView.init();
-    let overviewController = new DinnerOverviewController(overviewView, model, this);
+    // let overviewController = new DinnerOverviewController(overviewView, model, this);
 
     // Printout view
     let printoutView = new PrintoutView($("#printout"), model);
@@ -75,7 +72,7 @@ $(function() {
         $("#selectDish").hide();
     };
 
-    this.showDishDetails = function () {
+    let showDishDetails = function () {
         $("#dishDetails").show();
     };
 
@@ -92,7 +89,6 @@ $(function() {
     };
 
     this.showPrintout = function () {
-        console.log("here");
         $("#printout").show();
     };
 
@@ -132,6 +128,7 @@ $(function() {
     };
 
     this.showPrintoutPage = function () {
+        console.log("alll");
         hideAll();
         showPrintout();
     }
@@ -144,4 +141,4 @@ $(function() {
     $("#newDinnerButton").click(function () {
         showFirstPage();
     });
-});
+};
