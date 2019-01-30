@@ -1,9 +1,16 @@
 class DinnerOverviewView {
+
     constructor(container, model) {
         model.addObserver(this);
         this.container = container;
         this.model = model;
+
+        this.addInitialElements();
+        this.button = document.getElementById("buttonFullRecipe");
     }
+
+    // find the button id that will trigger the click event
+
 
     addInitialElements () {
         this.container.html(`<div class="container">
@@ -18,6 +25,10 @@ class DinnerOverviewView {
         <div class="container">
             <div class="row" id="dinnerList">
             </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <button id="buttonFullRecipe" class="button"> Print full recipe </button>
         </div>`);
     }
 

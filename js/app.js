@@ -15,6 +15,7 @@ $(function() {
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
     sidebarView.init();
+    // let sidebarController = new DishSidebarController(sidebarView, model);
     let dishSearchView = new DishSearchView($("#mainSearch"), model);
     dishSearchView.init();
 
@@ -22,8 +23,8 @@ $(function() {
     indexDishSearchView.init();
 
     // Select dish again
-    let sidebarViewAgian = new SidebarView($("#sidebarAgain"), model);
-    sidebarViewAgian.init();
+    let sidebarViewAgain = new SidebarView($("#sidebarAgain"), model);
+    sidebarViewAgain.init();
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
     dishSearchViewAgain.init();
 
@@ -36,6 +37,7 @@ $(function() {
     // Overview view
     let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
     overviewView.init();
+    let overviewController = new DinnerOverviewController(overviewView, model, this);
 
     // Printout view
     let printoutView = new PrintoutView($("#printout"), model);
@@ -49,9 +51,10 @@ $(function() {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	let showHome = function () {
+	this.showHome = function () {
         $("#home").show();
     };
+
 	let hideHome = function () {
         $("#home").hide();
     };
@@ -59,6 +62,7 @@ $(function() {
 	let showSidebar = function () {
 	    $("#sidebar").show();
     };
+
 	let hideSidebar = function () {
 	    $("#sidebar").hide();
     };
@@ -66,27 +70,32 @@ $(function() {
     let showSelectDish = function () {
         $("#selectDish").show();
     };
+
     let hideSelectDish = function () {
         $("#selectDish").hide();
     };
 
-    let showDishDetails = function () {
+    this.showDishDetails = function () {
         $("#dishDetails").show();
     };
+
     let hideDishDetails = function () {
         $("#dishDetails").hide();
     };
 
-    let showDinnerOveviw = function () {
+    this.showDinnerOveviw = function () {
         $("#dinnerOverview").show();
     };
+
     let hideDinnerOveviw = function () {
         $("#dinnerOverview").hide();
     };
 
-    let showPrintout = function () {
+    this.showPrintout = function () {
+        console.log("here");
         $("#printout").show();
     };
+
     let hidePrintout = function () {
         $("#printout").hide();
     };
@@ -100,37 +109,39 @@ $(function() {
         hidePrintout();
     };
 
-    let showHomePage = function () {
+    this.showHomePage = function () {
         hideAll();
         showHome();
     };
 
-    let showSelectDishPage = function () {
+    this.showSelectDishPage = function () {
         hideAll();
         showSidebar();
         showSelectDish();
     };
 
-    let showDishDetailsPage = function () {
+    this.showDishDetailsPage = function () {
         hideAll();
         showSidebar();
         showDishDetails();
     };
 
-    let showDinnerOverviewPage = function () {
+    this.showDinnerOverviewPage = function () {
         hideAll();
         showDinnerOveviw();
     };
 
-    let showPrintoutPage = function () {
+    this.showPrintoutPage = function () {
         hideAll();
         showPrintout();
     }
 
     // Start the app with home
-    showHome();
+    this.showHome();
+
+    let showFirstPage = this.showSelectDishPage;
 
     $("#newDinnerButton").click(function () {
-        showSelectDishPage();
+        showFirstPage();
     });
 });

@@ -25,14 +25,15 @@
 			<h1>Dinner planner</h1>
 		</div>
 		<div id="main">
-			<div id="home"></div>
-			<div class="col-md-3" id="sidebar" hidden></div>
-			<div class="col-md-9" id="selectDish" hidden></div>
-			<div class="col-md-9" id="dishDetails" hidden></div>
-			<div id="dinnerOverview" hidden></div>
-			<div id="printout" hidden></div>
+			<div class="row">
+				<div id="home" hidden></div>
+				<div class="col-md-3" id="sidebar" hidden></div>
+				<div class="col-md-9" id="selectDish" hidden></div>
+				<div class="col-md-9" id="dishDetails" hidden></div>
+				<div id="dinnerOverview"></div>
+				<div id="printout" hidden></div>
+				</div>
 		</div>
-
 	</div>
 
     <!-- jQuery -->
@@ -52,5 +53,7 @@
 	<script src="../js/view/dinnerOverviewView.js"></script>
 	<script src="../js/view/dishDetailsView.js"></script>
 	<script src="../js/view/homeView.js"></script>
+	<script src="../js/controllers/dinnerOverviewController.js"></script>
+	<script src="../js/controllers/dishSidebarController.js"></script>
   </body>
 </html>

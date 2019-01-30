@@ -262,6 +262,7 @@ class DinnerModel extends Observable{
 
 	setNumberOfGuests (num) {
 		this.numberOfGuests = num;
+		this.notifyObservers("numberOfGuests");
 	}
 	
 	getNumberOfGuests () {
@@ -319,6 +320,7 @@ class DinnerModel extends Observable{
 			}
 		}
         this.selectedDishes.push(newDish);
+		this.notifyObservers("addDishToMenu");
 	}
 
 	//Removes dish from menu
