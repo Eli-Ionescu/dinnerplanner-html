@@ -1,9 +1,10 @@
 
 //DinnerModel Object constructor
-class DinnerModel {
+class DinnerModel extends Observable{
 
     constructor () {
-        this.numberOfGuests = 3;
+		super();
+		this.numberOfGuests = 3;
         this.selectedDishes = [];
 
         // the dishes variable contains an array of all the
