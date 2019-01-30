@@ -30,7 +30,7 @@ $(function() {
     // Dish detail view
     let dishDetailSideBar = new SidebarView($("#sidebarDishDetails"), model);
     dishDetailSideBar.init();
-    let dishDetailsView = new DishDetailsView($("#dishDetailsContainer"), model, 100);
+    let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
     dishDetailsView.init();
 
     // Overview view
