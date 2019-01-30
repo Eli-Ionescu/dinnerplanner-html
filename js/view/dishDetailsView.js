@@ -3,7 +3,6 @@ var DishDetailsView = function (container, model, id) {
     let dishDetailDescription = container.find("#dishDescription");
     let dish = model.getDish(id);
 
-    console.log("NAME: " + dish.name + " " + dish.image);
     // let dishDescription = "<div class=\"col-md-6\">";
     let dishDescription = "<h3>"+ dish.name +"</h3>\n";
     dishDescription += "<div class=\"row\">\n";
@@ -45,7 +44,6 @@ var DishDetailsView = function (container, model, id) {
     var dishPrice = model.getDishPrice(dish.id);
     // the total price depending on how many people are
     var totalPrice = dishPrice * nrPeople;
-    console.log("PRICE: " + totalPrice);
     dishIngredients += "<p align=\"right\"> Total: " + totalPrice + " SEK" + "</p>";
     dishIngredients += "</div>";
 

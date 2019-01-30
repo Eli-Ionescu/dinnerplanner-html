@@ -28,33 +28,32 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div id="button_collapse" class="hidden-sm-up">
-            <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#sidebar"></i>
-        </div>
-
-        <div class="col-sm-4">
-            <div>
-                <h3>My Dinner</h3>
-                <div class="hidden-xs sidebar" id="sidebar">
-                    <label for="numberPeople">People:</label>
-                    <select id="numberPeople">
-                    </select>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Dish Name</th>
-                            <th scope="col">Cost</th>
-                        </tr>
-                        </thead>
-                        <tbody id="selectedDishTableBody">
-                        </tbody>
-                    </table>
-                    <p align="right" id="totalPrice"></p>
-                    <button align="middle" class="button" id="confirmDinner">
-                        Confirm Dinner
-                    </button>
-                </div>
-            </div>
+        <div class="col-sm-4" id="sidebarSS">
+            <!--<div id="row" id="sidebarHeader">-->
+                <!--<h3 class="col-xs-4">My Dinner</h3>-->
+                <!--<div id="button_collapse" class="hidden-sm-up col-xs-4">-->
+                    <!--<i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#innerSidebar"></i>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="hidden-xs sidebar" id="innerSidebar">-->
+                <!--<label for="numberPeople">People:</label>-->
+                <!--<select id="numberPeople">-->
+                <!--</select>-->
+                <!--<table class="table">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th scope="col">Dish Name</th>-->
+                        <!--<th scope="col">Cost</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="selectedDishTableBody">-->
+                    <!--</tbody>-->
+                <!--</table>-->
+                <!--<p align="right" id="totalPrice"></p>-->
+                <!--<button align="middle" class="button" id="confirmDinner">-->
+                    <!--Confirm Dinner-->
+                <!--</button>-->
+            <!--</div>-->
         </div>
 
         <div class="col-md-8" id="main">
@@ -90,5 +89,9 @@
 <script src="../js/view/sidebarView.js"></script>
 <script src="../js/view/dishSearchView.js"></script>
 <script src="../js/view/dishItemView.js"></script>
+<script src="../js/view/homeView.js"></script>
+<script src="../js/view/dishDetailsView.js"></script>
+<script src="../js/view/printoutView.js"></script>
+<script src="../js/view/dinnerOverviewView.js"></script>
 </body>
 </html>

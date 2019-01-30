@@ -6,7 +6,6 @@ var DinnerOverviewView = function (container, model) {
     nrPeople.html(nrPeopleString);
 
     let dinnerList = container.find("#dinnerList");
-    console.log(dinnerList);
     let selectedDishes = model.getAllSelectedDishes();
     let dinnerListHTML = "";
 
@@ -25,7 +24,6 @@ var DinnerOverviewView = function (container, model) {
     dinnerListHTML += "  <p id=\"total_overview\"> Total: <br> " + model.getTotalMenuPrice() + " SEK</p>\n";
     dinnerListHTML += "</div>";
 
-    console.log(dinnerListHTML);
     dinnerList.html(dinnerListHTML);
 
 }
