@@ -71,9 +71,8 @@ window.onload = function() {
 
     this.showDishDetails = function (id) {
         console.log(id);
-
-        dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
-        dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+        let dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
+        let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
         $("#dishDetails").show();
 
         $("#buttonBackToSearch").click(function () {

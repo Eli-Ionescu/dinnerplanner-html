@@ -69,9 +69,12 @@ class DishSearchView {
 
     update (model, changeDetails) {
         // get the keywords and the filter
-        let filterValue = this.filter.value;
-        let typeValue = this.type.options[this.type.selectedIndex].text;
-        this.renderDishList(typeValue, filterValue);
+        if (changeDetails == "search") {
+            let filterValue = this.filter.value;
+            let typeValue = this.type.options[this.type.selectedIndex].text;
+            // TODO: Ask: the event listener are deleted when re-rendering the DishItemView elements
+            this.renderDishList(typeValue, filterValue);
+        }
     }
 
     renderDishList (type, filter) {

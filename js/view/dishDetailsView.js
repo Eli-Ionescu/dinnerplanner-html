@@ -80,6 +80,6 @@ class DishDetailsView {
     }
 
     update(model, changeDetails) {
-        this.addDynamicElements();
+        // this.addDynamicElements();
     }
 }
