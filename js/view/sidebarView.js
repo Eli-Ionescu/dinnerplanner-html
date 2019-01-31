@@ -61,7 +61,7 @@ class SidebarView {
         for(let i in allSelectedDishes){
             selectedDishHTML += `<tr> 
                                     <td scope=row>${allSelectedDishes[i].name}</td>
-                                    <td>${this.model.getDishPrice(allSelectedDishes[i].id)}</td>
+                                    <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(allSelectedDishes[i].id)}</td>
                                 </tr>`;
         }
         selectedDish.html(selectedDishHTML);

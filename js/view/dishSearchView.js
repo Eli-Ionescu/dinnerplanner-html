@@ -13,7 +13,8 @@ class DishSearchView {
 
         this.init();
         this.searchButton = document.getElementById("dishSearchButton");
-        console.log(this.searchButton);
+        this.dishList = document.getElementById("dishList");
+        console.log(this.dishList);
     }
 
     addInitialElements () {

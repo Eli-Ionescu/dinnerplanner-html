@@ -16,7 +16,7 @@ class DinnerOverviewView {
             <div class="row">
                 <h3 class="text-left col-md-6" id="numberPeople"></h3>
                 <div class="text-right col-md-6">
-                    <button class="button button-back" type="button">Go back and edit dinner</button>
+                    <button class="button button-back" type="button" id="buttonGoBackEditDinner">Go back and edit dinner</button>
                 </div>
             </div>
         </div>
