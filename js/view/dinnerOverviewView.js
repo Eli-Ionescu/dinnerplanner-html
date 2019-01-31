@@ -69,6 +69,7 @@ class DinnerOverviewView {
     }
 
     update(model, changeDetails) {
+        this.model = model;
         this.addDynamicElements();
     }
 }

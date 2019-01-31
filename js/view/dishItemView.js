@@ -1,15 +1,11 @@
 class DishItemView {
 
     constructor(container, model, id) {
-        model.addObserver(this);
         this.container = container;
         this.model = model;
         this.id = id;
 
-
-        this.itemContainer = this.container.find("#itemViewList");
         this.dish = this.model.getDish(this.id);
-        // this.init();
     }
 
     getHTMLImage() {

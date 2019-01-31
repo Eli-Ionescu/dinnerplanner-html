@@ -1,4 +1,5 @@
 class DishSearchController {
+
     constructor (view, model, controller) {
         this.controller = controller;
 

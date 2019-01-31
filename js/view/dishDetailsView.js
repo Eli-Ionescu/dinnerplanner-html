@@ -8,12 +8,16 @@ class DishDetailsView {
 
         this.init();
         this.button = document.getElementById("buttonAddToMenu");
+        this.backButton = document.getElementById("buttonBackToSearch");
     }
 
     addInitialElements() {
         this.container.html(`<div class="container-fluid" id="dishDetailsContainer">
             <div class="row">
-                <div class="col-md-6" id="dishDescription">
+                <div class="col-md-6">
+                    <div id="dishDescription">
+                    </div>
+                    <button class="button" id="buttonBackToSearch">Back to search</button>
                 </div>
                 <!--Third column with the ingredients-->
                 <div class="col-md-6" id="dishIngredients">
@@ -25,17 +29,12 @@ class DishDetailsView {
 
     addDynamicElements () {
         let dishDetailDescription = this.container.find("#dishDescription");
-
         let dish = this.model.getDish(this.id);
         let dishDescription = `<h3>${dish.name}</h3>
                             <div class="row">
                                 <img src=../images/${dish.image} alt=${dish.name}>
                             </div>
-                            <p> ${dish.description}</p>
-                            <div class="row">
-                            </div>
-                            <div class="row">
-                            <button class="button" id="buttonBackToSearch">Back to search</button>`;
+                            <p> ${dish.description}</p>`;
 
         dishDetailDescription.html(dishDescription);
 
@@ -80,6 +79,7 @@ class DishDetailsView {
     }
 
     update(model, changeDetails) {
-        // this.addDynamicElements();
+        this.model = model;
+        this.addDynamicElements();
     }
 }

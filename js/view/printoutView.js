@@ -59,5 +59,4 @@ class PrintoutView {
     update () {
         this.addDynamicElements();
     }
-
 }

@@ -1,9 +1,4 @@
-/**
- * View for the sidebar
- * @param container
- * @param model
- * @constructor
- */
+
 class SidebarView {
     constructor (container, model) {
         model.addObserver(this);
@@ -17,7 +12,7 @@ class SidebarView {
 
     // Returns a list with all the "span" elements that are used as delete buttons
     getSelectedDishesDeleteButtons () {
-        let buttons = []
+        let buttons = [];
         let table = document.getElementById("selectedDishTableBody");
         for (let row = 0; row < table.children.length; row++){
             // get the span, which is the element on index
@@ -102,7 +97,7 @@ class SidebarView {
     }
 
     update (model, changeDetails) {
-        //TODO: change this so that the controller adds again the listeners
+        this.model = model;
         this.addDynamicElements();
     }
 }

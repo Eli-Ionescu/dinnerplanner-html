@@ -11,7 +11,6 @@ window.onload = function() {
 	// var exampleView = new ExampleView($("#exampleView"));
 
     let homeView = new HomeView($("#home"));
-    homeView.init();
 
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
@@ -21,10 +20,9 @@ window.onload = function() {
     let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
 
 
-    // Select dish and select dish again - lab1
+    // Select dish and select dish again for Lab 1
     let dishSearchView = new DishSearchView($("#mainSearch"), model);
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
-
 
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
@@ -37,7 +35,6 @@ window.onload = function() {
     // Printout view
     let printoutView = new PrintoutView($("#printout"), model);
 
-
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
@@ -45,7 +42,7 @@ window.onload = function() {
 	 * of the specific view you're working with (see exampleView.js).
 	 */
 
-	this.showHome = function () {
+	let showHome = function () {
         $("#home").show();
     };
 
@@ -69,22 +66,19 @@ window.onload = function() {
         $("#selectDish").hide();
     };
 
-    this.showDishDetails = function (id) {
+    let showDishDetails = function (id) {
         console.log(id);
         let dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
         let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
-        $("#dishDetails").show();
 
-        $("#buttonBackToSearch").click(function () {
-            showSelectDishPage();
-        });
+        $("#dishDetails").show();
     };
 
     let hideDishDetails = function () {
         $("#dishDetails").hide();
     };
 
-    this.showDinnerOverview = function () {
+    let showDinnerOverview = function () {
         $("#dinnerOverview").show();
     };
 
@@ -92,7 +86,7 @@ window.onload = function() {
         $("#dinnerOverview").hide();
     };
 
-    this.showPrintout = function () {
+    let showPrintout = function () {
         $("#printout").show();
     };
 
@@ -130,19 +124,19 @@ window.onload = function() {
         hideAll();
         showDinnerOverview();
     };
+
     this.showPrintoutPage = function () {
         hideAll();
         showPrintout();
-    }
+    };
 
     // Start the app with home
     hideAll();
-    this.showHome();
+    this.showHomePage();
 
-    let showFirstPage = this.showSelectDishPage;
-
+    // Set buttons
     $("#newDinnerButton").click(function () {
-        showFirstPage();
+        showSelectDishPage();
     });
 
     $("#buttonBackToSearch").click(function () {

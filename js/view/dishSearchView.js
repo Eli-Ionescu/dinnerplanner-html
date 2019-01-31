@@ -16,11 +16,10 @@ class DishSearchView {
         this.filter = document.getElementById("keyWords");
         this.type = document.getElementById("dishType");
         this.dishList = this.getDishesImages();
-
     }
 
     getDishesImages () {
-        let images = []
+        let images = [];
         let dishList = document.getElementById("dishList");
         for (let i = 0; i < dishList.children.length; i++) {
             images.push(dishList.children[i]);
@@ -55,7 +54,7 @@ class DishSearchView {
         let dropDownTypeList = `<option value=> All </option>`;
 
         allDishTypes.forEach((dishType => {
-            dropDownTypeList += `<option value=> ${dishType}</option>`;
+            dropDownTypeList += `<option value=>${dishType}</option>`;
         }));
         dishSelect.html(dropDownTypeList);
 
@@ -72,7 +71,6 @@ class DishSearchView {
         if (changeDetails == "search") {
             let filterValue = this.filter.value;
             let typeValue = this.type.options[this.type.selectedIndex].text;
-            // TODO: Ask: the event listener are deleted when re-rendering the DishItemView elements
             this.renderDishList(typeValue, filterValue);
         }
     }
