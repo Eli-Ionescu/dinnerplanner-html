@@ -23,7 +23,7 @@ class DishSearchView {
                     <input type="search" id="keyWords" placeholder="Enter key words">
                     <label for="dishType">Type</label>
                     <select id="dishType"></select>
-                    <button id="dishSearchButton" class="button-search" type="submit">search</button>
+                    <button id="dishSearchButton" class="button-search">search</button>
                 </form>
                 <hr>
                 <div class="container">
@@ -67,7 +67,7 @@ class DishSearchView {
     renderDishList (type = null, filter = null) {
         // List with all the dishes
         let dishList = this.container.find("#dishList");
-        let allDishes = this.model.getFullMenu();
+        let allDishes = this.model.getFullMenu(type, filter);
         let HTMLString = "";
 
         allDishes.forEach(dish => {

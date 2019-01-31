@@ -15,24 +15,22 @@ window.onload = function() {
 
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model);
-    let sidebarController = new DishSidebarController(sidebarView, model, this);
-
-    let dishSearchView = new DishSearchView($("#mainSearch"), model);
+    // let sidebarController = new DishSidebarController(sidebarView, model, this);
 
     let indexDishSearchView = new DishSearchView($("#selectDish"), model);
-    let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
+    // let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
 
-
-    // Select dish again
+    // Select dish for lab 1
+    let dishSearchView = new DishSearchView($("#mainSearch"), model);
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
 
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
-    let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+    // let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 
     // Overview view
     let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
-    let overviewController = new DinnerOverviewController(overviewView, model, this);
+    // let overviewController = new DinnerOverviewController(overviewView, model, this);
 
     // Printout view
     let printoutView = new PrintoutView($("#printout"), model);
@@ -46,6 +44,7 @@ window.onload = function() {
 	 */
 
 	this.showHome = function () {
+	    console.log("dumb");
         $("#home").show();
     };
 
@@ -130,8 +129,8 @@ window.onload = function() {
     }
 
     // Start the app with home
-    hideAll();
-    // this.showHome();
+   // hideAll();
+   // this.showHome();
 
     let showFirstPage = this.showSelectDishPage;
 
@@ -142,6 +141,6 @@ window.onload = function() {
     $("#buttonBackToSearch").click(function () {
        showSelectDishPage();
     });
-    // hideAll();
-    this.showDishDetailsPage();
+    //hideAll();
+    // this.showSelectDishPage();
 };
