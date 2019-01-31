@@ -13,7 +13,7 @@ class PrintoutView {
                 <div class="row">
                     <h3 class="text-left col-md-6" id="numberPeoplePrintout"></h3>
                     <div class="text-right col-md-6">
-                        <button class="button button-back" type="button">Go back and edit dinner</button>
+                        <button class="button button-back" type="button" id="buttonBackAndEdit">Go back and edit dinner</button>
                     </div>
                 </div>
             </div>

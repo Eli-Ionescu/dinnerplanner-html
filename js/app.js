@@ -26,6 +26,7 @@ window.onload = function() {
     // Select dish again
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
 
+
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
     let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
@@ -142,6 +143,12 @@ window.onload = function() {
     $("#buttonBackToSearch").click(function () {
        showSelectDishPage();
     });
+
+    $("#buttonBackAndEdit").click(function () {
+        showDinnerOverviewPage();
+    });
+
     // hideAll();
-    this.showDishDetailsPage();
+    // this.showDishDetailsPage();
+    this.showPrintoutPage();
 };
