@@ -13,6 +13,8 @@ class DishSearchView {
 
         this.init();
         this.searchButton = document.getElementById("dishSearchButton");
+        this.filter = document.getElementById("keyWords");
+        this.type = document.getElementById("dishType");
         this.dishList = document.getElementById("dishList");
     }
 
@@ -55,27 +57,21 @@ class DishSearchView {
 
     update (model, changeDetails) {
         // get the keywords and the filter
-        let filter = document.getElementById("keyWords").value;
-        console.log(filter);
-
-        let type = document.getElementById("dishType").value;
-        console.log(type);
-
-        this.renderDishList(type, filter);
+        let filterValue = this.filter.value;
+        let typeValue = this.type.options[this.type.selectedIndex].text;
+        this.renderDishList(typeValue, filterValue);
     }
 
-    renderDishList (type = null, filter = null) {
+    renderDishList (type, filter) {
         // List with all the dishes
         let dishList = this.container.find("#dishList");
-        let allDishes = this.model.getFullMenu();
+        let allDishes = this.model.getAllDishes(type, filter);
         let HTMLString = "";
 
-        // draw each dish
         allDishes.forEach(dish => {
             let dishItem = new DishItemView(this.container, this.model, dish.id);
             HTMLString += dishItem.getHTMLImage();
         });
-
         dishList.html(HTMLString);
     }
 }

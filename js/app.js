@@ -17,13 +17,12 @@ window.onload = function() {
     let sidebarView = new SidebarView($("#sidebar"), model);
     let sidebarController = new DishSidebarController(sidebarView, model, this);
 
-    let dishSearchView = new DishSearchView($("#mainSearch"), model);
-
     let indexDishSearchView = new DishSearchView($("#selectDish"), model);
     let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
 
 
-    // Select dish again
+    // Select dish and select dish again - lab1
+    let dishSearchView = new DishSearchView($("#mainSearch"), model);
     let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
 
 
