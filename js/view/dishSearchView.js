@@ -15,7 +15,21 @@ class DishSearchView {
         this.searchButton = document.getElementById("dishSearchButton");
         this.filter = document.getElementById("keyWords");
         this.type = document.getElementById("dishType");
-        this.dishList = document.getElementById("dishList");
+        this.dishList = this.getDishesImages();
+
+    }
+
+    getDishesImages () {
+        let images = []
+        let dishList = document.getElementById("dishList");
+        for (let i = 0; i < dishList.children.length; i++) {
+            images.push(dishList.children[i]);
+        }
+        return images;
+    }
+
+    getDishId (dishElement) {
+        return dishElement.id.replace("dish", "");
     }
 
     addInitialElements () {

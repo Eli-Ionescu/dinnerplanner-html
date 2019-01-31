@@ -5,10 +5,10 @@ class DishSearchController {
         view.searchButton.addEventListener("click",
             () => view.update(model, "search"));
 
-        // view.dishList.on("click", '.dish_item', function() {
-        //     model.setClickedDish($(this).data(''))
-        //     setChosenDish($(this).data('dishid'));
-        //     controller.show;
-        // });
+
+        for (let i = 0; i < view.dishList.length; i++) {
+            view.dishList[i].addEventListener("click",
+                () => this.controller.showDishDetailsPage(view.getDishId(view.dishList[i])));
+        }
     }
 }

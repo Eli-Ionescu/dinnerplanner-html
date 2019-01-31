@@ -15,7 +15,7 @@ class DishSidebarController {
         // Set the event listener for each delete button
         let buttons = view.getSelectedDishesDeleteButtons();
         for (let i in buttons){
-            console.log(buttons[i]);
+            console.log("button");
             buttons[i].addEventListener("click",
                 () => this.model.removeDishFromMenu(view.getDishDeleteId(buttons[i])));
         }

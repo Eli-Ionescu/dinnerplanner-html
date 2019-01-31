@@ -69,8 +69,16 @@ window.onload = function() {
         $("#selectDish").hide();
     };
 
-    this.showDishDetails = function () {
+    this.showDishDetails = function (id) {
+        console.log(id);
+
+        dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
+        dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
         $("#dishDetails").show();
+
+        $("#buttonBackToSearch").click(function () {
+            showSelectDishPage();
+        });
     };
 
     let hideDishDetails = function () {
@@ -113,17 +121,16 @@ window.onload = function() {
         showSelectDish();
     };
 
-    this.showDishDetailsPage = function () {
+    this.showDishDetailsPage = function (id) {
         hideAll();
         showSidebar();
-        showDishDetails();
+        showDishDetails(id);
     };
 
     this.showDinnerOverviewPage = function () {
         hideAll();
         showDinnerOverview();
     };
-
     this.showPrintoutPage = function () {
         hideAll();
         showPrintout();

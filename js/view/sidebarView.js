@@ -65,8 +65,11 @@ class SidebarView {
         let numberPeople = this.model.getMaxNrGuests();
         let selectPeople = "";
         for (let i=1; i <= numberPeople; i++){
-            selectPeople += `<option>${i}</option>`;
-        }
+            selectPeople += (i == this.model.getNumberOfGuests()) ?
+                `<option selected>${i}</option>` :
+                `<option>${i}</option>`;
+
+          }
         numberPeopleSelect.html(selectPeople);
 
         // Get a list with selected dishes and add them in the sidebar table
@@ -99,10 +102,7 @@ class SidebarView {
     }
 
     update (model, changeDetails) {
-        console.log("sidebar update");
-        // Update all the dynamic elements
-        if (changeDetails == "removeDishFromMenu"){
-            // Delete the dish whose index does not appear in the model
-        }
+        //TODO: change this so that the controller adds again the listeners
+        this.addDynamicElements();
     }
 }

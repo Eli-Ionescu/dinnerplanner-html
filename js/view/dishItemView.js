@@ -11,7 +11,7 @@ class DishItemView {
     }
 
     getHTMLImage() {
-        let HTMLString = `<div class="col-md-2">
+        let HTMLString = `<div class="col-md-2" id="dish${this.id}">
                             <div class="thumbnail">
                                 <a>
                                     <img src="../images/${this.dish.image}" alt="" ${this.dish.name}>

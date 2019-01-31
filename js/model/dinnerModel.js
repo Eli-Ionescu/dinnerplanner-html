@@ -298,7 +298,6 @@ class DinnerModel extends Observable{
 
 	// Returns the selected dishes
     getAllSelectedDishes () {
-	    console.log(this.selectedDishes);
         return this.selectedDishes;
     }
 
