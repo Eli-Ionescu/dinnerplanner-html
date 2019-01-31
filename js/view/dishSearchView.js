@@ -20,12 +20,12 @@ class DishSearchView {
     addInitialElements () {
         this.container.html(
             `<h2>Find a dish</h2>
-                <!--<form>-->
+                <form>
                     <input type="search" id="keyWords" placeholder="Enter key words">
                     <label for="dishType">Type</label>
                     <select id="dishType"></select>
-                    <button id="dishSearchButton" class="button-search">search</button>
-                <!--</form>-->
+                    <button id="dishSearchButton" class="button-search" type="submit">search</button>
+                </form>
                 <hr>
                 <div class="container">
                     <div class="row" id="dishList">
@@ -63,8 +63,6 @@ class DishSearchView {
 
     renderDishList (type, filter) {
         // List with all the dishes
-
-        // Check if type is "All"
         let dishList = this.container.find("#dishList");
         let allDishes = this.model.getAllDishes(type, filter);
         let HTMLString = "";

@@ -147,7 +147,13 @@ window.onload = function() {
         showDinnerOverviewPage();
     });
 
-    //hideAll();
-    //this.showSelectDishPage();
+    $("#buttonGoBackEditDinner").click(function () {
+        showSelectDishPage();
+    });
+
+
+    // hideAll();
+    // this.showSelectDishPage();
+    // this.showDishDetailsPage();
     // this.showPrintoutPage();
 };
