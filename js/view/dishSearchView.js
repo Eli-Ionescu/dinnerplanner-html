@@ -20,12 +20,10 @@ class DishSearchView {
     addInitialElements () {
         this.container.html(
             `<h2>Find a dish</h2>
-                <form>
-                    <input type="search" id="keyWords" placeholder="Enter key words">
-                    <label for="dishType">Type</label>
-                    <select id="dishType"></select>
-                    <button id="dishSearchButton" class="button-search" type="submit">search</button>
-                </form>
+                <input type="search" id="keyWords" placeholder="Enter key words">
+                <label for="dishType">Type</label>
+                <select id="dishType"></select>
+                <button id="dishSearchButton" class="button-search">search</button>
                 <hr>
                 <div class="container">
                     <div class="row" id="dishList">

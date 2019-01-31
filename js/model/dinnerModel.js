@@ -298,6 +298,7 @@ class DinnerModel extends Observable{
 
 	// Returns the selected dishes
     getAllSelectedDishes () {
+	    console.log(this.selectedDishes);
         return this.selectedDishes;
     }
 
@@ -336,11 +337,15 @@ class DinnerModel extends Observable{
 
 	//Removes dish from menu
 	removeDishFromMenu (id) {
+	    console.log("remove dish function");
+
 		let index = this.selectedDishes.indexOf(this.getDish(id));
+		console.log(id);
 		if (index > -1) {
 			this.selectedDishes.splice(index, 1);
 		}
-	}
+        this.notifyObservers("removeDishFromMenu");
+    }
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -360,7 +365,7 @@ class DinnerModel extends Observable{
 				found = true;
 			}
 		}
-        return (type == "All") ? found : (dish.type == type && found);
+        return (type == "All" || !type) ? found : (dish.type == type && found);
 	  });
 	}
 

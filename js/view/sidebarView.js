@@ -15,6 +15,22 @@ class SidebarView {
         this.confirmButton = document.getElementById("confirmDinner");
     }
 
+    // Returns a list with all the "span" elements that are used as delete buttons
+    getSelectedDishesDeleteButtons () {
+        let buttons = []
+        let table = document.getElementById("selectedDishTableBody");
+        for (let row = 0; row < table.children.length; row++){
+            // get the span, which is the element on index
+            let span = table.children[row].children[2].firstChild;
+            buttons.push(span);
+        }
+        return buttons;
+    }
+
+    getDishDeleteId (span) {
+        return span.id.replace("delete", "");
+    }
+
     addInitialElments () {
         this.container.html(`<div id="row" id="sidebarHeader">
                 <h3 class="col-xs-4">My Dinner</h3>
@@ -62,6 +78,7 @@ class SidebarView {
             selectedDishHTML += `<tr> 
                                     <td scope=row>${allSelectedDishes[i].name}</td>
                                     <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(allSelectedDishes[i].id)}</td>
+                                    <td><span id="delete${allSelectedDishes[i].id}"class="close">&times;</span></td>
                                 </tr>`;
         }
         selectedDish.html(selectedDishHTML);
@@ -81,7 +98,11 @@ class SidebarView {
         this.addDynamicElements();
     }
 
-    update () {
-        this.addDynamicElements();
+    update (model, changeDetails) {
+        console.log("sidebar update");
+        // Update all the dynamic elements
+        if (changeDetails == "removeDishFromMenu"){
+            // Delete the dish whose index does not appear in the model
+        }
     }
 }

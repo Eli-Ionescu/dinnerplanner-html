@@ -11,5 +11,13 @@ class DishSidebarController {
         // Confirm dinner button -> overview
         view.confirmButton.addEventListener("click",
             () => this.controller.showDinnerOverviewPage());
+
+        // Set the event listener for each delete button
+        let buttons = view.getSelectedDishesDeleteButtons();
+        for (let i in buttons){
+            console.log(buttons[i]);
+            buttons[i].addEventListener("click",
+                () => this.model.removeDishFromMenu(view.getDishDeleteId(buttons[i])));
+        }
     }
 }
