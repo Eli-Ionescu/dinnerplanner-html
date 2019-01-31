@@ -14,7 +14,6 @@ class DishSearchView {
         this.init();
         this.searchButton = document.getElementById("dishSearchButton");
         this.dishList = document.getElementById("dishList");
-        console.log(this.dishList);
     }
 
     addInitialElements () {
@@ -71,18 +70,12 @@ class DishSearchView {
         let allDishes = this.model.getFullMenu();
         let HTMLString = "";
 
+        // draw each dish
         allDishes.forEach(dish => {
-            HTMLString += `<div class="col-md-2">
-                                <div class="thumbnail">
-                                    <a>
-                                        <img src=../images/${dish.image} alt=${dish.name}>
-                                        <div class="caption">
-                                            <p>${dish.name}<\p>
-                                        </div>
-                                    </a>
-                                </div>
-                           </div>`;
+            let dishItem = new DishItemView(this.container, this.model, dish.id);
+            HTMLString += dishItem.getHTMLImage();
         });
+
         dishList.html(HTMLString);
     }
 }
