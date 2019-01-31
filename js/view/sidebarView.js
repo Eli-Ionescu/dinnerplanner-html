@@ -34,7 +34,7 @@ class SidebarView {
                 </div>
             </div>
             <div class="hidden-xs sidebar" id="innerSidebar">
-                <label for="numberPeople">People:</label>
+                <label for="numberPeople" class="people">People:</label>
                 <select id="numberPeople">
                 </select>
                 <table class="table">

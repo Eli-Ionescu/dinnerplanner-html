@@ -10,10 +10,10 @@ class DishItemView {
 
     getHTMLImage() {
         let HTMLString = `<div class="col-md-2 dishItem" id="dish${this.id}" dishId="${this.id}">
-                            <div class="thumbnail">
+                            <div>
                                 <a>
-                                    <img src="../images/${this.dish.image}" alt="" ${this.dish.name}>
-                                    <div class="caption">
+                                    <img class="img-thumbnail" src="../images/${this.dish.image}" alt="" ${this.dish.name}>
+                                    <div align="center" class="caption">
                                         <p> ${this.dish.name}<\p>
                                     </div>
                                 </a>

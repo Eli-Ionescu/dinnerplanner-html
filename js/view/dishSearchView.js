@@ -35,9 +35,9 @@ class DishSearchView {
         this.container.html(
             `<h2>Find a dish</h2>
                 <input type="search" id="keyWords" placeholder="Enter key words">
-                <label for="dishType">Type</label>
+                <label for="dishType" class="type" >Type</label>
                 <select id="dishType"></select>
-                <button id="dishSearchButton" class="button-search">search</button>
+                <button id="dishSearchButton" class="button-search">Search</button>
                 <hr>
                 <div class="container">
                     <div class="row" id="dishList">

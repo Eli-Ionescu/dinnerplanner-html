@@ -1,25 +1,45 @@
+#homeView {
+    padding-top: 100px;
+}
+
+#page {
+    margin-top: 30px;
+}
+
+/*#sidebar {*/
+    /*margin-left: -100px;*/
+/*}*/
+
+.people {
+    margin: 30px 0 30px 0;
+}
+
+.type{
+    margin-left: 30px;
+}
+
 .vertical_line {
     border-left: 6px solid coral;
     height: 250px;
 }
+
 .button {
     background-color: coral;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    color: black;
+    padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    border-color: black;
 }
 
 .button-add-to-menu {
     background-color: coral;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    color: black;
+    padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -27,27 +47,27 @@
     margin: 4px 2px;
     cursor: pointer;
     float: left;
+    border-color: black;
 }
 
 .button-search{
     background-color: coral;
-    border: none;
-    color: white;
-    padding: 5px 20px;
+    color: black;
+    padding: 2px 13px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
-    margin: 4px 2px;
+    margin: 4px 2px 0 30px;
     cursor: pointer;
+    border-color: black;
+    box-shadow: black;
 }
 
 .button-back {
     margin-top:15px;
     alignment: right;
 }
-
-
 
 #banner {
     background-color: #c5c3be;
@@ -65,16 +85,20 @@
 }
 
 .sideMenu {
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 #listHeader {
     background-color: #c5c3be;
 }
 
-#total {
+#totalPrice {
     color: darkred;
     text-align: right;
+}
+
+#total_overview {
+    color: darkred;
 }
 
 #confirmDinner {
@@ -86,10 +110,22 @@
     margin: 200px 0 0 20px;
 }
 
-.container .thumbnail {
-    margin-right: 20px;
-}
-
 #button_collapse {
     padding-left: 350px;
+}
+
+#dishList {
+    margin-top: 50px;
+}
+
+#imageDetails {
+    margin: 30px 0 20px 0px;
+}
+
+#captionOverview {
+    padding: 5px 0 0 50px;
+}
+
+#dinnerItem {
+    padding-top: 40px;
 }

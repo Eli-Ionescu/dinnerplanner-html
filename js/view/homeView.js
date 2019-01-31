@@ -6,7 +6,7 @@ class HomeView {
 
     init () {
         this.container.html(
-            `<div class="text-center">
+            `<div class="text-center" id="homeView">
                 <p>Here you can plan your dinner</p>
                 <button class="button" id="newDinnerButton">Create new dinner</button>
              </div>`);

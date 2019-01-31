@@ -36,7 +36,7 @@ class PrintoutView {
         for (let i in selectedDishes) {
             listHTML += `<div id="dinnerItem" class="row">
                              <div class="col-md-2" id="imageContainer">
-                               <img src="../images/${selectedDishes[i].image}">
+                               <img class="img-thumbnail" src="../images/${selectedDishes[i].image}">
                              </div>
                              <div class="col-md-4" id="descriprtion">
                                 <h2>${selectedDishes[i].name}</h2>

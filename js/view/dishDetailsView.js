@@ -30,9 +30,9 @@ class DishDetailsView {
     addDynamicElements () {
         let dishDetailDescription = this.container.find("#dishDescription");
         let dish = this.model.getDish(this.id);
-        let dishDescription = `<h3>${dish.name}</h3>
-                            <div class="row">
-                                <img src=../images/${dish.image} alt=${dish.name}>
+        let dishDescription = `<h3 id="dishNameID">${dish.name}</h3>
+                            <div class="row" id="imageDetails">
+                                <img class="img-thumbnail" src=../images/${dish.image} alt=${dish.name}>
                             </div>
                             <p> ${dish.description}</p>`;
 
