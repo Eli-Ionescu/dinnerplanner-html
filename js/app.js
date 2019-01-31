@@ -132,7 +132,7 @@ window.onload = function() {
 
     // Start the app with home
     hideAll();
-    // this.showHome();
+    this.showHome();
 
     let showFirstPage = this.showSelectDishPage;
 
@@ -150,5 +150,5 @@ window.onload = function() {
 
     // hideAll();
     // this.showDishDetailsPage();
-    this.showPrintoutPage();
+    // this.showPrintoutPage();
 };
