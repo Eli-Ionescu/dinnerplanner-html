@@ -346,7 +346,6 @@ class DinnerModel extends Observable{
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	getAllDishes (type,filter) {
-        if (!type) { return this.dishes; }
 	  return this.dishes.filter(function(dish) {
 		let found = true;
 		if(filter){
@@ -361,7 +360,7 @@ class DinnerModel extends Observable{
 				found = true;
 			}
 		}
-	  	return dish.type == type && found;
+        return (type == "All") ? found : (dish.type == type && found);
 	  });
 	}
 

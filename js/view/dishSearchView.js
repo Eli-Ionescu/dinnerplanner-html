@@ -13,18 +13,19 @@ class DishSearchView {
 
         this.init();
         this.searchButton = document.getElementById("dishSearchButton");
-        console.log(this.searchButton);
+        this.filter = document.getElementById("keyWords");
+        this.type = document.getElementById("dishType");
     }
 
     addInitialElements () {
         this.container.html(
             `<h2>Find a dish</h2>
-                <form>
+                <!--<form>-->
                     <input type="search" id="keyWords" placeholder="Enter key words">
                     <label for="dishType">Type</label>
                     <select id="dishType"></select>
-                    <button id="dishSearchButton" class="button-search" type="submit">search</button>
-                </form>
+                    <button id="dishSearchButton" class="button-search">search</button>
+                <!--</form>-->
                 <hr>
                 <div class="container">
                     <div class="row" id="dishList">
@@ -55,19 +56,17 @@ class DishSearchView {
 
     update (model, changeDetails) {
         // get the keywords and the filter
-        let filter = document.getElementById("keyWords").value;
-        console.log(filter);
-
-        let type = document.getElementById("dishType").value;
-        console.log(type);
-
-        this.renderDishList(type, filter);
+        let filterValue = this.filter.value;
+        let typeValue = this.type.options[this.type.selectedIndex].text;
+        this.renderDishList(typeValue, filterValue);
     }
 
-    renderDishList (type = null, filter = null) {
+    renderDishList (type, filter) {
         // List with all the dishes
+
+        // Check if type is "All"
         let dishList = this.container.find("#dishList");
-        let allDishes = this.model.getFullMenu();
+        let allDishes = this.model.getAllDishes(type, filter);
         let HTMLString = "";
 
         allDishes.forEach(dish => {
