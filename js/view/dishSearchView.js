@@ -67,6 +67,7 @@ class DishSearchView {
     }
 
     update (model, changeDetails) {
+        this.model = model;
         // get the keywords and the filter
         if (changeDetails == "search") {
             let filterValue = this.filter.value;
