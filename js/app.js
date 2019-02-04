@@ -13,16 +13,16 @@ window.onload = function() {
     let homeView = new HomeView($("#home"));
 
     // Select dish
-    let sidebarView = new SidebarView($("#sidebar"), model);
+    let sidebarView = new SidebarView($("#sidebar"), model, this);
     let sidebarController = new DishSidebarController(sidebarView, model, this);
 
-    let indexDishSearchView = new DishSearchView($("#selectDish"), model);
+    let indexDishSearchView = new DishSearchView($("#selectDish"), model, this);
     let dishSearchController = new DishSearchController(indexDishSearchView, model, this);
 
 
     // Select dish and select dish again for Lab 1
-    let dishSearchView = new DishSearchView($("#mainSearch"), model);
-    let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model);
+    let dishSearchView = new DishSearchView($("#mainSearch"), model, this);
+    let dishSearchViewAgain = new DishSearchView($("#mainAgain"), model, this);
 
     // Dish detail view
     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, 100);
@@ -67,7 +67,6 @@ window.onload = function() {
     };
 
     let showDishDetails = function (id) {
-        console.log(id);
         let dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
         let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 

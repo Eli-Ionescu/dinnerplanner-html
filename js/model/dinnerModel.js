@@ -77,7 +77,6 @@ class DinnerModel extends Observable{
 	    console.log("remove dish function");
 
 		let index = this.selectedDishes.indexOf(this.getDish(id));
-		console.log(id);
 		if (index > -1) {
 			this.selectedDishes.splice(index, 1);
 		}

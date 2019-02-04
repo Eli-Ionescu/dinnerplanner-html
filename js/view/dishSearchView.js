@@ -6,10 +6,11 @@
  */
 class DishSearchView {
 
-    constructor(container, model) {
+    constructor(container, model, app) {
         model.addObserver(this);
         this.container = container;
         this.model = model;
+        this.app = app;
 
         this.init();
         this.searchButton = document.getElementById("dishSearchButton");
@@ -78,14 +79,14 @@ class DishSearchView {
 
     renderDishList (type, filter) {
         // List with all the dishes
-        let dishList = this.container.find("#dishList");
+        let dishList = document.getElementById("dishList");
         let allDishes = this.model.getAllDishes(type, filter);
-        let HTMLString = "";
 
+        // Make the list empty and add the items based on the search
+        dishList.innerHTML = "";
         allDishes.forEach(dish => {
-            let dishItem = new DishItemView(this.container, this.model, dish.id);
-            HTMLString += dishItem.getHTMLImage();
+            let dishItem = new DishItemView(dishList, this.model, dish.id);
+            new DishItemController(dishItem.item, dish, this.app);
         });
-        dishList.html(HTMLString);
     }
 }
