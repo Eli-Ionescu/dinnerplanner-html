@@ -35,13 +35,17 @@ class DishSearchView extends GeneralView{
     renderDishList (type, filter) {
         // List with all the dishes
         let dishList = document.getElementById("dishList");
-        let allDishes = this.model.getAllDishes(type, filter);
+        // let allDishes = this.model.getAllDishes(type, filter);
 
-        // Make the list empty and add the items based on the search
-        dishList.innerHTML = "";
-        allDishes.forEach(dish => {
-            let dishItem = new DishItemView(dishList, this.model, dish.id);
-            new DishItemController(dishItem.item, dish, this.app);
+        this.model.getAllDishes(type, filter).then(allDishes => {
+            console.log(allDishes);
+            dishList.innerHTML = "";
+            allDishes.forEach(dish => {
+                let dishItem = new DishItemView(dishList, this.model, dish.id);
+                new DishItemController(dishItem.item, dish, this.app);
+            });
+        }).catch( error => {
+
         });
     }
 
