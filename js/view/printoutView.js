@@ -4,14 +4,18 @@ class PrintoutView extends GeneralView{
         model.addObserver(this);
         this.model = model;
 
-        this.addDynamicElements();
+        this.updateNumberOfGuests();
+        this.updateDishesPrintout();
     }
 
-    addDynamicElements () {
+    updateNumberOfGuests() {
         let nrPeople = this.container.querySelector("#numberPeoplePrintout");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
         nrPeople.innerHTML = nrPeopleString;
+    }
+
+    updateDishesPrintout () {
 
         // The printout of the selected dishes
         let printoutList = this.container.querySelector("#printoutList");
@@ -35,8 +39,14 @@ class PrintoutView extends GeneralView{
         printoutList.innerHTML = listHTML;
     }
 
-    // TODO: modify this
-    update () {
-        this.addDynamicElements();
+    update(model, changeDetails) {
+        this.model = model;
+
+        if(changeDetails == "numberOfGuests") {
+            this.updateNumberOfGuests();
+        }
+        if(changeDetails == "addDishToMenu") {
+            this.updateDishesPrintout();
+        }
     }
 }

@@ -5,17 +5,21 @@ class DinnerOverviewView extends GeneralView{
         model.addObserver(this);
         this.model = model;
 
-        this.addDynamicElements();
+        this.updateNumberOfPeople();
+        this.updateDishesOverview();
 
         // The button id that will trigger the click event
         this.button = document.getElementById("buttonFullRecipe");
     }
 
-    addDynamicElements() {
+    updateNumberOfPeople() {
         let nrPeople = this.container.querySelector("#numberPeopleOverview");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
         nrPeople.innerHTML = nrPeopleString;
+    }
+
+    updateDishesOverview() {
 
         let dinnerList = this.container.querySelector("#dinnerList");
         let selectedDishes = this.model.getAllSelectedDishes();
@@ -43,9 +47,15 @@ class DinnerOverviewView extends GeneralView{
         dinnerList.innerHTML = dinnerListHTML;
     }
 
-    // TODO: modify this
-    update(model) {
+    update(model, changeDetails) {
         this.model = model;
-        this.addDynamicElements();
+
+        if(changeDetails == "numberOfGuests") {
+            this.updateNumberOfPeople()
+        }
+
+        if(changeDetails == "addDishToMenu") {
+            this.updateDishesOverview();
+        }
     }
 }

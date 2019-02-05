@@ -5,7 +5,8 @@ class SidebarView extends GeneralView{
         model.addObserver(this);
         this.model = model;
 
-        this.addDynamicElements();
+        this.updateNumberOfGuests();
+        this.updateDishList();
         this.people = document.getElementById("numberPeople");
         this.confirmButton = document.getElementById("confirmDinner");
     }
@@ -26,7 +27,7 @@ class SidebarView extends GeneralView{
         return span.id.replace("delete", "");
     }
 
-    addDynamicElements () {
+    updateNumberOfGuests () {
         // Selection menu for number of people
         let numberPeopleSelect = this.container.querySelector("#numberPeople");
         let numberPeople = this.model.getMaxNrGuests();
@@ -36,9 +37,11 @@ class SidebarView extends GeneralView{
                 `<option selected>${i}</option>` :
                 `<option>${i}</option>`;
 
-          }
+        }
         numberPeopleSelect.innerHTML = selectPeople;
+    }
 
+    updateDishList() {
         // Get a list with selected dishes and add them in the sidebar table
         let selectedDish = this.container.querySelector("#selectedDishTableBody");
         let allSelectedDishes = this.model.getAllSelectedDishes();
@@ -60,14 +63,18 @@ class SidebarView extends GeneralView{
         totalPriceHTML += totalPriceValue.toString();
         totalPriceHTML += " SEK";
         totalPrice.innerHTML = totalPriceHTML;
-        selectedDish.html(selectedDishHTML);
     }
 
-    // TODO: modify this
     update (model, changeDetails) {
         this.model = model;
+
         if(changeDetails == "numberOfGuests") {
-            this.addDynamicElements();
+            this.updateNumberOfGuests();
+            this.updateDishList();
+        }
+
+        if(changeDetails == "addDishToMenu") {
+            this.updateDishList();
         }
     }
 }

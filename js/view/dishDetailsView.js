@@ -14,6 +14,7 @@ class DishDetailsView extends GeneralView{
     addDynamicElements () {
         let dishDetailDescription = this.container.querySelector("#dishDescription");
         let dish = this.model.getDish(this.model.getCurrentId());
+
         let dishDescription = `<h3 id="dishNameID">${dish.name}</h3>
                             <div class="row" id="imageDetails">
                                 <img class="img-thumbnail" src="images/${dish.image}" alt=${dish.name}>
@@ -56,11 +57,13 @@ class DishDetailsView extends GeneralView{
         dishDetailIngredients.innerHTML = dishIngredients;
     }
 
-    // TODO: modify this
     update(model, changeDetails) {
         this.id = model.getCurrentId();
         this.model = model;
-        this.addDynamicElements();
+
+        if(changeDetails == "currentDish") {
+            this.addDynamicElements();
+        }
     }
 
 }
