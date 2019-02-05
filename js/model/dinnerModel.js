@@ -14,6 +14,7 @@ class DinnerModel extends Observable{
 
     setCurrentId (id) {
         this.currentId = id;
+        this.notifyObservers("currentDish");
     }
 
     getCurrentId (){
