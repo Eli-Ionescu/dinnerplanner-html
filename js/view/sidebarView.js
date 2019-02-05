@@ -28,7 +28,7 @@ class SidebarView extends GeneralView{
 
     addDynamicElements () {
         // Selection menu for number of people
-        let numberPeopleSelect = this.container.find("#numberPeople");
+        let numberPeopleSelect = this.container.querySelector("#numberPeople");
         let numberPeople = this.model.getMaxNrGuests();
         let selectPeople = "";
         for (let i=1; i <= numberPeople; i++){
@@ -37,10 +37,10 @@ class SidebarView extends GeneralView{
                 `<option>${i}</option>`;
 
           }
-        numberPeopleSelect.html(selectPeople);
+        numberPeopleSelect.innerHTML = selectPeople;
 
         // Get a list with selected dishes and add them in the sidebar table
-        let selectedDish = this.container.find("#selectedDishTableBody");
+        let selectedDish = this.container.querySelector("#selectedDishTableBody");
         let allSelectedDishes = this.model.getAllSelectedDishes();
         let selectedDishHTML = "";
 
@@ -51,6 +51,15 @@ class SidebarView extends GeneralView{
                                     <td><span id="delete${allSelectedDishes[i].id}"class="close">&times;</span></td>
                                 </tr>`;
         }
+        selectedDish.innerHTML = selectedDishHTML;
+
+        // Get the total price of the menu
+        let totalPrice = this.container.querySelector("#totalPrice");
+        let totalPriceValue = this.model.getTotalMenuPrice();
+        let totalPriceHTML = "Total: ";
+        totalPriceHTML += totalPriceValue.toString();
+        totalPriceHTML += " SEK";
+        totalPrice.innerHTML = totalPriceHTML;
         selectedDish.html(selectedDishHTML);
     }
 
