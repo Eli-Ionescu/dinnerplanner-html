@@ -45,7 +45,6 @@ class DishSearchView extends GeneralView{
         });
     }
 
-    // TODO: modify it
     update (model, changeDetails) {
         this.model = model;
         // get the keywords and the filter
