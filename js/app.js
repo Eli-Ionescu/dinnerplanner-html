@@ -3,9 +3,9 @@ window.onload = function() {
     //We instantiate our model
     let model = new DinnerModel();
     model.setNumberOfGuests(5);
-    model.addDishToMenu(1);
-    model.addDishToMenu(102);
-    model.addDishToMenu(202);
+    // model.addDishToMenu(262682);
+    // model.addDishToMenu(227961);
+    // model.addDishToMenu(602708);
 
     // Initialise the general state controller
     let generalController = new GeneralStateController();
