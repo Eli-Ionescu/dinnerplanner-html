@@ -26,7 +26,7 @@ class SidebarView extends GeneralView{
         return span.id.replace("delete", "");
     }
 
-    addDynamicElements () {
+    updateNumberOfPeople() {
         // Selection menu for number of people
         let numberPeopleSelect = this.container.find("#numberPeople");
         let numberPeople = this.model.getMaxNrGuests();
@@ -36,9 +36,11 @@ class SidebarView extends GeneralView{
                 `<option selected>${i}</option>` :
                 `<option>${i}</option>`;
 
-          }
+        }
         numberPeopleSelect.html(selectPeople);
+    }
 
+    updateSelectedDishes() {
         // Get a list with selected dishes and add them in the sidebar table
         let selectedDish = this.container.find("#selectedDishTableBody");
         let allSelectedDishes = this.model.getAllSelectedDishes();
@@ -53,7 +55,6 @@ class SidebarView extends GeneralView{
         }
         selectedDish.html(selectedDishHTML);
 
-        // Get the total price of the menu
         let totalPrice = this.container.find("#totalPrice");
         let totalPriceValue = this.model.getTotalMenuPrice();
         let totalPriceHTML = "Total: ";
@@ -61,10 +62,46 @@ class SidebarView extends GeneralView{
         totalPriceHTML += " SEK";
         totalPrice.html(totalPriceHTML);
     }
+    addDynamicElements () {
+        // // Selection menu for number of people
+        // let numberPeopleSelect = this.container.find("#numberPeople");
+        // let numberPeople = this.model.getMaxNrGuests();
+        // let selectPeople = "";
+        // for (let i=1; i <= numberPeople; i++){
+        //     selectPeople += (i == this.model.getNumberOfGuests()) ?
+        //         `<option selected>${i}</option>` :
+        //         `<option>${i}</option>`;
+        //
+        //   }
+        // numberPeopleSelect.html(selectPeople);
+
+        // // Get a list with selected dishes and add them in the sidebar table
+        // let selectedDish = this.container.find("#selectedDishTableBody");
+        // let allSelectedDishes = this.model.getAllSelectedDishes();
+        // let selectedDishHTML = "";
+        //
+        // for(let i in allSelectedDishes){
+        //     selectedDishHTML += `<tr>
+        //                             <td scope=row>${allSelectedDishes[i].name}</td>
+        //                             <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(allSelectedDishes[i].id)}</td>
+        //                             <td><span id="delete${allSelectedDishes[i].id}"class="close">&times;</span></td>
+        //                         </tr>`;
+        // }
+        // selectedDish.html(selectedDishHTML);
+
+        // Get the total price of the menu
+
+    }
 
     // TODO: modify this
     update (model, changeDetails) {
         this.model = model;
-        this.addDynamicElements();
+        if(changeDetails == "numberOfGuests") {
+            this.updateNumberOfPeople();
+        }
+        else if(changeDetails == "addDishToMenu") {
+            this.updateSelectedDishes();
+        }
+        // this.addDynamicElements();
     }
 }
