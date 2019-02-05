@@ -27,7 +27,7 @@ class DinnerOverviewView extends GeneralView{
             dinnerListHTML += `<div class="col-md-3">
                                     <div class="thumbnail">
                                         <a>
-                                            <img class="img-thumbnail" src="images/${selectedDishes[i].image} alt="" ${selectedDishes[i].name}>
+                                            <img class="img-thumbnail" src="images/${selectedDishes[i].image}"  alt="" ${selectedDishes[i].name}>
                                                  <div class="caption" id="captionOverview">
                                                      <p>${this.model.getDishPrice(selectedDishes[i].id)} SEK</p>
                                                  </div>

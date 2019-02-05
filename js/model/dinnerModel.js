@@ -7,7 +7,9 @@ class DinnerModel extends Observable{
 		this.numberOfGuests = 3;
         this.selectedDishes = [];
         this.dishes = dishesConst;
-        this.currentId = null;
+
+        // Initialise the current id with the first id in the dish list
+        this.currentId = this.dishes[0].id;
     }
 
     setCurrentId (id) {
@@ -83,8 +85,6 @@ class DinnerModel extends Observable{
 
 	//Removes dish from menu
 	removeDishFromMenu (id) {
-	    console.log("remove dish function");
-
 		let index = this.selectedDishes.indexOf(this.getDish(id));
 		if (index > -1) {
 			this.selectedDishes.splice(index, 1);
