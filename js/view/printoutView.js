@@ -8,13 +8,13 @@ class PrintoutView extends GeneralView{
     }
 
     addDynamicElements () {
-        let nrPeople = this.container.find("#numberPeoplePrintout");
+        let nrPeople = this.container.querySelector("#numberPeoplePrintout");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
-        nrPeople.html(nrPeopleString);
+        nrPeople.innerHTML = nrPeopleString;
 
         // The printout of the selected dishes
-        let printoutList = this.container.find("#printoutList");
+        let printoutList = this.container.querySelector("#printoutList");
         let selectedDishes = this.model.getAllSelectedDishes();
         let listHTML = "";
         for (let i in selectedDishes) {
@@ -32,7 +32,7 @@ class PrintoutView extends GeneralView{
                              </div>
                          </div>`
         }
-        printoutList.html(listHTML);
+        printoutList.innerHTML = listHTML;
     }
 
     // TODO: modify this

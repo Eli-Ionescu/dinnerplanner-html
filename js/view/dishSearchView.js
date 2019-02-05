@@ -20,14 +20,14 @@ class DishSearchView extends GeneralView{
 
     addDynamicElements () {
         // Drop-down list for dish types
-        let dishSelect = this.container.find("#dishType");
+        let dishSelect = this.container.querySelector("#dishType");
         let allDishTypes = this.model.getAllDishTypes();
         let dropDownTypeList = `<option value=> All </option>`;
 
         allDishTypes.forEach((dishType => {
             dropDownTypeList += `<option value=>${dishType}</option>`;
         }));
-        dishSelect.html(dropDownTypeList);
+        dishSelect.innerHTML = dropDownTypeList;
 
         this.renderDishList();
     }

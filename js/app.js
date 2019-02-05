@@ -11,120 +11,65 @@ window.onload = function() {
     let generalController = new GeneralStateController();
 
     // Create the views
-    let sidebarView = new SidebarView($("#sidebar"), model, this);
+    let homeView = new HomeView(document.getElementById("home"));
+    generalController.addView(homeView);
+
+    let sidebarView = new SidebarView(document.getElementById("sidebar"), model, this);
     generalController.addView(sidebarView);
     let sidebarController = new DishSidebarController(sidebarView, model, this);
 
-    let dishSearchView = new DishSearchView($("#selectDish"), model, this);
+    let dishSearchView = new DishSearchView(document.getElementById("selectDish"), model, this);
     generalController.addView(dishSearchView);
     let dishSearchController = new DishSearchController(dishSearchView, model, this);
 
-    let dishDetailsView = new DishDetailsView($("#dishDetails"), model, model.getCurrentId());
+    let dishDetailsView = new DishDetailsView(document.getElementById("dishDetails"), model, model.getCurrentId());
     generalController.addView(dishDetailsView);
     let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 
-    let overviewView = new DinnerOverviewView($("#dinnerOverview"), model);
+    let overviewView = new DinnerOverviewView(document.getElementById("dinnerOverview"), model);
     generalController.addView(overviewView);
     let overviewController = new DinnerOverviewController(overviewView, model, this);
 
-    let printoutView = new PrintoutView($("#printout"), model)
+    let printoutView = new PrintoutView(document.getElementById("printout"), model);
     generalController.addView(printoutView);
 
+    generalController.addScreen("HOME", [homeView]);
     generalController.addScreen("SEARCH", [sidebarView, dishSearchView]);
     generalController.addScreen("DETAIL", [sidebarView, dishDetailsView]);
     generalController.addScreen("OVERVIEW", [overviewView]);
     generalController.addScreen("PRINTOUT", [printoutView]);
 
-	let showHome = function () {
-        $("#home").show();
-    };
 
-	let hideHome = function () {
-        $("#home").hide();
-    };
-
-	let showSidebar = function () {
-	    $("#sidebar").show();
-    };
-
-	let hideSidebar = function () {
-	    $("#sidebar").hide();
-    };
-
-    let showSelectDish = function () {
-        $("#selectDish").show();
-    };
-
-    let hideSelectDish = function () {
-        $("#selectDish").hide();
-    };
-
-    let showDishDetails = function (id) {
-        model.setCurrentId(id);
-        // let dishDetailsView = new DishDetailsView($("#dishDetails"), model);
-        // let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
-
-        $("#dishDetails").show();
-    };
-
-    let hideDishDetails = function () {
-        $("#dishDetails").hide();
-    };
-
-    let showDinnerOverview = function () {
-        $("#dinnerOverview").show();
-    };
-
-    let hideDinnerOveviw = function () {
-        $("#dinnerOverview").hide();
-    };
-
-    let showPrintout = function () {
-        $("#printout").show();
-    };
-
-    let hidePrintout = function () {
-        $("#printout").hide();
-    };
-
-    let hideAll = function () {
-        hideHome();
-        hideSidebar();
-        hideSelectDish();
-        hideDishDetails();
-        hideDinnerOveviw();
-        hidePrintout();
+    this.hideAll = function () {
+       generalController.hideAll();
     };
 
     this.showHomePage = function () {
-        hideAll();
-        showHome();
+        generalController.showScreen("HOME");
     };
 
     this.showSelectDishPage = function () {
         hideAll();
-        showSidebar();
-        showSelectDish();
+        generalController.showScreen("SEARCH");
     };
 
     this.showDishDetailsPage = function (id) {
         hideAll();
-        showSidebar();
-        showDishDetails(id);
+        model.setCurrentId(id);
+        generalController.showScreen("DETAIL");
     };
 
     this.showDinnerOverviewPage = function () {
         hideAll();
-        showDinnerOverview();
+        generalController.showScreen("OVERVIEW");
     };
 
     this.showPrintoutPage = function () {
         hideAll();
-        showPrintout();
+        generalController.showScreen("PRINTOUT");
     };
 
     // Start the app with home
-    hideAll();
     this.showHomePage();
 
     // Set buttons

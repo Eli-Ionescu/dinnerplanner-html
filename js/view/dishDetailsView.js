@@ -12,7 +12,7 @@ class DishDetailsView extends GeneralView{
     }
 
     addDynamicElements () {
-        let dishDetailDescription = this.container.find("#dishDescription");
+        let dishDetailDescription = this.container.querySelector("#dishDescription");
         let dish = this.model.getDish(this.id);
         let dishDescription = `<h3 id="dishNameID">${dish.name}</h3>
                             <div class="row" id="imageDetails">
@@ -20,10 +20,10 @@ class DishDetailsView extends GeneralView{
                             </div>
                             <p> ${dish.description}</p>`;
 
-        dishDetailDescription.html(dishDescription);
+        dishDetailDescription.innerHTML = dishDescription;
 
         // Ingredients list
-        let dishDetailIngredients = this.container.find("#dishIngredients");
+        let dishDetailIngredients = this.container.querySelector("#dishIngredients");
         let ingredients = dish.ingredients;
         let nrPeople = this.model.getNumberOfGuests();
 
@@ -54,7 +54,7 @@ class DishDetailsView extends GeneralView{
         dishIngredients += `<p align="right">Total: ${totalPrice} SEK </p>
                     </div>`;
 
-        dishDetailIngredients.html(dishIngredients);
+        dishDetailIngredients.innerHTML = dishIngredients;
     }
 
     // TODO: modify this

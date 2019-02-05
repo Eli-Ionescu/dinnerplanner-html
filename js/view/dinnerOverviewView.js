@@ -12,16 +12,16 @@ class DinnerOverviewView extends GeneralView{
     }
 
     addDynamicElements() {
-        let nrPeople = this.container.find("#numberPeopleOverview");
+        let nrPeople = this.container.querySelector("#numberPeopleOverview");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
-        nrPeople.html(nrPeopleString);
+        nrPeople.innerHTML = nrPeopleString;
 
-        let dinnerList = this.container.find("#dinnerList");
+        let dinnerList = this.container.querySelector("#dinnerList");
         let selectedDishes = this.model.getAllSelectedDishes();
         let dinnerListHTML = "";
 
-        dinnerList.html(dinnerListHTML);
+        dinnerList.innerHTML = dinnerListHTML;
 
         for (let i in selectedDishes) {
             dinnerListHTML += `<div class="col-md-3">
@@ -40,7 +40,7 @@ class DinnerOverviewView extends GeneralView{
         dinnerListHTML += `<div class="col-md-2 vertical_line">
                                 <p id="total_overview"> Total: <br> ${this.model.getTotalMenuPrice()} SEK</p>
                            </div>`;
-        dinnerList.html(dinnerListHTML);
+        dinnerList.innerHTML = dinnerListHTML;
     }
 
     // TODO: modify this
