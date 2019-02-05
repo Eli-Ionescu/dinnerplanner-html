@@ -19,7 +19,7 @@ window.onload = function() {
     generalController.addView(dishSearchView);
     let dishSearchController = new DishSearchController(dishSearchView, model, this);
 
-    let dishDetailsView = new DishDetailsView($("#dishDetails"), model);
+    let dishDetailsView = new DishDetailsView($("#dishDetails"), model, model.getCurrentId());
     generalController.addView(dishDetailsView);
     let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 
@@ -34,97 +34,98 @@ window.onload = function() {
     generalController.addScreen("DETAIL", [sidebarView, dishDetailsView]);
     generalController.addScreen("OVERVIEW", [overviewView]);
     generalController.addScreen("PRINTOUT", [printoutView]);
-    //
-	// let showHome = function () {
-    //     $("#home").show();
-    // };
-    //
-	// let hideHome = function () {
-    //     $("#home").hide();
-    // };
-    //
-	// let showSidebar = function () {
-	//     $("#sidebar").show();
-    // };
-    //
-	// let hideSidebar = function () {
-	//     $("#sidebar").hide();
-    // };
-    //
-    // let showSelectDish = function () {
-    //     $("#selectDish").show();
-    // };
-    //
-    // let hideSelectDish = function () {
-    //     $("#selectDish").hide();
-    // };
-    //
-    // let showDishDetails = function (id) {
-    //     let dishDetailsView = new DishDetailsView($("#dishDetails"), model, id);
-    //     let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
-    //
-    //     $("#dishDetails").show();
-    // };
-    //
-    // let hideDishDetails = function () {
-    //     $("#dishDetails").hide();
-    // };
-    //
-    // let showDinnerOverview = function () {
-    //     $("#dinnerOverview").show();
-    // };
-    //
-    // let hideDinnerOveviw = function () {
-    //     $("#dinnerOverview").hide();
-    // };
-    //
-    // let showPrintout = function () {
-    //     $("#printout").show();
-    // };
-    //
-    // let hidePrintout = function () {
-    //     $("#printout").hide();
-    // };
-    //
-    // let hideAll = function () {
-    //     hideHome();
-    //     hideSidebar();
-    //     hideSelectDish();
-    //     hideDishDetails();
-    //     hideDinnerOveviw();
-    //     hidePrintout();
-    // };
-    //
-    // this.showHomePage = function () {
-    //     hideAll();
-    //     showHome();
-    // };
-    //
-    // this.showSelectDishPage = function () {
-    //     hideAll();
-    //     showSidebar();
-    //     showSelectDish();
-    // };
-    //
-    // this.showDishDetailsPage = function (id) {
-    //     hideAll();
-    //     showSidebar();
-    //     showDishDetails(id);
-    // };
-    //
-    // this.showDinnerOverviewPage = function () {
-    //     hideAll();
-    //     showDinnerOverview();
-    // };
-    //
-    // this.showPrintoutPage = function () {
-    //     hideAll();
-    //     showPrintout();
-    // };
-    //
-    // // Start the app with home
-    // hideAll();
-    // this.showHomePage();
+
+	let showHome = function () {
+        $("#home").show();
+    };
+
+	let hideHome = function () {
+        $("#home").hide();
+    };
+
+	let showSidebar = function () {
+	    $("#sidebar").show();
+    };
+
+	let hideSidebar = function () {
+	    $("#sidebar").hide();
+    };
+
+    let showSelectDish = function () {
+        $("#selectDish").show();
+    };
+
+    let hideSelectDish = function () {
+        $("#selectDish").hide();
+    };
+
+    let showDishDetails = function (id) {
+        model.setCurrentId(id);
+        // let dishDetailsView = new DishDetailsView($("#dishDetails"), model);
+        // let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+
+        $("#dishDetails").show();
+    };
+
+    let hideDishDetails = function () {
+        $("#dishDetails").hide();
+    };
+
+    let showDinnerOverview = function () {
+        $("#dinnerOverview").show();
+    };
+
+    let hideDinnerOveviw = function () {
+        $("#dinnerOverview").hide();
+    };
+
+    let showPrintout = function () {
+        $("#printout").show();
+    };
+
+    let hidePrintout = function () {
+        $("#printout").hide();
+    };
+
+    let hideAll = function () {
+        hideHome();
+        hideSidebar();
+        hideSelectDish();
+        hideDishDetails();
+        hideDinnerOveviw();
+        hidePrintout();
+    };
+
+    this.showHomePage = function () {
+        hideAll();
+        showHome();
+    };
+
+    this.showSelectDishPage = function () {
+        hideAll();
+        showSidebar();
+        showSelectDish();
+    };
+
+    this.showDishDetailsPage = function (id) {
+        hideAll();
+        showSidebar();
+        showDishDetails(id);
+    };
+
+    this.showDinnerOverviewPage = function () {
+        hideAll();
+        showDinnerOverview();
+    };
+
+    this.showPrintoutPage = function () {
+        hideAll();
+        showPrintout();
+    };
+
+    // Start the app with home
+    hideAll();
+    this.showHomePage();
 
     // Set buttons
     $("#newDinnerButton").click(function () {
