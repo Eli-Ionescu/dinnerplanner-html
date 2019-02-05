@@ -1,10 +1,10 @@
-class PrintoutView {
+class PrintoutView extends GeneralView{
     constructor(container, model) {
+        super(container);
         model.addObserver(this);
-        this.container = container;
         this.model = model;
 
-        this.init();
+        this.addDynamicElements();
     }
 
     addDynamicElements () {
@@ -33,10 +33,6 @@ class PrintoutView {
                          </div>`
         }
         printoutList.html(listHTML);
-    }
-
-    init () {
-        this.addDynamicElements();
     }
 
     // TODO: modify this

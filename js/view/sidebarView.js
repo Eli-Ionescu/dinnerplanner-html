@@ -1,11 +1,11 @@
 
-class SidebarView {
+class SidebarView extends GeneralView{
     constructor (container, model) {
+        super(container);
         model.addObserver(this);
-        this.container = container;
         this.model = model;
 
-        this.init();
+        this.addDynamicElements();
         this.people = document.getElementById("numberPeople");
         this.confirmButton = document.getElementById("confirmDinner");
     }
@@ -60,11 +60,6 @@ class SidebarView {
         totalPriceHTML += totalPriceValue.toString();
         totalPriceHTML += " SEK";
         totalPrice.html(totalPriceHTML);
-    }
-
-    init() {
-        // Add the initial elements
-        this.addDynamicElements();
     }
 
     // TODO: modify this

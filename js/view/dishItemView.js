@@ -1,7 +1,7 @@
-class DishItemView {
+class DishItemView extends GeneralView{
 
     constructor(container, model, id) {
-        this.container = container;
+        super(container);
         this.model = model;
         this.id = id;
         this.dish = this.model.getDish(this.id);

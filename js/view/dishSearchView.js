@@ -4,15 +4,15 @@
  * @param model
  * @constructor
  */
-class DishSearchView {
+class DishSearchView extends GeneralView{
 
     constructor(container, model, app) {
+        super(container);
         model.addObserver(this);
-        this.container = container;
         this.model = model;
         this.app = app;
 
-        this.init();
+        this.addDynamicElements();
         this.searchButton = document.getElementById("dishSearchButton");
         this.filter = document.getElementById("keyWords");
         this.type = document.getElementById("dishType");
@@ -44,10 +44,6 @@ class DishSearchView {
         dishSelect.html(dropDownTypeList);
 
         this.renderDishList();
-    }
-
-    init() {
-        this.addDynamicElements();
     }
 
     // TODO: modify it

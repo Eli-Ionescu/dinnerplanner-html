@@ -1,12 +1,12 @@
-class DishDetailsView {
+class DishDetailsView extends GeneralView{
 
     constructor(container, model, id) {
+        super(container);
         model.addObserver(this);
-        this.container = container;
         this.model = model;
         this.id = id ? id : model.getCurrentId();
 
-        this.init();
+        this.addDynamicElements();
         this.button = document.getElementById("buttonAddToMenu");
         this.backButton = document.getElementById("buttonBackToSearch");
     }
@@ -57,13 +57,10 @@ class DishDetailsView {
         dishDetailIngredients.html(dishIngredients);
     }
 
-    init() {
-        this.addDynamicElements();
-    }
-
     // TODO: modify this
     update(model, changeDetails) {
         this.model = model;
         this.addDynamicElements();
     }
+
 }

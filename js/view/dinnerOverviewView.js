@@ -1,17 +1,17 @@
-class DinnerOverviewView {
+class DinnerOverviewView extends GeneralView{
 
     constructor(container, model) {
+        super(container);
         model.addObserver(this);
-        this.container = container;
         this.model = model;
 
-        this.init();
+        this.addDynamicElements();
 
-        // find the button id that will trigger the click event
+        // The button id that will trigger the click event
         this.button = document.getElementById("buttonFullRecipe");
     }
 
-    addDynamicElements () {
+    addDynamicElements() {
         let nrPeople = this.container.find("#numberPeopleOverview");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
@@ -43,14 +43,9 @@ class DinnerOverviewView {
         dinnerList.html(dinnerListHTML);
     }
 
-    init() {
-        this.addDynamicElements();
-    }
-
     // TODO: modify this
     update(model, changeDetails) {
         this.model = model;
         this.addDynamicElements();
     }
-
 }
