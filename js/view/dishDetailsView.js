@@ -4,7 +4,7 @@ class DishDetailsView {
         model.addObserver(this);
         this.container = container;
         this.model = model;
-        this.id = id;
+        this.id = id ? id : model.getCurrentId();
 
         this.init();
         this.button = document.getElementById("buttonAddToMenu");

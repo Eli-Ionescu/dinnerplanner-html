@@ -7,6 +7,15 @@ class DinnerModel extends Observable{
 		this.numberOfGuests = 3;
         this.selectedDishes = [];
         this.dishes = dishesConst;
+        this.currentId = null;
+    }
+
+    setCurrentId (id) {
+        this.currentId = id;
+    }
+
+    getCurrentId (){
+        return this.currentId;
     }
 
 	setNumberOfGuests (num) {

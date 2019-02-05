@@ -52,4 +52,5 @@ class DinnerOverviewView {
         this.model = model;
         this.addDynamicElements();
     }
+
 }
