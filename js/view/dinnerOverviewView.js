@@ -44,7 +44,7 @@ class DinnerOverviewView extends GeneralView{
     }
 
     // TODO: modify this
-    update(model, changeDetails) {
+    update(model) {
         this.model = model;
         this.addDynamicElements();
     }
