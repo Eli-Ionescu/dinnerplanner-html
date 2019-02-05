@@ -33,6 +33,7 @@ window.onload = function() {
     let printoutView = new PrintoutView(document.getElementById("printout"), model);
     generalController.addView(printoutView);
 
+    // Add all the screens
     generalController.addScreen("HOME", [homeView]);
     generalController.addScreen("SEARCH", [sidebarView, dishSearchView]);
     generalController.addScreen("DETAIL", [sidebarView, dishDetailsView]);

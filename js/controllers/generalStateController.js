@@ -9,15 +9,19 @@ class GeneralStateController {
             view.hide()
         }
     }
+
     addView(view) {
         this.views.push(view)
     }
+
     addScreen(name, viewsToShow) {
         this.screens[name] = viewsToShow;
     }
+
     showScreen(name) {
-        hideAll()
-        for(let view of this.views){
+        hideAll();
+        let views = this.screens[name];
+        for(let view of views){
             view.show()
         }
     }
