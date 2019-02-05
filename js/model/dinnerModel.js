@@ -99,10 +99,18 @@ class DinnerModel extends Observable{
     getAllDishes (type, filter) {
         return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search",{
             headers:{
-                'X-Mashape-Key': "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767"
+                'X-Mashape-Key': API_KEY
             }
         }).then(response => response.json())
             .then(data => data.results)
+    }
+
+    getDishDescription(id) {
+        return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id +"/summary",{
+            headers:{
+                'X-Mashape-Key': API_KEY
+            }
+        }).then(response => response.json())
     }
 
     // getAllDishes (type,filter) {

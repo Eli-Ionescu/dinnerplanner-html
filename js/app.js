@@ -71,7 +71,7 @@ window.onload = function() {
     };
 
     // Start the app with home
-    this.showHomePage();
+    this.showDishDetailsPage();
 
     // Set buttons
     $("#newDinnerButton").click(function () {
