@@ -13,7 +13,7 @@ class DishDetailsView extends GeneralView{
 
     addDynamicElements () {
         let dishDetailDescription = this.container.querySelector("#dishDescription");
-        let dish = this.model.getDish(this.id);
+        let dish = this.model.getDish(this.model.getCurrentId());
         let dishDescription = `<h3 id="dishNameID">${dish.name}</h3>
                             <div class="row" id="imageDetails">
                                 <img class="img-thumbnail" src="images/${dish.image}" alt=${dish.name}>
