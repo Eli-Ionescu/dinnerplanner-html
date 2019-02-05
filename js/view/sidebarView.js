@@ -26,34 +26,6 @@ class SidebarView {
         return span.id.replace("delete", "");
     }
 
-    addInitialElments () {
-        this.container.html(`<div id="row" id="sidebarHeader">
-                <h3 class="col-xs-4">My Dinner</h3>
-                <div id="button_collapse" class="hidden-sm-up col-xs-4">
-                    <i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#innerSidebar"></i>
-                </div>
-            </div>
-            <div class="hidden-xs sidebar" id="innerSidebar">
-                <label for="numberPeople" class="people">People:</label>
-                <select id="numberPeople">
-                </select>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Dish Name</th>
-                        <th scope="col">Cost</th>
-                    </tr>
-                    </thead>
-                    <tbody id="selectedDishTableBody">
-                    </tbody>
-                </table>
-                <p align="right" id="totalPrice"></p>
-                <button align="middle" class="button" id="confirmDinner">
-                    Confirm Dinner
-                </button>
-            </div>`);
-    }
-
     addDynamicElements () {
         // Selection menu for number of people
         let numberPeopleSelect = this.container.find("#numberPeople");
@@ -92,10 +64,10 @@ class SidebarView {
 
     init() {
         // Add the initial elements
-        this.addInitialElments();
         this.addDynamicElements();
     }
 
+    // TODO: modify this
     update (model, changeDetails) {
         this.model = model;
         this.addDynamicElements();

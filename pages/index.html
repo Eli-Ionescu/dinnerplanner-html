@@ -9,7 +9,7 @@
 	  <!-- Bootstrap CSS -->
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
-	  <!--Ajax scripy for side menu collapse-->
+	  <!--Ajax script for side menu collapse-->
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	  <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
@@ -24,14 +24,99 @@
 		<div id="banner">
 			<h1>Dinner planner</h1>
 		</div>
-        <div id="home"></div>
+        <!--<div id="home"></div>-->
+		<div class="text-center" id="home">
+			<p>Here you can plan your dinner</p>
+			<button class="button" id="newDinnerButton">Create new dinner</button>
+		</div>
         <div id="main" class="container">
 			<div class="row" id="page">
-				<div class="col-md-3" id="sidebar" ></div>
-				<div class="col-md-9" id="selectDish"></div>
-				<div class="col-md-9" id="dishDetails"></div>
-				<div id="dinnerOverview"></div>
-				<div id="printout"></div>
+				<div class="col-md-3" id="sidebar" >
+					<div id="row" id="sidebarHeader">
+						<h3 class="col-xs-4">My Dinner</h3>
+						<div id="button_collapse" class="hidden-sm-up col-xs-4">
+							<i class="fa fa-bars fa-2x" aria-hidden="true" data-toggle="collapse" data-target="#innerSidebar"></i>
+						</div>
+					</div>
+					<div class="hidden-xs sidebar" id="innerSidebar">
+						<label for="numberPeople" class="people">People:</label>
+						<select id="numberPeople">
+						</select>
+						<table class="table">
+							<thead>
+							<tr>
+								<th scope="col">Dish Name</th>
+								<th scope="col">Cost</th>
+							</tr>
+							</thead>
+							<tbody id="selectedDishTableBody">
+							</tbody>
+						</table>
+						<p align="right" id="totalPrice"></p>
+						<button align="middle" class="button" id="confirmDinner">
+							Confirm Dinner
+						</button>
+					</div>
+				</div>
+				<div class="col-md-9" id="selectDish">
+					<h2>Find a dish</h2>
+					<input type="search" id="keyWords" placeholder="Enter key words">
+					<label for="dishType" class="type" >Type</label>
+					<select id="dishType"></select>
+					<button id="dishSearchButton" class="button-search">Search</button>
+					<hr>
+					<div class="container">
+						<div class="row" id="dishList">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9" id="dishDetails">
+					<div class="container-fluid" id="dishDetailsContainer">
+						<div class="row">
+							<div class="col-md-6">
+								<div id="dishDescription">
+								</div>
+								<button class="button" id="buttonBackToSearch">Back to search</button>
+							</div>
+							<!--Third column with the ingredients-->
+							<div class="col-md-6" id="dishIngredients">
+								<p align="right"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="dinnerOverview">
+					<div class="container">
+						<div class="row">
+							<h3 class="text-left col-md-6" id="numberPeopleOverview"></h3>
+							<div class="text-right col-md-6">
+								<button class="button button-back" type="button" id="buttonGoBackEditDinner">Go back and edit dinner</button>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="container">
+						<div class="row" id="dinnerList">
+						</div>
+					</div>
+					<hr>
+					<div class="text-center">
+						<button id="buttonFullRecipe" class="button"> Print full recipe </button>
+					</div>
+				</div>
+				<div id="printout">
+					<div class="container">
+						<div class="row">
+							<h3 class="text-left col-md-6" id="numberPeoplePrintout"></h3>
+							<div class="text-right col-md-6">
+								<button class="button button-back" type="button" id="buttonBackAndEdit">Go back and edit dinner</button>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="container" id="printoutList">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -52,7 +137,6 @@
 	<script src="../js/view/printoutView.js"></script>
 	<script src="../js/view/dinnerOverviewView.js"></script>
 	<script src="../js/view/dishDetailsView.js"></script>
-	<script src="../js/view/homeView.js"></script>
 	<script src="../js/controllers/dinnerOverviewController.js"></script>
     <script src="../js/controllers/dishDetailsController.js"></script>
     <script src="../js/controllers/dishSearchController.js"></script>

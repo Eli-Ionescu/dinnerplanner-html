@@ -11,28 +11,8 @@ class DinnerOverviewView {
         this.button = document.getElementById("buttonFullRecipe");
     }
 
-    addInitialElements () {
-        this.container.html(`<div class="container">
-            <div class="row">
-                <h3 class="text-left col-md-6" id="numberPeople"></h3>
-                <div class="text-right col-md-6">
-                    <button class="button button-back" type="button" id="buttonGoBackEditDinner">Go back and edit dinner</button>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="container">
-            <div class="row" id="dinnerList">
-            </div>
-        </div>
-        <hr>
-        <div class="text-center">
-            <button id="buttonFullRecipe" class="button"> Print full recipe </button>
-        </div>`);
-    }
-
     addDynamicElements () {
-        let nrPeople = this.container.find("#numberPeople");
+        let nrPeople = this.container.find("#numberPeopleOverview");
         let nrPeopleValue = this.model.getNumberOfGuests();
         let nrPeopleString = `My Dinner: ${nrPeopleValue} people`;
         nrPeople.html(nrPeopleString);
@@ -64,10 +44,10 @@ class DinnerOverviewView {
     }
 
     init() {
-        this.addInitialElements();
         this.addDynamicElements();
     }
 
+    // TODO: modify this
     update(model, changeDetails) {
         this.model = model;
         this.addDynamicElements();

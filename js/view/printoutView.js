@@ -7,22 +7,6 @@ class PrintoutView {
         this.init();
     }
 
-    addInitialElements () {
-        this.container.html(
-            `<div class="container">
-                <div class="row">
-                    <h3 class="text-left col-md-6" id="numberPeoplePrintout"></h3>
-                    <div class="text-right col-md-6">
-                        <button class="button button-back" type="button" id="buttonBackAndEdit">Go back and edit dinner</button>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="container" id="printoutList">
-            </div>`
-        );
-    }
-
     addDynamicElements () {
         let nrPeople = this.container.find("#numberPeoplePrintout");
         let nrPeopleValue = this.model.getNumberOfGuests();
@@ -52,10 +36,10 @@ class PrintoutView {
     }
 
     init () {
-        this.addInitialElements();
         this.addDynamicElements();
     }
 
+    // TODO: modify this
     update () {
         this.addDynamicElements();
     }

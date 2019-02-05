@@ -11,22 +11,6 @@ class DishDetailsView {
         this.backButton = document.getElementById("buttonBackToSearch");
     }
 
-    addInitialElements() {
-        this.container.html(`<div class="container-fluid" id="dishDetailsContainer">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="dishDescription">
-                    </div>
-                    <button class="button" id="buttonBackToSearch">Back to search</button>
-                </div>
-                <!--Third column with the ingredients-->
-                <div class="col-md-6" id="dishIngredients">
-                        <p align="right"></p>
-                </div>
-            </div>
-        </div>`);
-    }
-
     addDynamicElements () {
         let dishDetailDescription = this.container.find("#dishDescription");
         let dish = this.model.getDish(this.id);
@@ -74,10 +58,10 @@ class DishDetailsView {
     }
 
     init() {
-        this.addInitialElements();
         this.addDynamicElements();
     }
 
+    // TODO: modify this
     update(model, changeDetails) {
         this.model = model;
         this.addDynamicElements();

@@ -10,7 +10,7 @@ window.onload = function() {
 	// And create the instance of ExampleView
 	// var exampleView = new ExampleView($("#exampleView"));
 
-    let homeView = new HomeView($("#home"));
+    // let homeView = new HomeView($("#home"));
 
     // Select dish
     let sidebarView = new SidebarView($("#sidebar"), model, this);

@@ -32,22 +32,6 @@ class DishSearchView {
         return dishElement.id.replace("dish", "");
     }
 
-    addInitialElements () {
-        this.container.html(
-            `<h2>Find a dish</h2>
-                <input type="search" id="keyWords" placeholder="Enter key words">
-                <label for="dishType" class="type" >Type</label>
-                <select id="dishType"></select>
-                <button id="dishSearchButton" class="button-search">Search</button>
-                <hr>
-                <div class="container">
-                    <div class="row" id="dishList">
-                    </div>
-                </div>
-            `
-        );
-    }
-
     addDynamicElements () {
         // Drop-down list for dish types
         let dishSelect = this.container.find("#dishType");
@@ -63,10 +47,10 @@ class DishSearchView {
     }
 
     init() {
-        this.addInitialElements();
         this.addDynamicElements();
     }
 
+    // TODO: modify it
     update (model, changeDetails) {
         this.model = model;
         // get the keywords and the filter
