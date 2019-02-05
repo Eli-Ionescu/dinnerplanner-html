@@ -44,8 +44,7 @@ class DishDetailsView extends GeneralView{
 
         dishIngredients += `</tbody>
                     </table>
-                    <hr>
-                    <button class="button-add-to-menu" id="buttonAddToMenu">Add to menu</button>`;
+                    `;
 
         // Compute total
         let dishPrice = this.model.getDishPrice(dish.id);
@@ -59,6 +58,7 @@ class DishDetailsView extends GeneralView{
 
     // TODO: modify this
     update(model, changeDetails) {
+        this.id = model.getCurrentId();
         this.model = model;
         this.addDynamicElements();
     }
