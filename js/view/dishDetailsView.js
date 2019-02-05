@@ -16,7 +16,9 @@ class DishDetailsView extends GeneralView{
         let dish = this.model.getDish(this.model.getCurrentId());
 
         let dishID = this.model.getCurrentId();
+        console.log("ID " + dishID);
         this.model.getDishDescription(dishID).then(dish => {
+            console.log(dish.title);
             let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
                             <div class="row" id="imageDetails">
                                 <img class="img-thumbnail" src="images/${dish.image}" alt=${dish.title}>

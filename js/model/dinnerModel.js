@@ -114,7 +114,6 @@ class DinnerModel extends Observable{
 
     filterResults(results, filter) {
         // Filter the data based on the filter
-		console.log(results);
         return results.filter (function (dish) {
             let found = false;
             if (dish.title.indexOf(filter) != 1) {
