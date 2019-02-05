@@ -47,11 +47,11 @@ class SidebarView extends GeneralView{
         let allSelectedDishes = this.model.getAllSelectedDishes();
         let selectedDishHTML = "";
 
-        for(let i in allSelectedDishes){
+        for(let dish of allSelectedDishes){
             selectedDishHTML += `<tr>
-                                    <td scope=row>${allSelectedDishes[i].name}</td>
-                                    <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(allSelectedDishes[i].id)}</td>
-                                    <td><span id="delete${allSelectedDishes[i].id}"class="close">&times;</span></td>
+                                    <td scope=row>${dish.title}</td>
+                                    <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(dish.id)}</td>
+                                    <td><span id="delete${dish.id}"class="close">&times;</span></td>
                                 </tr>`;
         }
         selectedDish.innerHTML = selectedDishHTML;

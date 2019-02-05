@@ -35,10 +35,7 @@ class DishSearchView extends GeneralView{
     renderDishList (type, filter) {
         // List with all the dishes
         let dishList = document.getElementById("dishList");
-        // let allDishes = this.model.getAllDishes(type, filter);
-
         this.model.getAllDishes(type, filter).then(allDishes => {
-            console.log(allDishes);
             dishList.innerHTML = "";
             allDishes.forEach(dish => {
                 let dishItem = new DishItemView(dishList, this.model, dish.id);
