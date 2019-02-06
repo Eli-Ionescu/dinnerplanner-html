@@ -6,12 +6,29 @@ class DinnerModel extends Observable{
 		super();
 		this.numberOfGuests = 3;
         this.selectedDishes = [];
-        this.dishes = [];
-        this.getAllDishes().then(dishes => this.dishes = dishes);
         this.dishTypes = dishTypes;
 
+        this.dishes = [];
+        this.baseUri = "";
+
+        this.getRecepiesSearch()
+          .then(data => {
+            console.log(data);
+            this.dishes = data.results;
+            this.baseUri = data.baseUri;
+          })
+          .catch(error => console.log("does not work"));
         // Initialise the current id with the first id in the dish list
         this.currentId = 0;
+        this.dummyDish = constDish;
+    }
+
+    getRecepiesSearch () {
+      return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search`, {
+          headers: {
+              'X-Mashape-Key': "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767"
+          }
+      }).then(response => response.json());
     }
 
     setCurrentId (id) {
@@ -27,7 +44,7 @@ class DinnerModel extends Observable{
 		this.numberOfGuests = num;
 		this.notifyObservers("numberOfGuests");
 	}
-	
+
 	getNumberOfGuests () {
 		return this.numberOfGuests;
 	}
@@ -102,8 +119,8 @@ class DinnerModel extends Observable{
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
     getAllDishes (type, filter) {
-    	// Get all the dishes of the certain type
-		if (type && type != "All") {
+    	  // Get all the dishes of the certain type
+		    if (type && (type != "All")) {
             return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?type=${type}`, {
                 headers: {
                     'X-Mashape-Key': API_KEY
@@ -111,14 +128,14 @@ class DinnerModel extends Observable{
             }).then(response => response.json())
                 .then(data => this.filterResults(data.results, filter));
         } else {
-			// Get all the dishes
-            return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search`, {
-                headers: {
-                    'X-Mashape-Key': API_KEY
-                }
-            }).then(response => response.json())
-                .then(data => this.filterResults(data.results, filter));
-		}
+    			// Get all the dishes
+                return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search`, {
+                    headers: {
+                        'X-Mashape-Key': API_KEY
+                    }
+                }).then(response => response.json())
+                    .then(data => this.filterResults(data.results, filter));
+    		}
     }
 
     filterResults(results, filter) {
@@ -133,22 +150,23 @@ class DinnerModel extends Observable{
     }
 
     getDishDescription(id) {
-        return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id +"/summary",{
+        return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`,{
             headers:{
                 'X-Mashape-Key': API_KEY
             }
-        }).then(response => response.json())
+        }).then(response => response.json());
     }
 
 
 	//function that returns a dish of specific ID
-	getDish (id) {
-	  	for(let dish of this.dishes){
-            if(dish.id == id) {
-                return dish;
+  getDish (id) {
+	  for(let key in this.dishes){
+			if(this.dishes[key].id == id) {
+				return this.dishes[key];
 			}
 		}
-	}
+    return this.dummyDish;
+  }
 
 	// Return a list with all the dish types
 	getAllDishTypes () {
@@ -172,3 +190,9 @@ class DinnerModel extends Observable{
 
 const dishTypes = ["main course", "side dish", "dessert", "appetizer", "salad", "bread",
     "breakfast", "soup", "beverage", "sauce", "drink"];
+
+const constDish = {
+  id: 0,
+  title: "",
+  image: ""
+}

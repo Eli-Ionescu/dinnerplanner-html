@@ -11,23 +11,33 @@ class DishDetailsView extends GeneralView{
         this.backButton = document.getElementById("buttonBackToSearch");
     }
 
+    updateDescription (dish) {
+      console.log(dish);
+      let elemenet = this.container.querySelector("#dishDescriptionP");
+      console.log(dish);
+      elemenet.innerHTML = dish["summary"];
+    }
+
     addDynamicElements () {
         let dishDetailDescription = this.container.querySelector("#dishDescription");
-        let dish = this.model.getDish(this.model.getCurrentId());
-
         let dishID = this.model.getCurrentId();
-        console.log("ID " + dishID);
-        this.model.getDishDescription(dishID).then(dish => {
-            console.log(dish.id);
-            let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
-                            <div class="row" id="imageDetails">
-                                <img class="img-thumbnail" src="images/${dish.image}" alt=${dish.title}>
-                            </div>
-                            <p> ${dish['summary']}</p>`;
-            dishDetailDescription.innerHTML = dishDescription;
-        }).catch( error => {
+        let dish = this.model.getDish(dishID);
 
-        });
+        let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
+                        <div class="row" id="imageDetails">
+                            <img id="imageDetailsId" class="img-thumbnail" src="${this.model.baseUri}${dish.image}" alt="${dish.title}">
+                        </div>
+                        <p id="dishDescriptionP"></p>`;
+        dishDetailDescription.innerHTML = dishDescription;
+
+        // update description
+        this.model.getDishDescription(dishID)
+          .then(dish => this.updateDescription(dish))
+          .catch( error => {console.error("dish description update failed")});
+
+
+
+        // update title and image path
 
         // let dishDescription = `<h3 id="dishNameID">${dish.name}</h3>
         //                     <div class="row" id="imageDetails">

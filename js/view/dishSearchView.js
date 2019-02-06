@@ -36,13 +36,16 @@ class DishSearchView extends GeneralView{
         // List with all the dishes
         let dishList = document.getElementById("dishList");
         this.model.getAllDishes(type, filter).then(allDishes => {
+            console.log("all dishes");
+            console.log(allDishes);
             dishList.innerHTML = "";
             allDishes.forEach(dish => {
-                let dishItem = new DishItemView(dishList, this.model, dish.id);
+              console.log(dish.title);
+                let dishItem = new DishItemView(dishList, this.model, dish.id, dish.title, dish.image);
                 new DishItemController(dishItem.item, dish, this.app);
             });
         }).catch( error => {
-
+          console.log("reder dish list does not work");
         });
     }
 

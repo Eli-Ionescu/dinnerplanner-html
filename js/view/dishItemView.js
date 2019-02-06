@@ -1,10 +1,12 @@
 class DishItemView extends GeneralView{
 
-    constructor(container, model, id) {
+    constructor(container, model, id, title, image) {
         super(container);
         this.model = model;
         this.id = id;
-        this.dish = this.model.getDish(this.id);
+        this.title = title;
+        this.image = image;
+        console.log(this.title);
         this.item = this.createNewDishItem();
     }
 
@@ -14,9 +16,9 @@ class DishItemView extends GeneralView{
         item.setAttribute("class", "col-md-2 dishItem");
         item.innerHTML = `<div>
                                 <a>
-                                    <img class="img-thumbnail" src="images/${this.dish.image}" alt="" ${this.dish.title}>
+                                    <img class="img-thumbnail" src="${this.model.baseUri}${this.image}" alt="${this.title}">
                                     <div align="center" class="caption">
-                                        <p> ${this.dish.title}<\p>
+                                        <p>${this.title}<\p>
                                     </div>
                                 </a>
                             </div>`;
