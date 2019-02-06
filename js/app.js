@@ -71,7 +71,7 @@ window.onload = function() {
     };
 
     // Start the app with home
-    this.showDishDetailsPage();
+    this.showHomePage();
 
     // Set buttons
     $("#newDinnerButton").click(function () {
@@ -89,4 +89,6 @@ window.onload = function() {
     $("#buttonGoBackEditDinner").click(function () {
         showSelectDishPage();
     });
+
+    // $(".se-pre-con").fadeOut("slow");
 };

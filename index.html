@@ -14,6 +14,10 @@
 	  <script src="https://use.fontawesome.com/035b2a4f2c.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
+	  <!--Scripts for the loading icon-->
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
 	  <!--My CSS-->
 	  <link rel="stylesheet" type="text/css" href="mystyle.css">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,21 +75,23 @@
 					</div>
 				</div>
 				<div class="col-md-9" id="dishDetails">
-					<div class="container-fluid" id="dishDetailsContainer">
-						<div class="row">
-							<div class="col-md-6">
-								<div id="dishDescription">
+					<div class="se-pre-con">
+						<div class="container-fluid" id="dishDetailsContainer">
+							<div class="row">
+								<div class="col-md-6">
+									<div id="dishDescription">
+									</div>
+									<button class="button" id="buttonBackToSearch">Back to search</button>
 								</div>
-								<button class="button" id="buttonBackToSearch">Back to search</button>
-							</div>
-							<!--Third column with the ingredients-->
-							<div class="col-md-6" >
-                                <div id="dishIngredients">
+								<!--Third column with the ingredients-->
+								<div class="col-md-6" >
+									<div id="dishIngredients">
 
-                                </div>
-                                <p id="detailsTotal" align="right"></p>
-                                <hr>
-                                <button class="button-add-to-menu" id="buttonAddToMenu">Add to menu</button>
+									</div>
+									<p id="detailsTotal" align="right"></p>
+									<hr>
+									<button class="button-add-to-menu" id="buttonAddToMenu">Add to menu</button>
+								</div>
 							</div>
 						</div>
 					</div>

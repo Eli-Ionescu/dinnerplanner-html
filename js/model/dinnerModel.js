@@ -64,6 +64,15 @@ class DinnerModel extends Observable{
 		return allIngredients;
 	}
 
+	// Get all the ingredients for a specific dish ID
+	// getIngredients (id) {
+	// 	return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk?ids=592479",{
+	// 		headers:{
+	// 			'X-Mashape-Key': API_KEY
+	// 		}
+	// 	}).then(response => response.json())
+	// }
+
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	getTotalMenuPrice () {
 		let total = 0;
@@ -131,24 +140,6 @@ class DinnerModel extends Observable{
         }).then(response => response.json())
     }
 
-    // getAllDishes (type,filter) {
-	//   return this.dishes.filter(function(dish) {
-	// 	let found = true;
-	// 	if(filter){
-	// 		found = false;
-	// 		dish.ingredients.forEach(function(ingredient) {
-	// 			if(ingredient.name.indexOf(filter)!=-1) {
-	// 				found = true;
-	// 			}
-	// 		});
-	// 		if(dish.name.indexOf(filter) != -1)
-	// 		{
-	// 			found = true;
-	// 		}
-	// 	}
-    //     return (type == "All" || !type) ? found : (dish.type == type && found);
-	//   });
-	// }
 
 	//function that returns a dish of specific ID
 	getDish (id) {
