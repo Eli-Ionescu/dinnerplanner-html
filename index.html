@@ -28,7 +28,7 @@
 		<div id="banner">
 			<h1>Dinner planner</h1>
 		</div>
-        <!--<div id="home"></div>-->
+		<div class="se-pre-con" id="loader"></div>
 		<div class="text-center" id="home">
 			<p>Here you can plan your dinner</p>
 			<button class="button" id="newDinnerButton">Create new dinner</button>
@@ -66,7 +66,9 @@
 					<h2>Find a dish</h2>
 					<input type="search" id="keyWords" placeholder="Enter key words">
 					<label for="dishType" class="type" >Type</label>
-					<select id="dishType"></select>
+					<select id="dishType">
+						<option value=> All </option>
+					</select>
 					<button id="dishSearchButton" class="button-search">Search</button>
 					<hr>
 					<div class="container">
@@ -78,7 +80,6 @@
 					<div class="container-fluid" id="dishDetailsContainer">
 							<div class="row">
 								<div class="col-md-6">
-									<div class="se-pre-con"></div>
 									<div id="dishDescription">
 									</div>
 									<button class="button" id="buttonBackToSearch">Back to search</button>
@@ -137,7 +138,7 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
-	<script src="js/apiKey.js"></script>
+	<script src="js/dish.js"></script>
 	<script src="js/model/observable.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
     <script src="js/view/generalView.js"></script>
@@ -148,12 +149,14 @@
 	<script src="js/view/printoutView.js"></script>
 	<script src="js/view/dinnerOverviewView.js"></script>
 	<script src="js/view/dishDetailsView.js"></script>
+	<script src="js/view/loadingView.js"></script>
 	<script src="js/controllers/dinnerOverviewController.js"></script>
     <script src="js/controllers/dishDetailsController.js"></script>
     <script src="js/controllers/dishSearchController.js"></script>
     <script src="js/controllers/dishSidebarController.js"></script>
     <script src="js/controllers/dishItemController.js"></script>
     <script src="js/controllers/generalStateController.js"></script>
+    <script src="js/controllers/homeController.js"></script>
 	<script src="js/apiKey.js"></script>
   </body>
 </html>

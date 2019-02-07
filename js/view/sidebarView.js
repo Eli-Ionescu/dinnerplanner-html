@@ -36,7 +36,6 @@ class SidebarView extends GeneralView{
             selectPeople += (i == this.model.getNumberOfGuests()) ?
                 `<option selected>${i}</option>` :
                 `<option>${i}</option>`;
-
         }
         numberPeopleSelect.innerHTML = selectPeople;
     }
@@ -50,7 +49,7 @@ class SidebarView extends GeneralView{
         for(let dish of allSelectedDishes){
             selectedDishHTML += `<tr>
                                     <td scope=row>${dish.title}</td>
-                                    <td>${this.model.getNumberOfGuests() * this.model.getDishPrice(dish.id)}</td>
+                                    <td>${this.model.getNumberOfGuests() * dish.price}</td>
                                     <td><span id="delete${dish.id}"class="close">&times;</span></td>
                                 </tr>`;
         }

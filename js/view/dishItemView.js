@@ -15,7 +15,7 @@ class DishItemView extends GeneralView{
         item.setAttribute("class", "col-md-2 dishItem");
         item.innerHTML = `<div>
                                 <a>
-                                    <img class="img-thumbnail" src="${this.model.baseUri}${this.image}" alt="${this.title}">
+                                    <img class="img-thumbnail" src="${this.image}" alt="${this.title}">
                                     <div align="center" class="caption">
                                         <p>${this.title}<\p>
                                     </div>

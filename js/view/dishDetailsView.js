@@ -6,13 +6,6 @@ class DishDetailsView extends GeneralView{
         this.model = model;
         this.id = id ? id : model.getCurrentId();
 
-        this.ingredients = [];
-        // this.getRecepiesSearch()
-        //     .then(data => {
-        //         this.dishes = data.results;
-        //         this.baseUri = data.baseUri;
-        //     })
-        //     .catch(error => console.error(error));
         this.addDynamicElements();
         this.button = document.getElementById("buttonAddToMenu");
         this.backButton = document.getElementById("buttonBackToSearch");
@@ -20,8 +13,8 @@ class DishDetailsView extends GeneralView{
     }
 
     updateDescription (dish) {
-      let elemenet = this.container.querySelector("#dishDescriptionP");
-      elemenet.innerHTML = dish["summary"];
+      let element = this.container.querySelector("#dishDescriptionP");
+      element.innerHTML = dish.description;
     }
 
     updateIngredients(ingredients, totalIngredientsPrice) {
@@ -31,15 +24,11 @@ class DishDetailsView extends GeneralView{
                         <table class="table">
                         <tbody>`;
 
-        this.ingredients.forEach(ingredient => {
-            console.log(ingredient);
+        ingredients.forEach(ingredient => {
             let totalQuantity = ingredient.amount * nrPeople;
-            // let totalPrice = ingredients[i].price * nrPeople;
             dishIngredients += `<tr>
                         <td scope="row"> ${totalQuantity} ${ingredient.unit} </td>
                         <td>${ingredient.name}</td>
-                        <!--<td> SEK </td>-->
-                        <!--<td> bla</td>-->
                     </tr>`;
         });
         dishIngredients += `</tbody>
@@ -59,24 +48,14 @@ class DishDetailsView extends GeneralView{
         let dish = this.model.getDish(dishID);
 
         let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
-                        <div class="row" id="imageDetails">
-                            <img id="imageDetailsId" class="img-thumbnail" src="${this.model.baseUri}${dish.image}" alt="${dish.title}">
+                        <div id="imageDetails">
+                            <img id="imageDetailsId" class="img-thumbnail" src="${dish.image}" alt="${dish.title}">
                         </div>
                         <p id="dishDescriptionP"></p>`;
         dishDetailDescription.innerHTML = dishDescription;
 
-        // update description
-        this.model.getDishDescription(dishID)
-          .then(dish => this.updateDescription(dish))
-          .catch( error => {});
-
-        this.model.getDishIngredients(dishID)
-            .then(data => {
-                this.ingredients = data[0].extendedIngredients;
-                this.totalIngredientsPrice = data[0].pricePerServing;
-                this.updateIngredients(this.ingredients, this.totalIngredientsPrice);
-            })
-            .catch(error => {});
+        this.updateDescription(dish);
+        this.updateIngredients(dish.ingredients, dish.price);
 
         $(".se-pre-con").fadeOut("slow");
     }
@@ -89,5 +68,4 @@ class DishDetailsView extends GeneralView{
             this.addDynamicElements();
         }
     }
-
 }

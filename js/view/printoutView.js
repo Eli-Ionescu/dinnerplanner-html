@@ -24,15 +24,15 @@ class PrintoutView extends GeneralView{
         for (let i in selectedDishes) {
             listHTML += `<div id="dinnerItem" class="row">
                              <div class="col-md-2" id="imageContainer">
-                               <img class="img-thumbnail" src="images/${selectedDishes[i].image}">
+                                <img class="img-thumbnail" src="${selectedDishes[i].image}">
                              </div>
-                             <div class="col-md-4" id="descriprtion">
-                                <h2>${selectedDishes[i].name}</h2>
+                             <div class="col-md-4" id="description">
+                                <h2>${selectedDishes[i].title}</h2>
                                 <p>${selectedDishes[i].description}</p>
                              </div>
                              <div class="col-md-6" id="preparation">
                                 <h3>PREPARATION</h3>
-                                <p>${selectedDishes[i].description}</p>
+                                <p>${selectedDishes[i].preparation}</p>
                              </div>
                          </div>`
         }

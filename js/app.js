@@ -3,9 +3,6 @@ window.onload = function() {
     //We instantiate our model
     let model = new DinnerModel();
     model.setNumberOfGuests(5);
-    // model.addDishToMenu(262682);
-    // model.addDishToMenu(227961);
-    // model.addDishToMenu(602708);
 
     // Initialise the general state controller
     let generalController = new GeneralStateController();
@@ -13,6 +10,7 @@ window.onload = function() {
     // Create the views
     let homeView = new HomeView(document.getElementById("home"));
     generalController.addView(homeView);
+    let homeController = new HomeController(homeView, model, generalController);
 
     let sidebarView = new SidebarView(document.getElementById("sidebar"), model, this);
     generalController.addView(sidebarView);
@@ -33,13 +31,16 @@ window.onload = function() {
     let printoutView = new PrintoutView(document.getElementById("printout"), model);
     generalController.addView(printoutView);
 
+    let loadingView = new LoadingView(document.getElementById("loader"));
+    generalController.addView(loadingView);
+
     // Add all the screens
     generalController.addScreen("HOME", [homeView]);
     generalController.addScreen("SEARCH", [sidebarView, dishSearchView]);
     generalController.addScreen("DETAIL", [sidebarView, dishDetailsView]);
     generalController.addScreen("OVERVIEW", [overviewView]);
     generalController.addScreen("PRINTOUT", [printoutView]);
-
+    generalController.addScreen("LOADING", [loadingView]);
 
     this.hideAll = function () {
        generalController.hideAll();
@@ -75,8 +76,10 @@ window.onload = function() {
 
     // Set buttons
     $("#newDinnerButton").click(function () {
-        showSelectDishPage();
+        homeController.loadData();
+        document.getElementById("dishSearchButton").click();
     });
+
 
     $("#buttonBackToSearch").click(function () {
        showSelectDishPage();

@@ -22,7 +22,7 @@ class DishSearchView extends GeneralView{
         // Drop-down list for dish types
         let dishSelect = this.container.querySelector("#dishType");
         let allDishTypes = this.model.getAllDishTypes();
-        let dropDownTypeList = `<option value=> All </option>`;
+        let dropDownTypeList = dishSelect.innerHTML;
 
         allDishTypes.forEach((dishType => {
             dropDownTypeList += `<option value=>${dishType}</option>`;
@@ -35,13 +35,11 @@ class DishSearchView extends GeneralView{
     renderDishList (type, filter) {
         // List with all the dishes
         let dishList = document.getElementById("dishList");
-        this.model.getAllDishes(type, filter).then(allDishes => {
-            dishList.innerHTML = "";
-            allDishes.forEach(dish => {
-                let dishItem = new DishItemView(dishList, this.model, dish.id, dish.title, dish.image);
-                new DishItemController(dishItem.item, dish, this.app);
-            });
-        }).catch( error => {
+        let allDishes = this.model.getAllDishes(type, filter);
+        dishList.innerHTML = "";
+        allDishes.forEach(dish => {
+            let dishItem = new DishItemView(dishList, this.model, dish.id, dish.title, dish.image);
+            new DishItemController(dishItem.item, dish, this.app);
         });
     }
 
