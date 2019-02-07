@@ -6,7 +6,6 @@ class DishItemView extends GeneralView{
         this.id = id;
         this.title = title;
         this.image = image;
-        console.log(this.title);
         this.item = this.createNewDishItem();
     }
 

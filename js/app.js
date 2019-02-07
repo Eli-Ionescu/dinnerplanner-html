@@ -89,6 +89,4 @@ window.onload = function() {
     $("#buttonGoBackEditDinner").click(function () {
         showSelectDishPage();
     });
-
-    // $(".se-pre-con").fadeOut("slow");
 };

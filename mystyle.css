@@ -6,10 +6,6 @@
     margin-top: 30px;
 }
 
-/*#sidebar {*/
-    /*margin-left: -100px;*/
-/*}*/
-
 .people {
     margin: 30px 0 30px 0;
 }
@@ -84,10 +80,6 @@
     text-align:  right;
 }
 
-.sideMenu {
-    /*padding: 10px;*/
-}
-
 #listHeader {
     background-color: #c5c3be;
 }
@@ -102,7 +94,6 @@
 }
 
 #confirmDinner {
-    /*Change this*/
     align-self: center;
 }
 
@@ -130,8 +121,17 @@
     padding-top: 40px;
 }
 
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
 .se-pre-con {
     position: fixed;
     left: 0px;
@@ -139,5 +139,5 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url(images/loading.gif) center no-repeat #fff;
+    background: url(images/loader_cube.gif) center no-repeat #fff;
 }

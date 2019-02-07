@@ -13,11 +13,10 @@ class DinnerModel extends Observable{
 
         this.getRecepiesSearch()
           .then(data => {
-            console.log(data);
             this.dishes = data.results;
             this.baseUri = data.baseUri;
           })
-          .catch(error => console.log("does not work"));
+          .catch(error => console.error(error));
         // Initialise the current id with the first id in the dish list
         this.currentId = 0;
         this.dummyDish = constDish;
@@ -29,6 +28,15 @@ class DinnerModel extends Observable{
               'X-Mashape-Key': "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767"
           }
       }).then(response => response.json());
+    }
+
+    getDishIngredients(id) {
+        return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk?ids=` + id, {
+            headers: {
+                'X-Mashape-Key': "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767"
+            }
+        }).then(response => response.json());
+            // .then(dataIngredients => dataIngredients.extendedIngredients));
     }
 
     setCurrentId (id) {
@@ -80,15 +88,6 @@ class DinnerModel extends Observable{
 		}
 		return allIngredients;
 	}
-
-	// Get all the ingredients for a specific dish ID
-	// getIngredients (id) {
-	// 	return fetch("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk?ids=592479",{
-	// 		headers:{
-	// 			'X-Mashape-Key': API_KEY
-	// 		}
-	// 	}).then(response => response.json())
-	// }
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	getTotalMenuPrice () {

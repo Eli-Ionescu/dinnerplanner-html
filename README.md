@@ -20,6 +20,6 @@ Description -> GET Summarize Recipe from Compute Folder
 
 https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/{id}/summary
 
-Ingredients & Instructions -> GET Recipe Information Bulk
+Ingredients, Instructions & Price-> GET Recipe Information Bulk
 https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk
 

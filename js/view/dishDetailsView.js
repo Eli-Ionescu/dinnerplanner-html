@@ -12,17 +12,21 @@ class DishDetailsView extends GeneralView{
     }
 
     updateDescription (dish) {
-      console.log(dish);
       let elemenet = this.container.querySelector("#dishDescriptionP");
-      console.log(dish);
       elemenet.innerHTML = dish["summary"];
     }
 
+    updateIngredients(ingredients) {
+        console.log(ingredients);
+    }
+
     addDynamicElements () {
+        $(".se-pre-con").fadeIn("slow");
         let dishDetailDescription = this.container.querySelector("#dishDescription");
         let dishID = this.model.getCurrentId();
         let dish = this.model.getDish(dishID);
 
+        console.log(dishID);
         let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
                         <div class="row" id="imageDetails">
                             <img id="imageDetailsId" class="img-thumbnail" src="${this.model.baseUri}${dish.image}" alt="${dish.title}">
@@ -33,9 +37,14 @@ class DishDetailsView extends GeneralView{
         // update description
         this.model.getDishDescription(dishID)
           .then(dish => this.updateDescription(dish))
-          .catch( error => {console.error("dish description update failed")});
+          .catch( error => {});
+
+        this.model.getDishIngredients(dishID)
+            .then(ingredients => this.updateIngredients(ingredients))
+            .catch(error => {});
 
 
+        $(".se-pre-con").fadeOut("slow");
 
         // update title and image path
 
@@ -68,8 +77,7 @@ class DishDetailsView extends GeneralView{
         // }
         //
         // dishIngredients += `</tbody>
-        //             </table>
-        //             `;
+        //             </table>`;
         //
         // // Compute total
         // let dishPrice = this.model.getDishPrice(dish.id);
