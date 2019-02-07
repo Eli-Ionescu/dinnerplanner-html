@@ -11,8 +11,6 @@ class DinnerModel extends Observable {
         this.getAllData()
             .then(data => {
                 this.dishes = data;
-                console.log("data");
-                console.log(data);
             })
             .catch(error => console.error(error));
         // Initialise the current id with the first id in the dish list
