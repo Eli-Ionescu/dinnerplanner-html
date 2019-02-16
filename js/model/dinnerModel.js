@@ -14,15 +14,6 @@ class DinnerModel extends Observable {
         this.fetchHeaders["X-Mashape-Key"] = API_KEY;
     }
 
-    // Returns the list of the ingredients for a specific dish or empty list if the dish doesn't exist
-    // getDishIngredients(id) {
-    //     let theDish = this.dishes.filter(dish => dish.id = id);
-    //     if (theDish) {
-    //         return theDish[0].ingredients;
-    //     }
-    //     return [];
-    // }
-
     // Function that returns a promise of a dish of specific ID or empty dish if the ID is not in the list
     getDish(id) {
         return fetch(`${searchApi}/${id}/information`, {
@@ -51,22 +42,6 @@ class DinnerModel extends Observable {
         return this.numberOfGuests;
     }
 
-    //Returns the dish that is on the menu for the selected type
-    // getSelectedDish(type) {
-    //     let dishes = [];
-    //     for (let i in this.selectedDishes) {
-    //         if (this.selectedDishes[i].type.findIndex(type) != -1) {
-    //             dishes.push(this.selectedDishes[i]);
-    //         }
-    //     }
-    //     return dishes;
-    // }
-
-    //Returns all the dishes on the menu.
-    // getFullMenu() {
-    //     return this.dishes;
-    // }
-
     // Returns the selected dishes
     getAllSelectedDishes() {
         return this.selectedDishes;
@@ -89,9 +64,6 @@ class DinnerModel extends Observable {
         }).catch(error => {
             console.log(error);
         });
-        // let newDish = this.getDish(id);
-        // this.selectedDishes.push(newDish);
-        // this.notifyObservers("addDishToMenu");
     }
 
     //Removes dish from menu
@@ -112,8 +84,8 @@ class DinnerModel extends Observable {
             searchUrl = searchApi + "/search?number=20";
         } else {
             searchUrl = searchApi + "/search?number=20" +
-                type ? `&type=${type}` : "" +
-                filter ? `&query=${filter}` : "";
+                (type ? `&type=${type}` : "") +
+                (filter ? `&query=${filter}` : "");
         }
 
         return fetch(searchUrl, {
