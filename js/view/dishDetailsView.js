@@ -42,7 +42,7 @@ class DishDetailsView extends GeneralView{
     }
 
     addDynamicElements () {
-        $(".se-pre-con").fadeIn("slow");
+        // $(".se-pre-con").fadeIn("slow");
         let dishDetailDescription = this.container.querySelector("#dishDescription");
         let dishID = this.model.getCurrentId();
         this.model.getDish(dishID).then(dish => {
@@ -57,14 +57,14 @@ class DishDetailsView extends GeneralView{
             this.updateIngredients(dish.extendedIngredients, dish.pricePerServing);
         });
 
-        $(".se-pre-con").fadeOut("slow");
+        // $(".se-pre-con").fadeOut("slow");
     }
 
     update(model, changeDetails) {
         this.id = model.getCurrentId();
         this.model = model;
 
-        if(changeDetails == "currentDish") {
+        if(changeDetails == "currentDish" || changeDetails == "numberOfGuests") {
             this.addDynamicElements();
         }
     }
