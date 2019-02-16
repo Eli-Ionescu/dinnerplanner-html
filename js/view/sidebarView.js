@@ -46,6 +46,7 @@ class SidebarView extends GeneralView{
         let allSelectedDishes = this.model.getAllSelectedDishes();
         let selectedDishHTML = "";
 
+
         for(let dish of allSelectedDishes){
             selectedDishHTML += `<tr>
                                     <td scope=row>${dish.title}</td>

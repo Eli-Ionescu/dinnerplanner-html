@@ -1,4 +1,3 @@
-
 //DinnerModel Object constructor
 class DinnerModel extends Observable {
     constructor() {
@@ -135,41 +134,42 @@ class DinnerModel extends Observable {
 
     getAllData() {
         let dishes = [];
-        let promise = fetch(searchApi,
+        let promise = fetch(`${searchApi}/search`,
             {headers: {'X-Mashape-Key': API_KEY}})
             .then(response => response.json())
             .then(data => {
                 data.results.forEach(dish => {
                     dishes.push(new Dish(dish.id, dish.title));
-                    });
+                });
                 return dishes
             })
             .then(dishes => {
                 dishes.forEach(dish => {
                     if (dish.id != 752320) {
-                    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk?ids=${dish.id}`, {
-                        headers: {'X-Mashape-Key': API_KEY}
-                    }).then(response => response.json())
-                        .then(data => {
-                            if (!data || !data[0]) { return dish;}
-                            dish.image = data[0].image;
-                            dish.ingredients = data[0].extendedIngredients;
-                            dish.types = data[0].dishTypes;
-                            dish.preparation = data[0].instructions;
-                            dish.price = data[0].pricePerServing;
-                            return dish;
-                        }).catch(console.error);
 
-                    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${dish.id}/summary`, {
-                        headers: {'X-Mashape-Key': API_KEY}
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            dish.description = data["summary"];
-                            return dish;
+                        fetch(`${searchApi}/informationBulk?ids=${dish.id}`, {
+                            headers: {'X-Mashape-Key': API_KEY}
+                        }).then(response => response.json())
+                            .then(data => {
+                                if (!data || !data[0]) { return dish;}
+                                dish.image = data[0].image;
+                                dish.ingredients = data[0].extendedIngredients;
+                                dish.types = data[0].dishTypes;
+                                dish.preparation = data[0].instructions;
+                                dish.price = data[0].pricePerServing;
+                                return dish;
+                            }).catch(console.error);
+
+                        fetch(`${searchApi}/${dish.id}/summary`, {
+                            headers: {'X-Mashape-Key': API_KEY}
                         })
-                        .catch(console.error);
-                } });
+                            .then(response => response.json())
+                            .then(data => {
+                                dish.description = data["summary"];
+                                return dish;
+                            })
+                            .catch(console.error);
+                    } });
                 return dishes;
             }).catch(error => console.error(error + "Last one!"));
         return promise;
@@ -179,4 +179,4 @@ class DinnerModel extends Observable {
 const dishTypes = ["main course", "side dish", "dessert", "appetizer", "salad", "bread",
     "breakfast", "soup", "beverage", "sauce", "drink"];
 
-const searchApi = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search"
+const searchApi = "http://sunset.nada.kth.se:8080/iprog/group/45/recipes";
