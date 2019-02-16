@@ -45,17 +45,17 @@ class DishDetailsView extends GeneralView{
         $(".se-pre-con").fadeIn("slow");
         let dishDetailDescription = this.container.querySelector("#dishDescription");
         let dishID = this.model.getCurrentId();
-        let dish = this.model.getDish(dishID);
+        this.model.getDish(dishID).then(dish => {
+            let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
+                            <div id="imageDetails">
+                                <img id="imageDetailsId" class="img-thumbnail" src="${dish.image}" alt="${dish.title}">
+                            </div>
+                            <p id="dishDescriptionP"></p>`;
+            dishDetailDescription.innerHTML = dishDescription;
 
-        let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
-                        <div id="imageDetails">
-                            <img id="imageDetailsId" class="img-thumbnail" src="${dish.image}" alt="${dish.title}">
-                        </div>
-                        <p id="dishDescriptionP"></p>`;
-        dishDetailDescription.innerHTML = dishDescription;
-
-        this.updateDescription(dish);
-        this.updateIngredients(dish.ingredients, dish.price);
+            this.updateDescription(dish);
+            this.updateIngredients(dish.extendedIngredients, dish.pricePerServing);
+        });
 
         $(".se-pre-con").fadeOut("slow");
     }

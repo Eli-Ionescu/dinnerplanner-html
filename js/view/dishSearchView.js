@@ -35,11 +35,13 @@ class DishSearchView extends GeneralView{
     renderDishList (type, filter) {
         // List with all the dishes
         let dishList = document.getElementById("dishList");
-        let allDishes = this.model.getAllDishes(type, filter);
-        dishList.innerHTML = "";
-        allDishes.forEach(dish => {
-            let dishItem = new DishItemView(dishList, this.model, dish.id, dish.title, dish.image);
-            new DishItemController(dishItem.item, dish, this.app);
+        this.model.getAllDishes(type, filter).then(allDishes => {
+            dishList.innerHTML = "";
+            allDishes.forEach(dish => {
+                let imageUrl = "https://spoonacular.com/recipeImages/"+dish.image;
+                let dishItem = new DishItemView(dishList, this.model, dish.id, dish.title, imageUrl);
+                new DishItemController(dishItem.item, dish, this.app);
+            });
         });
     }
 
