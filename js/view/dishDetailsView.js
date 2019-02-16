@@ -14,7 +14,7 @@ class DishDetailsView extends GeneralView{
 
     updateDescription (dish) {
       let element = this.container.querySelector("#dishDescriptionP");
-      element.innerHTML = dish.description;
+      element.innerHTML = dish.instructions;
     }
 
     updateIngredients(ingredients, totalIngredientsPrice) {

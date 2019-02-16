@@ -50,7 +50,7 @@ class SidebarView extends GeneralView{
         for(let dish of allSelectedDishes){
             selectedDishHTML += `<tr>
                                     <td scope=row>${dish.title}</td>
-                                    <td>${this.model.getNumberOfGuests() * dish.price}</td>
+                                    <td>${this.model.getNumberOfGuests() * dish.pricePerServing}</td>
                                     <td><span id="delete${dish.id}"class="close">&times;</span></td>
                                 </tr>`;
         }

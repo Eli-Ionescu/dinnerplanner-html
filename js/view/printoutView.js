@@ -28,11 +28,11 @@ class PrintoutView extends GeneralView{
                              </div>
                              <div class="col-md-4" id="description">
                                 <h2>${selectedDishes[i].title}</h2>
-                                <p>${selectedDishes[i].description}</p>
+                                <p>${selectedDishes[i].instructions}</p>
                              </div>
                              <div class="col-md-6" id="preparation">
                                 <h3>PREPARATION</h3>
-                                <p>${selectedDishes[i].preparation}</p>
+                                <p>${selectedDishes[i].instructions}</p>
                              </div>
                          </div>`
         }

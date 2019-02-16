@@ -15,20 +15,22 @@ class DinnerModel extends Observable {
     }
 
     // Returns the list of the ingredients for a specific dish or empty list if the dish doesn't exist
-    getDishIngredients(id) {
-        let theDish = this.dishes.filter(dish => dish.id = id);
-        if (theDish) {
-            return theDish[0].ingredients;
-        }
-        return [];
-    }
+    // getDishIngredients(id) {
+    //     let theDish = this.dishes.filter(dish => dish.id = id);
+    //     if (theDish) {
+    //         return theDish[0].ingredients;
+    //     }
+    //     return [];
+    // }
 
     // Function that returns a promise of a dish of specific ID or empty dish if the ID is not in the list
     getDish(id) {
         return fetch(`${searchApi}/${id}/information`, {
             headers: this.fetchHeaders
         }).then(response => response.json())
-            .then()
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     setCurrentId(id) {
@@ -50,20 +52,20 @@ class DinnerModel extends Observable {
     }
 
     //Returns the dish that is on the menu for the selected type
-    getSelectedDish(type) {
-        let dishes = [];
-        for (let i in this.selectedDishes) {
-            if (this.selectedDishes[i].type.findIndex(type) != -1) {
-                dishes.push(this.selectedDishes[i]);
-            }
-        }
-        return dishes;
-    }
+    // getSelectedDish(type) {
+    //     let dishes = [];
+    //     for (let i in this.selectedDishes) {
+    //         if (this.selectedDishes[i].type.findIndex(type) != -1) {
+    //             dishes.push(this.selectedDishes[i]);
+    //         }
+    //     }
+    //     return dishes;
+    // }
 
     //Returns all the dishes on the menu.
-    getFullMenu() {
-        return this.dishes;
-    }
+    // getFullMenu() {
+    //     return this.dishes;
+    // }
 
     // Returns the selected dishes
     getAllSelectedDishes() {
@@ -74,16 +76,22 @@ class DinnerModel extends Observable {
     getTotalMenuPrice() {
         let total = 0;
         for (let dish of this.selectedDishes) {
-            total += dish.price;
+            total += dish.pricePerServing;
         }
         return total * this.numberOfGuests;
     }
 
     //Adds the passed dish to the menu
     addDishToMenu(id) {
-        let newDish = this.getDish(id);
-        this.selectedDishes.push(newDish);
-        this.notifyObservers("addDishToMenu");
+        this.getDish(id).then(dish => {
+            this.selectedDishes.push(dish);
+            this.notifyObservers("addDishToMenu");
+        }).catch(error => {
+            console.log(error);
+        });
+        // let newDish = this.getDish(id);
+        // this.selectedDishes.push(newDish);
+        // this.notifyObservers("addDishToMenu");
     }
 
     //Removes dish from menu
@@ -101,9 +109,9 @@ class DinnerModel extends Observable {
     getAllDishes (type,filter) {
         let searchUrl = "";
         if ((!type || type == "All") && !filter) {
-            searchUrl = searchApi + "/search";
+            searchUrl = searchApi + "/search?number=20";
         } else {
-            searchUrl = searchApi + "/search?" +
+            searchUrl = searchApi + "/search?number=20" +
                 type ? `&type=${type}` : "" +
                 filter ? `&query=${filter}` : "";
         }
