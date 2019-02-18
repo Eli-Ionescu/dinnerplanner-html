@@ -4,40 +4,50 @@ class DishDetailsView extends GeneralView{
         super(container);
         model.addObserver(this);
         this.model = model;
-        this.id = id ? id : model.getCurrentId();
-
-        this.addDynamicElements();
         this.button = document.getElementById("buttonAddToMenu");
         this.backButton = document.getElementById("buttonBackToSearch");
+        this.detailsContent = document.getElementById("detailsContent");
+        this.loading = document.getElementById("detailsLoader");
+        this.currentDish = new Dish(0, "", "", [], "", "");
+        this.addDynamicElements();
+    }
 
+    showLoading() {
+        this.loading.style.display = "block";
+        this.detailsContent.style.display = "none";
+    }
+
+    hideLoading() {
+        this.detailsContent.style.display = "inline";
+        this.loading.style.display = "none";
     }
 
     addDynamicElements () {
-        // $(".se-pre-con").fadeIn("slow");
+        this.showLoading();
         let dishDetailDescription = this.container.querySelector("#dishDescription");
-        let dishID = this.model.getCurrentId();
-        this.model.getDish(dishID).then(dish => {
-            let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
-                            <div id="imageDetails">
-                                <img id="imageDetailsId" class="img-thumbnail" src="${dish.image}" alt="${dish.title}">
-                            </div>
-                            <p id="dishDescriptionP"></p>`;
-            dishDetailDescription.innerHTML = dishDescription;
-            this.updateDescription(dish);
-            this.updateIngredients(dish.extendedIngredients, dish.pricePerServing);
-        });
+        let dish = this.currentDish;
+        let dishDescription = `<h3 id="dishNameID">${dish.title}</h3>
+                        <div id="imageDetails">
+                            <img id="imageDetailsId" class="img-thumbnail" src="${dish.image}" alt="${dish.title}">
+                        </div>
+                        <p id="dishDescriptionP"></p>`;
+        dishDetailDescription.innerHTML = dishDescription;
+        this.updateDescription(dish);
+        this.updateIngredients(dish.extendedIngredients, dish.pricePerServing);
+        this.hideLoading();
     }
 
     update(model, changeDetails) {
-        this.id = model.getCurrentId();
-        this.model = model;
-        // Show loading;
+        // Show loading
+        this.showLoading();
+        model.getCurrentDish().then( dish => {
+                this.currentDish = dish;
+                if(changeDetails == "currentDish" || changeDetails == "numberOfGuests") {
+                    this.addDynamicElements();
+                }
+                this.hideLoading();
+        });
 
-        if(changeDetails == "currentDish" || changeDetails == "numberOfGuests") {
-            this.addDynamicElements();
-        }
-
-        // Hide loading
     }
 
     updateDescription (dish) {

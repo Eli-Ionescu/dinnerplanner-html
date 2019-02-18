@@ -5,7 +5,7 @@ class DishDetailsController {
         this.controller = controller;
 
         view.button.addEventListener("click",
-            () => this.model.addDishToMenu(view.id));
+            () => this.model.addDishToMenu(view.currentDish));
 
         view.backButton.addEventListener("click",
             () => this.controller.showSelectDishPage())

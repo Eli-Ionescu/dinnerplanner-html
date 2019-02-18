@@ -4,12 +4,8 @@ class DinnerModel extends Observable {
         super();
         this.numberOfGuests = 3;
         this.selectedDishes = [];
-        this.dishTypes = dishTypes;
-
-        this.dishes = [];
         // Initialise the current id with the first id in the dish list
-        this.currentId = 0;
-        this.dummyDish = new Dish(0, "", "", [], "", "");
+        this.currentDish = new Dish(0, "", "", [], "", "");
         this.fetchHeaders = fetchHeaders;
         this.fetchHeaders["X-Mashape-Key"] = API_KEY;
     }
@@ -20,17 +16,18 @@ class DinnerModel extends Observable {
             headers: this.fetchHeaders
         }).then(response => response.json())
             .catch(error => {
+                alert(error);
                 console.log(error);
             });
     }
 
-    setCurrentId(id) {
-        this.currentId = id;
+    setCurrentDish(id) {
+        this.currentDish = this.getDish(id);
         this.notifyObservers("currentDish");
     }
 
-    getCurrentId() {
-        return this.currentId;
+    getCurrentDish() {
+        return this.currentDish;
     }
 
     setNumberOfGuests(num) {
@@ -57,13 +54,9 @@ class DinnerModel extends Observable {
     }
 
     //Adds the passed dish to the menu
-    addDishToMenu(id) {
-        this.getDish(id).then(dish => {
-            this.selectedDishes.push(dish);
-            this.notifyObservers("addDishToMenu");
-        }).catch(error => {
-            console.log(error);
-        });
+    addDishToMenu(dish) {
+        this.selectedDishes.push(dish);
+        this.notifyObservers("addDishToMenu");
     }
 
     //Removes dish from menu
@@ -111,8 +104,6 @@ class DinnerModel extends Observable {
 const dishTypes = ["main course", "side dish", "dessert", "appetizer", "salad", "bread",
     "breakfast", "soup", "beverage", "sauce", "drink"];
 
-// const proxyurl = "https://cors-anywhere.herokuapp.com/";
-// const searchApi =  proxyurl + "http://sunset.nada.kth.se:8080/iprog/group/45/recipes";
 const searchApi =  "http://sunset.nada.kth.se:8080/iprog/group/45/recipes";
 
 const fetchHeaders = {

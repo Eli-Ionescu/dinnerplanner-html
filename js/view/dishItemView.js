@@ -17,7 +17,7 @@ class DishItemView extends GeneralView{
                                 <a>
                                     <img class="img-thumbnail" src="${this.image}" alt="${this.title}">
                                     <div align="center" class="caption">
-                                        <p>${this.title}<\p>
+                                        <p>${this.title}</p>
                                     </div>
                                 </a>
                             </div>`;

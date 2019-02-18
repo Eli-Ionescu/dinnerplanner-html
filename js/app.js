@@ -20,7 +20,7 @@ window.onload = function() {
     generalController.addView(dishSearchView);
     let dishSearchController = new DishSearchController(dishSearchView, model, this);
 
-    let dishDetailsView = new DishDetailsView(document.getElementById("dishDetails"), model, model.getCurrentId());
+    let dishDetailsView = new DishDetailsView(document.getElementById("dishDetails"), model, model.getCurrentDish());
     generalController.addView(dishDetailsView);
     let dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 
@@ -57,7 +57,7 @@ window.onload = function() {
 
     this.showDishDetailsPage = function (id) {
         hideAll();
-        model.setCurrentId(id);
+        model.setCurrentDish(id);
         generalController.showScreen("DETAIL");
     };
 
